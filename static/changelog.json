@@ -1,0 +1,679 @@
+[
+  {
+    "id": "2026-10-29-sanduhr-sammlung",
+    "version": "3.6.2",
+    "date": "2026-10-29",
+    "title": "Sanduhr in der Sammlung",
+    "items": [
+      "In der Sammlung geht eine Sanduhr nur noch für Digimon, die gerade erkunden – sie kommen dann schneller zurück. Bei allen anderen steht dort jetzt, dass es nicht geht, denn in der Sammlung steht die Zeit still.",
+      "Bisher klang die Meldung so, als hätte die Sanduhr dein aktives Digimon getroffen."
+    ],
+    "title_en": "Hourglass in the collection",
+    "items_en": [
+      "In the collection, an hourglass now only works on Digimon that are out exploring – they get back sooner. For all others it now says that it doesn't work, because time stands still in the collection.",
+      "Until now the message sounded as if the hourglass had hit your active Digimon."
+    ]
+  },
+  {
+    "id": "2026-10-29-sprache",
+    "version": "3.6.1",
+    "date": "2026-10-29",
+    "title": "Englisch bleibt Englisch",
+    "items": [
+      "Wer auf Englisch spielt, sah Tagebuch, „Zurück vom Erkunden“ und andere Meldungen manchmal auf Deutsch – vor allem auf dem iPhone nach ein paar Tagen. Jetzt gilt immer die Sprache, die du gewählt hast."
+    ],
+    "title_en": "English stays English",
+    "items_en": [
+      "If you play in English, the diary, “Back from exploring” and other messages sometimes showed up in German – especially on iPhones after a few days. Now the language you picked always applies."
+    ]
+  },
+  {
+    "id": "2026-10-29-scherben-virus",
+    "version": "3.6",
+    "date": "2026-10-29",
+    "title": "Ei-Scherben & Virus-Diskette",
+    "items": [
+      "Beim Erkunden findest du jetzt Ei-Scherben statt ganzer Eier – genauso oft wie früher die Eier. Weil ein Ei jetzt 4 Scherben braucht, werden Eier seltener. Jedes Gebiet hat eigene Scherben, z. B. „Ei-Scherbe Urwald“.",
+      "4 gleiche Scherben setzt du im Rucksack zu einem Digi-Ei aus diesem Gebiet zusammen. Es kommt in deine Sammlung. Übrige Scherben kannst du für 15 Bits verkaufen.",
+      "Neues Item: Virus-Diskette – fügt 1 Pflegefehler hinzu. Gut für Digitationen, die Pflegefehler brauchen. Gefährlich wird sie nie: Mehr als 19 Pflegefehler macht sie nicht. Im Shop für 80 Bits und manchmal beim Erkunden."
+    ],
+    "title_en": "Egg shards & Virus Disk",
+    "items_en": [
+      "Exploring now finds egg shards instead of whole eggs – just as often as eggs used to show up. Since an egg now takes 4 shards, eggs become rarer. Every area has its own shards, e.g. “Egg Shard Jungle”.",
+      "Put 4 of the same shards together in your backpack to get a Digi-Egg from that area. It goes into your collection. You can sell spare shards for 15 Bits.",
+      "New item: Virus Disk – adds 1 care mistake. Good for Digivolutions that need care mistakes. It's never dangerous: it won't go above 19 care mistakes. In the shop for 80 Bits and sometimes while exploring."
+    ]
+  },
+  {
+    "id": "2026-10-26-erkunden-kampf",
+    "version": "3.5.1",
+    "date": "2026-10-26",
+    "title": "Kampf nach dem Erkunden repariert",
+    "items": [
+      "Folgt deinem Digimon beim Erkunden ein wildes Digimon nach Hause, kannst du jetzt wieder richtig kämpfen. Bisher ging nur Fliehen.",
+      "Erst drückst du OK für die Rückkehr – die Meldung sagt dir dann, welches wilde Digimon mitgekommen ist. Danach: Kämpfen oder Fliehen."
+    ],
+    "title_en": "Fixed battles after exploring",
+    "items_en": [
+      "If a wild Digimon follows your Digimon home from exploring, you can properly fight it again. Until now you could only flee.",
+      "First press OK for the return – the message then tells you which wild Digimon came along. After that: fight or flee."
+    ]
+  },
+  {
+    "id": "2026-10-26-freunde-ansehen",
+    "version": "3.5",
+    "date": "2026-10-26",
+    "title": "Schau dir an, was deine Freunde haben",
+    "items": [
+      "Neu bei jedem Freund (Einstellungen → Freunde): „Ansehen“. Du siehst seinen Partner, alle Digimon in seiner Sammlung, wie viele Eier er hat, seinen Digidex-Stand, seine Erfolge und Siege.",
+      "Tipp ein Digimon an, um seinen Digidex-Eintrag zu öffnen.",
+      "Das geht nur bei Freunden – Fremde sehen deine Digimon nicht. Werte, Reisen und Rückkehrzeiten bleiben auch für Freunde geheim."
+    ],
+    "title_en": "See what your friends have",
+    "items_en": [
+      "New for every friend (Settings → Friends): “View”. You see their partner, every Digimon in their collection, how many eggs they have, their Digidex progress, achievements and wins.",
+      "Tap a Digimon to open its Digidex entry.",
+      "This only works for friends – strangers can't see your Digimon. Stats, trips and return times stay secret even from friends."
+    ]
+  },
+  {
+    "id": "2026-10-26-sammlung-funde",
+    "version": "3.4.4",
+    "date": "2026-10-26",
+    "title": "Funde aus der Sammlung nachlesen",
+    "items": [
+      "Neu in der Sammlung: „Zurück vom Erkunden“. Dort steht, was deine Digimon aus der Sammlung von ihren Ausflügen mitgebracht haben – die letzten 15, mit Datum und Uhrzeit. Bisher kam der Bericht nur kurz als Meldung."
+    ],
+    "title_en": "Read up on finds from the collection",
+    "items_en": [
+      "New in the collection: “Back from exploring”. It lists what your Digimon from the collection brought back from their trips – the last 15, with date and time. Until now the report only showed up briefly as a message."
+    ]
+  },
+  {
+    "id": "2026-10-25-runden",
+    "version": "3.4.3",
+    "date": "2026-10-25",
+    "title": "Längere Kämpfe & kein Verlust bei Gleichstand",
+    "items": [
+      "Kämpfe dauern jetzt höchstens 25 statt 12 Runden – gegen wilde Digimon und gegen Freunde.",
+      "Im Kampf gegen wilde Digimon steht jetzt die Runde dabei („Runde 5 von 25“), und kurz vor Schluss kommt eine Warnung.",
+      "Gleich viele Leben nach der letzten Runde sind kein Verlust mehr, sondern ein Unentschieden – ohne Verletzung. Bisher hat man dabei einfach verloren.",
+      "Endet ein Kampf nach der letzten Runde, sagt die Meldung jetzt, warum: wer mehr Leben übrig hatte."
+    ],
+    "title_en": "Longer battles & no loss on a tie",
+    "items_en": [
+      "Battles now last up to 25 rounds instead of 12 – against wild Digimon and against friends.",
+      "Battles against wild Digimon now show the round (“Round 5 of 25”), with a warning shortly before the end.",
+      "The same number of lives after the last round is no longer a loss but a draw – without injury. Until now you simply lost.",
+      "When a battle ends after the last round, the message now says why: who had more lives left."
+    ]
+  },
+  {
+    "id": "2026-10-25-finder-wege",
+    "version": "3.4.2",
+    "date": "2026-10-25",
+    "title": "Finder zeigt alle Eier & Digidex-Namen korrigiert",
+    "items": [
+      "Der Digimon-Finder zeigt jetzt für jedes Ei den einfachsten Weg (antippen zum Aufklappen). Bisher standen nur die sechs einfachsten Wege insgesamt da – bei Digimon wie Machinedramon fehlten dadurch viele Eier, zum Beispiel der Weg von Zurumon.",
+      "Neu im Finder: „Von deinen Digimon aus“. Bist du angemeldet, steht ganz oben der Weg von deinen eigenen Digimon (aktiv und in der Sammlung) zum gesuchten Digimon.",
+      "Merkliste und „Nächste Digitation“ rechnen jetzt mit dem Ei, aus dem dein Digimon geschlüpft ist – genau wie das Spiel.",
+      "Der Hinweis „Kein Ziel für …“ hat jetzt ein ✕ zum Ausblenden. Ein festgelegtes Ziel wird weiter angezeigt.",
+      "Digidex: Digimon-Namen in den Beschreibungen korrigiert – z. B. Growlmon statt „Growmon“, Lillymon statt „Lilymon“, Mushroomon statt „Mushmon“. In den englischen Texten heißen jetzt alle Digimon wie im Spiel (MetalGarurumon, MagnaAngemon, Ebemon …)."
+    ],
+    "title_en": "Finder shows every egg & Digidex names fixed",
+    "items_en": [
+      "The Digimon Finder now shows the easiest path for every egg (tap to expand). Until now it only listed the six easiest paths overall – so for Digimon like Machinedramon many eggs were missing, for example the path from Zurumon.",
+      "New in the Finder: “From your Digimon”. When you're logged in, the path from your own Digimon (active and in the collection) to the Digimon you're looking for is at the very top.",
+      "The wishlist and “Next Digivolution” now use the egg your Digimon hatched from – exactly like the game does.",
+      "The “No goal for …” hint now has an ✕ to hide it. A goal you've set is still shown.",
+      "Digidex: fixed Digimon names in the descriptions – e.g. Growlmon instead of “Growmon”, Lillymon instead of “Lilymon”, Mushroomon instead of “Mushmon”. In the English texts every Digimon now has its in-game name (MetalGarurumon, MagnaAngemon, Ebemon …)."
+    ]
+  },
+  {
+    "id": "2026-10-25-ei-ueberraschung",
+    "version": "3.4.1",
+    "date": "2026-10-25",
+    "title": "Gefundene Eier bleiben eine Überraschung",
+    "items": [
+      "Eier heißen jetzt nur noch „Digi-Ei“ – beim Finden, in der Sammlung und beim Tauschen. Welches Digimon schlüpft, ist eine Überraschung.",
+      "Nur besondere Event-Eier wie das Digi-Ei Halloween tragen weiter ihren Namen."
+    ],
+    "title_en": "Found eggs stay a surprise",
+    "items_en": [
+      "Eggs are now just called “Digi-Egg” – when you find them, in your collection and when trading. Which Digimon hatches is a surprise.",
+      "Only special event eggs like the Digi-Egg Halloween keep their name."
+    ]
+  },
+  {
+    "id": "2026-10-25-daily-steal",
+    "version": "3.4",
+    "date": "2026-10-25",
+    "title": "Daily Steal & neue Bonbon-Preise",
+    "items": [
+      "Neu im Shop: der Daily Steal. Jeden Tag ist ein Item 40 % günstiger – es steht ganz oben, orange umrandet, mit dem alten Preis durchgestrichen. Um Mitternacht kommt das nächste dran.",
+      "Gruselbonbons kosten im Shop jetzt 90 Bits statt 20 – sie waren viel zu günstig."
+    ],
+    "title_en": "Daily Steal & new candy prices",
+    "items_en": [
+      "New in the shop: the Daily Steal. Every day one item is 40% cheaper – it's at the very top, framed in orange, with the old price crossed out. At midnight the next one takes its place.",
+      "Spooky Candies now cost 90 Bits in the shop instead of 20 – they were far too cheap."
+    ]
+  },
+  {
+    "id": "2026-10-25-event-tab",
+    "version": "3.3",
+    "date": "2026-10-25",
+    "title": "Event-Tab mit Story",
+    "items": [
+      "Neu oben in der Leiste: das Event-Symbol (zu Halloween ein Kürbis). Es öffnet den Event-Tab – auch über „Mehr“ im Banner.",
+      "Im Event-Tab steht alles auf einen Blick: eine kleine Geschichte zum Event, wie lange es noch läuft, alle Belohnungen mit ihren Chancen, die ganze Reihe des Event-Eis, was es im Shop und zum Tauschen gibt und welche Digimon Geister sind.",
+      "Das Event-Banner lässt sich jetzt mit ✕ schließen. Es bleibt weg, bis das nächste Event startet – der Event-Tab oben bleibt.",
+      "Die Knöpfe oben sind etwas kleiner geworden, damit alle nebeneinander passen. In mittelgroßen Fenstern stehen sie in zwei ordentlichen Reihen, am Handy in einer Reihe."
+    ],
+    "title_en": "Event tab with a story",
+    "items_en": [
+      "New in the top bar: the event icon (a pumpkin at Halloween). It opens the event tab – so does “More” in the banner.",
+      "The event tab shows everything at a glance: a little story about the event, how long it still runs, all rewards with their chances, the whole line of the event egg, what's in the shop and up for trade, and which Digimon are ghosts.",
+      "The event banner can now be closed with ✕. It stays hidden until the next event starts – the event tab at the top stays.",
+      "The buttons at the top got a little smaller so they all fit side by side. In medium-sized windows they sit in two tidy rows, on phones in one row."
+    ]
+  },
+  {
+    "id": "2026-10-25-freundescodes",
+    "version": "3.2",
+    "date": "2026-10-25",
+    "title": "Freundescodes & mehr Privatsphäre",
+    "items": [
+      "Jedes Konto hat jetzt einen eigenen Freundescode (Einstellungen → Freunde). Gib ihn einem Freund oder tipp seinen Code ein – dann seid ihr beide befreundet.",
+      "Kämpfen, Tauschen und Jogress gehen nur noch mit Freunden. Bisher hat man dort alle Spieler gesehen – jetzt fängt jeder mit einer leeren Freundesliste an, also tauscht eure Codes aus!",
+      "Mehr Privatsphäre: Bei „Freund herausfordern“ sieht man nicht mehr, warum ein Freund gerade nicht kann – also auch nicht mehr, wann sein Digimon vom Erkunden zurückkommt. Da steht nur noch „kann gerade nicht kämpfen“.",
+      "„Neuer Code“ macht deinen alten Code ungültig (falls er an die Falschen geraten ist), „Entfernen“ beendet eine Freundschaft für beide."
+    ],
+    "title_en": "Friend codes & more privacy",
+    "items_en": [
+      "Every account now has its own friend code (Settings → Friends). Give it to a friend or type in theirs – then you're both friends.",
+      "Battles, trades and Jogress now only work with friends. Until now you saw every player there – now everyone starts with an empty friend list, so swap your codes!",
+      "More privacy: “Challenge a friend” no longer shows why a friend can't battle right now – so you also can't see when their Digimon comes back from exploring. It just says “can't battle right now”.",
+      "“New code” makes your old code invalid (in case it got to the wrong people), and “Remove” ends a friendship for both of you."
+    ]
+  },
+  {
+    "id": "2026-10-25-failsafe-ziele",
+    "version": "3.1",
+    "date": "2026-10-25",
+    "title": "Fail-Safes, Ziele pro Digimon, Deko & Verkaufen",
+    "items": [
+      "Morgens kein Stress mehr: Ist um 8 Uhr das Licht noch aus, döst dein Digimon als Nickerchen weiter, bis du das Licht anmachst – halber Hunger, keine Kacke. Du musst also nicht pünktlich aufstehen.",
+      "V-Pet-Designs färben jetzt das ganze Spiel: Hintergrund, Flächen, Knöpfe, Anzeigen und Datenregen – nicht mehr nur Gehäuse und Display. Auch die Hilfe-Seite übernimmt die Farben.",
+      "Neu: Deko fürs Display! Im Shop-Tab „V-Pet-Designs“ gibt es Sternenfunkeln (100 Bits), Seifenblasen und Herzchen (je 120) und Schneefall (150). Die Deko läuft blass hinter deinem Digimon und lässt sich jederzeit an- und ausschalten.",
+      "Die Halloween-Fledermäuse sind jetzt Deko: Während des Events fliegen sie gratis und lassen sich abschalten. Für 5 Gruselbonbons kaufst du sie – dann bleiben sie auch nach Halloween.",
+      "Verkaufen im Rucksack: Tipp ein Item an und wähl „Benutzen“ oder „Verkaufen“ – egal was und wie viele (− 1, + 1, Alle). Shop-Items bringen den halben Preis, Armor-Eier 50 Bits, das Armor-Ei der Wunder 200.",
+      "Neu im Shop während Halloween: der Bonbon-Tausch. 15 Gruselbonbons = ein Digi-Ei Halloween (garantiert Pumpkinmon). Das Halloween-Design (10 Bonbons) steht wie gehabt im Tab „V-Pet-Designs“.",
+      "Kein verpasster Ruf mehr nach dem Erkunden: Kommt dein Digimon zurück, bleibt der Bericht stehen und du drückst „OK – willkommen zurück!“. Bis dahin wartet es – kein Hunger, keine Rufe, keine Pflegefehler, auch wenn du erst Stunden später reinschaust.",
+      "Merkliste pro Digimon: Tipp in der Merkliste auf „Als Ziel“ – dann ist das Wunsch-Digimon das Ziel von genau diesem Digimon. Dein Gabumon kann Omnimon anpeilen, dein Impmon Beelzemon.",
+      "Unter „Nächste Digitation“ steht nur noch das Ziel des aktiven Digimon – keine fremden Pläne mehr. Das Ziel bleibt beim Digimon, auch in der Sammlung.",
+      "In der Merkliste steht das aktuelle Ziel oben mit dem ganzen Weg, die anderen Wunsch-Digimon sind eingeklappt („Weg anzeigen“)."
+    ],
+    "title_en": "Fail-safes, a goal per Digimon, decorations & selling",
+    "items_en": [
+      "No more morning stress: if the light is still off at 8 am, your Digimon keeps dozing as a nap until you turn the light on – half hunger, no poop. So you don't have to get up on time.",
+      "V-Pet designs now color the whole game: background, panels, buttons, gauges and the data rain – not just the shell and the screen. The help page uses the colors too.",
+      "New: decorations for the screen! The shop tab “V-Pet designs” now has Twinkling Stars (100 Bits), Bubbles and Little Hearts (120 each) and Snowfall (150). Decorations play faintly behind your Digimon and can be switched on and off at any time.",
+      "The Halloween bats are now a decoration: during the event they fly for free and can be switched off. Buy them for 5 Spooky Candies and they stay after Halloween too.",
+      "Selling in your bag: tap an item and choose “Use” or “Sell” – anything, any amount (− 1, + 1, All). Shop items give half their price, Armor Eggs 50 Bits, the Armor Egg of Miracles 200.",
+      "New in the shop during Halloween: the candy trade. 15 Spooky Candies = a Digi-Egg Halloween (always Pumpkinmon). The Halloween design (10 candies) is still in the “V-Pet designs” tab.",
+      "No more missed calls after exploring: when your Digimon comes back, the report stays on screen and you press “OK – welcome back!”. Until then it waits – no hunger, no calls, no care mistakes, even if you only check in hours later.",
+      "Wishlist per Digimon: tap “Set as goal” in the wishlist – then that Digimon becomes the goal of exactly this Digimon. Your Gabumon can aim for Omnimon and your Impmon for Beelzemon.",
+      "“Next Digivolution” only shows the goal of your active Digimon – no more plans from your other Digimon. The goal stays with the Digimon, even in the collection.",
+      "In the wishlist, the current goal is at the top with the whole path, and the other Digimon you want are collapsed (“Show path”)."
+    ]
+  },
+  {
+    "id": "2026-10-23-kampf-3-fix",
+    "version": "3.0.1",
+    "date": "2026-10-23",
+    "title": "Kampf-Feinschliff",
+    "items": [
+      "Gegen Freunde füllt jetzt auch gelungenes Ausweichen die Spezial-Leiste – vorher kam man dort kaum an die Spezialattacke.",
+      "Beim Springen bleiben deine Leben und die Spezial-Leiste sichtbar.",
+      "Lädst du die Seite mitten im Kampf neu, bleibt die Kampf-Meldung stehen. Wer eine Herausforderung annimmt, sieht gleich, wie man lädt und schießt.",
+      "Gegen Freunde siehst du die letzten 10 Sekunden, bevor dein Digimon von selbst (schwach) schießt."
+    ],
+    "title_en": "Battle polish",
+    "items_en": [
+      "Against friends, a successful dodge now also fills your special gauge – before, you could hardly ever reach your special attack there.",
+      "When you jump, your lives and special gauge stay visible.",
+      "If you reload the page in the middle of a battle, the battle message stays. Whoever accepts a challenge now sees right away how to charge and shoot.",
+      "Against friends, you see the last 10 seconds before your Digimon shoots on its own (weakly)."
+    ]
+  },
+  {
+    "id": "2026-10-23-kampf-3",
+    "version": "3.0",
+    "date": "2026-10-23",
+    "title": "Neues Kampfsystem: Zielen, Ausweichen, Spezialattacke",
+    "items": [
+      "Du greifst jetzt oben oder unten an: ↑ oder ↓ gedrückt halten = laden, loslassen = schießen. Triffst du die Seite, die der Gegner nicht deckt, steht da „Lücke!“ – und du triffst viel öfter.",
+      "Weiter halten füllt die MEGA-Stufe. Ganz voll gibt das einen Mega-Schuss mit 2 Schaden – aber dein Digimon kann beim Laden unterbrochen werden.",
+      "Ausweichen: Fliegt der Ball unten, spring mit ↑. Fliegt er oben, duck dich mit ↓. Tempo-Training gibt dir mehr Zeit dafür. Am Handy tippst du einfach oben oder unten aufs Display.",
+      "Jeder Treffer füllt deine Spezial-Leiste. Ist sie voll, drück E oder den Spezial-Knopf und hämmer 2 Sekunden lang drauf: Die Spezialattacke macht 2 Schaden und lässt sich nicht ausweichen.",
+      "Wilde Digimon haben jetzt eine Persönlichkeit – ruhig, aggressiv, gepanzert, flink oder listig – und kündigen manchmal einen starken Angriff an. Dann schnell ausweichen!",
+      "Auch gegen Freunde: Ihr ladet gleichzeitig, danach weicht jeder dem Ball des anderen aus. Alles erklärt die Hilfe unter „Kämpfe“."
+    ],
+    "title_en": "New battle system: aiming, dodging, special attack",
+    "items_en": [
+      "You now attack high or low: hold ↑ or ↓ to charge, let go to shoot. If you hit the side your opponent isn't guarding, you see “Gap!” – and you hit much more often.",
+      "Keep holding to fill the MEGA level. Completely full, you get a Mega Shot with 2 damage – but your Digimon can get interrupted while charging.",
+      "Dodging: if the ball comes low, jump with ↑. If it comes high, duck with ↓. Speed training gives you more time for it. On a phone, just tap the top or bottom of the screen.",
+      "Every hit fills your special gauge. When it's full, press E or the Special button and mash for 2 seconds: the special attack does 2 damage and can't be dodged.",
+      "Wild Digimon now have a personality – calm, aggressive, armored, nimble or sly – and sometimes announce a strong attack. Dodge fast!",
+      "Against friends too: you both charge at the same time, then each of you dodges the other's ball. The help explains everything under “Battles”."
+    ]
+  },
+  {
+    "id": "2026-10-23-hourglass-away",
+    "version": "2.2.2",
+    "date": "2026-10-23",
+    "title": "Sanduhr geht jetzt immer",
+    "items": [
+      "Benutzt du unterwegs eine Sanduhr, ist dein Digimon nicht nur schneller vom Erkunden zurück – auch die Digitation kommt um dieselbe Zeit früher.",
+      "Sanduhren gehen jetzt auch für Digimon in der Sammlung: Im Digimon-PC steht bei jedem Digimon „Benutzen“. Erkundet es gerade, ist es schneller zurück; die Digitation kommt früher, sobald du es aktiv setzt."
+    ],
+    "title_en": "Hourglass works any time now",
+    "items_en": [
+      "If you use an hourglass while your Digimon is out exploring, it not only gets back sooner – the Digivolution also comes sooner by the same amount.",
+      "Hourglasses now also work on Digimon in your collection: in the Digimon PC every Digimon has a “Use” button. If it's exploring, it gets back sooner; the Digivolution comes sooner once you make it active."
+    ]
+  },
+  {
+    "id": "2026-10-23-designs-event",
+    "version": "2.2.1",
+    "date": "2026-10-23",
+    "title": "Halloween-Design nur zu Halloween",
+    "items": [
+      "Das Halloween-Design steht nur noch während des Halloween-Events (25. Oktober bis 2. November) im Shop und kann nur dann gekauft werden.",
+      "Wer es gekauft hat, behält es und kann es auch nach dem Event jederzeit benutzen."
+    ],
+    "title_en": "Halloween design only at Halloween",
+    "items_en": [
+      "The Halloween design is now only shown in the shop – and can only be bought – during the Halloween event (October 25 to November 2).",
+      "If you've bought it, you keep it and can use it any time, even after the event."
+    ]
+  },
+  {
+    "id": "2026-10-23-designs",
+    "version": "2.2",
+    "date": "2026-10-23",
+    "title": "V-Pet-Designs",
+    "items": [
+      "Neu im Shop: der Tab „V-Pet-Designs“ mit neuen Farben für Gehäuse und Display – jedes mit einer Vorschau, in der dein eigenes Digimon zu sehen ist.",
+      "Für Bits: Original Grau, Agumon Orange, Gabumon Blau, Biyomon Pink und Palmon Grün (je 150), Nachtmodus mit hellen Pixeln auf dunklem Display (250) und Gold (600).",
+      "Das Halloween-Design gibt es nur für 10 Gruselbonbons – also während Halloween fleißig Geister besiegen und erkunden!",
+      "Gekaufte Designs gehören zu deinem Konto und lassen sich im Shop jederzeit wechseln. Das klassische Design bleibt gratis."
+    ],
+    "title_en": "V-Pet designs",
+    "items_en": [
+      "New in the shop: the “V-Pet designs” tab with new colors for the shell and the screen – each with a preview showing your own Digimon.",
+      "For Bits: Original Grey, Agumon Orange, Gabumon Blue, Biyomon Pink and Palmon Green (150 each), Night Mode with bright pixels on a dark screen (250) and Gold (600).",
+      "The Halloween design costs 10 Spooky Candies – so beat lots of ghosts and go exploring during Halloween!",
+      "Designs you buy belong to your account and can be switched in the shop at any time. The classic design stays free."
+    ]
+  },
+  {
+    "id": "2026-10-23-halloween",
+    "version": "2.1",
+    "date": "2026-10-23",
+    "title": "Halloween, Pumpkinmon & Erfolge",
+    "items": [
+      "Halloween-Event vom 25. Oktober bis 2. November: Jedes zweite wilde Digimon ist ein Geist – besiegst du ihn, gibt es doppelte Bits und manchmal ein Gruselbonbon. Oben im Spiel zeigt eine Leiste, dass das Event läuft, und auf dem Display flattern Fledermäuse.",
+      "Neu und nur zu Halloween: das Digi-Ei Halloween. Daraus wird immer Yuramon → Tanemon → Candlemon → Bakemon → Pumpkinmon → NoblePumpkinmon – egal, wie du dich kümmerst. Du findest es beim Erkunden und selten bei besiegten Geistern.",
+      "Pumpkinmon (bisher „Pumpmon“) und NoblePumpkinmon gibt es jetzt nur noch aus dem Halloween-Ei – die alten Jogress-Wege dorthin sind weg.",
+      "Neu: Erfolge! Öffne den Pokal-Knopf und wechsle auf „Erfolge“. Für Stufen, Sammeln, Siege, Erkunden, Jogress und mehr gibt es einmalig Bits – viele hast du sicher schon geschafft.",
+      "Sammel-Fortschritt wie im Pokédex: Jede Form, die eines deiner Digimon je hatte, zählt als gesammelt. Im Digidex siehst du „Gesammelt: X / 521“, was noch fehlt, ist blass – mit Filter „Gesammelt“ / „Fehlt noch“.",
+      "Neues Item im Shop: der Reset-Kristall (500 Bits, nur im Shop). Dein Digimon wird wieder zu einem zufälligen Digi-Ei – Spitzname, Siege und deine Sammlung bleiben. Zur Sicherheit musst du zweimal drücken.",
+      "Die Anleitung hat neue Kapitel: „Events & Halloween“ und „Erfolge & Sammlung“."
+    ],
+    "title_en": "Halloween, Pumpkinmon & achievements",
+    "items_en": [
+      "Halloween event from October 25 to November 2: every second wild Digimon is a ghost – beat it for double Bits and sometimes a Spooky Candy. A bar at the top of the game shows that the event is on, and bats flutter across the screen.",
+      "New and only at Halloween: the Digi-Egg Halloween. It always becomes Yuramon → Tanemon → Candlemon → Bakemon → Pumpkinmon → NoblePumpkinmon – no matter how you take care of it. You find it while exploring and rarely from beaten ghosts.",
+      "Pumpkinmon (formerly “Pumpmon”) and NoblePumpkinmon now only come from the Halloween egg – the old Jogress paths to them are gone.",
+      "New: achievements! Open the trophy button and switch to “Achievements”. Reaching stages, collecting, wins, exploring, Jogress and more give Bits once – you've probably already done many of them.",
+      "Collection progress like the Pokédex: every form any of your Digimon ever had counts as collected. The Digidex shows “Collected: X / 521”, missing ones are faded – with a “Collected” / “Missing” filter.",
+      "New item in the shop: the Reset Crystal (500 Bits, shop only). Your Digimon turns back into a random Digi-Egg – nickname, wins and your collection stay. To be safe, you have to press twice.",
+      "The guide has new chapters: “Events & Halloween” and “Achievements & collection”."
+    ]
+  },
+  {
+    "id": "2026-10-23-shop",
+    "version": "2.0",
+    "date": "2026-10-23",
+    "title": "Shop, Bits & neue Items",
+    "items": [
+      "Neu: der Shop! Oben im Spiel auf den Münz-Knopf tippen. Dort kaufst du fast alle Items mit Bits – nur Armor-Eier nicht, die gibt es weiter nur beim Erkunden.",
+      "Bits verdienst du beim Erkunden (je länger, desto mehr), in Kämpfen gegen wilde Digimon und Freunde – und manchmal glitzert beim Putzen etwas zwischen der Kacke. Deine Bits stehen im Shop und auf der Rucksack-Taste.",
+      "Neues Item Ewigstein: Solange dein Digimon ihn hält, digitiert es nicht. Im Rucksack kannst du ihn jederzeit wieder abnehmen.",
+      "Neue Items Sanduhren (1, 3 und 6 Std): Sie spulen das Warten vor – die Digitation kommt früher, oder dein Digimon ist schneller vom Erkunden zurück. Hunger, Kacke und Rufe laufen dabei nicht mit.",
+      "Neues Item Löschdiskette: löscht 1 Pflegefehler.",
+      "Der Rucksack zeigt jetzt nur noch, was du wirklich hast. Sanduhr und Löschdiskette gehen auch, wenn dein Digimon schläft oder unterwegs ist.",
+      "Die Anleitung hat ein neues Kapitel „Shop & Bits“ mit allen Preisen."
+    ],
+    "title_en": "Shop, Bits & new items",
+    "items_en": [
+      "New: the shop! Tap the coin button at the top of the game. You can buy almost every item there with Bits – except Armor Eggs, which you can still only find while exploring.",
+      "You earn Bits by exploring (the longer, the more), in battles against wild Digimon and friends – and sometimes something sparkles in the poop while cleaning. Your Bits are shown in the shop and on the backpack key.",
+      "New item Everstone: as long as your Digimon holds it, it won't digivolve. You can take it off again any time in the backpack.",
+      "New items Hourglasses (1, 3 and 6 h): they skip waiting – the Digivolution comes sooner, or your Digimon gets back from exploring sooner. Hunger, poop and calls don't run during the skip.",
+      "New item Erase Disk: erases 1 care mistake.",
+      "The backpack now only shows what you actually have. Hourglasses and Erase Disks also work while your Digimon is asleep or out exploring.",
+      "The guide has a new chapter “Shop & Bits” with all the prices."
+    ]
+  },
+  {
+    "id": "2026-10-23-english",
+    "version": "1.11",
+    "date": "2026-10-23",
+    "title": "English, Persönlichkeitstest & neue Anleitung",
+    "items": [
+      "Neu für alle, die frisch anfangen: Dein erstes Digi-Ei gibt es nicht mehr per Zufall. Wie bei Pokémon Mystery Dungeon beantwortest du beim ersten Start 6 Fragen über dich – daraus ergibt sich dein Typ (mutig, ruhig, sanft, schlau, geheimnisvoll oder fröhlich) und ein Digi-Ei, das zu dir passt.",
+      "Das Spiel gibt es jetzt auch auf Englisch: In den Einstellungen unter „Sprache · Language“ zwischen Deutsch und English wechseln. Die Wahl gilt für dein Konto auf allen Geräten.",
+      "Übersetzt ist alles, was du siehst: Tasten, Meldungen, Tagebuch, Sammlung, Merkliste, die Hilfe-Seite und der Digidex (mit den englischen Original-Beschreibungen).",
+      "Auch auf der Anmeldeseite und oben auf der Hilfe-Seite kannst du die Sprache umstellen – praktisch für Freunde, die kein Deutsch sprechen.",
+      "Die Anleitung ist neu geschrieben: kürzere Sätze, jedes Kapitel beginnt mit „Kurz gesagt“, Schritte sind nummeriert, und das Inhaltsverzeichnis ist in Gruppen sortiert.",
+      "Neu in der Anleitung: ein Schnellstart, eine „Wenn … dann“-Tabelle zum Versorgen, ein Beispiel zur Digitation und „Wörter erklärt“ für Begriffe wie Pflegefehler oder Trainingsstil."
+    ],
+    "title_en": "English, personality quiz & a new guide",
+    "items_en": [
+      "New for everyone just starting out: your first Digi-Egg is no longer random. Like in Pokémon Mystery Dungeon, you answer 6 questions about yourself when you start for the first time – they reveal your type (brave, calm, gentle, clever, mysterious or cheerful) and a Digi-Egg that suits you.",
+      "The game is now available in English: switch between Deutsch and English in the settings under “Sprache · Language”. Your choice applies to your account on all devices.",
+      "Everything you see is translated: keys, messages, diary, collection, wishlist, the help page and the Digidex (with the original English descriptions).",
+      "You can also switch the language on the login page and at the top of the help page – handy for friends who don't speak German.",
+      "The guide has been rewritten: shorter sentences, every chapter starts with “In short”, steps are numbered, and the table of contents is sorted into groups.",
+      "New in the guide: a quick start, an “If … then” table for taking care, an example for Digivolution and a glossary for words like care mistake or training style."
+    ]
+  },
+  {
+    "id": "2026-10-23-spitznamen",
+    "version": "1.10",
+    "date": "2026-10-23",
+    "title": "Spitznamen & sicheres Training",
+    "items": [
+      "Gib deinen Digimon Spitznamen: oben neben „Partner-Digimon“ auf „✎ Name“ tippen (bis 12 Zeichen). Der Name bleibt bei jeder Digitation. Digimon in der Sammlung benennst du im Digimon-PC.",
+      "Der Spitzname steht groß oben, die Art darunter – auch in der Sammlung und in der Rangliste („Flammi (Agumon)“).",
+      "Ein Klick auf den Namen deines Digimon (oben oder in der Sammlung) öffnet direkt seinen Digidex-Eintrag.",
+      "Nach Training und Kampf nehmen die Tasten 1,5 Sekunden lang keine Klicks an (kurz blass). So löst schnelles Weiterklicken – etwa beim Tempo-Training – nicht mehr aus Versehen Futter, Licht oder Kampf aus."
+    ],
+    "title_en": "Nicknames & safer training",
+    "items_en": [
+      "Give your Digimon nicknames: tap “✎ Name” next to “Partner Digimon” at the top (up to 12 characters). The name stays through every Digivolution. Digimon in your collection are named in the Digimon PC.",
+      "The nickname is shown big at the top with the species below it – also in the collection and on the leaderboard (“Flammi (Agumon)”).",
+      "Clicking your Digimon's name (at the top or in the collection) opens its Digidex entry right away.",
+      "After training and battles the keys ignore clicks for 1.5 seconds (they fade briefly). So clicking on quickly – for example in Speed training – no longer triggers food, light or battle by accident."
+    ]
+  },
+  {
+    "id": "2026-10-23-rangliste",
+    "version": "1.9.2",
+    "date": "2026-10-23",
+    "title": "Rangliste mit eigenem Knopf",
+    "items": [
+      "Die Rangliste hat jetzt einen eigenen Pokal-Knopf oben im Spiel (statt in den Einstellungen).",
+      "Der Admin-Account steht nicht mehr in der Rangliste – dort sind nur noch Spieler."
+    ],
+    "title_en": "Leaderboard with its own button",
+    "items_en": [
+      "The leaderboard now has its own trophy button at the top of the game (instead of in the settings).",
+      "The admin account is no longer on the leaderboard – only players are listed there."
+    ]
+  },
+  {
+    "id": "2026-10-23-namen",
+    "version": "1.9.1",
+    "date": "2026-10-23",
+    "title": "Deutsche Digimon-Namen",
+    "items": [
+      "28 Digimon heißen jetzt wie in der deutschen Serie bzw. offiziell: z. B. Growlmon und WarGrowlmon (statt Growmon), ExVeemon, Wizardmon, Lillymon, Mushroomon, Vegiemon, Garbagemon, RiseGreymon, Daemon, Chackmon, Lucemon Chaos Mode, Craniamon, Millenniummon, Keemon, Yarmon und Bastemon.",
+      "Das Digi-Ei Kiimon heißt deshalb jetzt Digi-Ei Keemon (drin ist dasselbe wie vorher).",
+      "Auch die Digidex-Texte nennen andere Digimon jetzt bei diesen Namen. Deine Digimon bleiben, wie sie sind – nur der Name ist neu."
+    ],
+    "title_en": "Official Digimon names",
+    "items_en": [
+      "28 Digimon now have their names from the anime and official English names: e.g. Growlmon and WarGrowlmon (instead of Growmon), ExVeemon, Wizardmon, Lillymon, Mushroomon, Vegiemon, Garbagemon, RiseGreymon, Daemon, Chackmon, Lucemon Chaos Mode, Craniamon, Millenniummon, Keemon, Yarmon and Bastemon.",
+      "That's why the Digi-Egg Kiimon is now called Digi-Egg Keemon (the same as before inside).",
+      "The Digidex texts also use these names for other Digimon now. Your Digimon stay as they are – only the name is new."
+    ]
+  },
+  {
+    "id": "2026-10-23-box-erkunden",
+    "version": "1.9",
+    "date": "2026-10-23",
+    "title": "Erkunden aus der Sammlung",
+    "items": [
+      "Auch Digimon aus der Sammlung können jetzt erkunden: im Digimon-PC antippen, Gebiet und Dauer wählen, „Erkunden“. Bis zu 3 gleichzeitig – dein aktives Digimon zählt nicht mit.",
+      "Für sie steht die Zeit weiter still (kein Hunger). Funde kommen wie gewohnt in den Rucksack bzw. die Sammlung, wilde Digimon folgen ihnen aber nicht nach Hause.",
+      "Wer unterwegs ist, ist im PC blass mit Wegweiser markiert und kann nur zurückgerufen werden (dann ohne Funde)."
+    ],
+    "title_en": "Exploring from the collection",
+    "items_en": [
+      "Digimon from your collection can now explore too: tap one in the Digimon PC, choose an area and a duration, then “Explore”. Up to 3 at the same time – your active Digimon doesn't count.",
+      "Their time still stands still (no hunger). Finds go into your backpack or collection as usual, but wild Digimon don't follow them home.",
+      "Digimon on a trip are shown faded with a signpost in the PC and can only be called back (then without finds)."
+    ]
+  },
+  {
+    "id": "2026-10-23-armor",
+    "version": "1.8",
+    "date": "2026-10-23",
+    "title": "Armor-Digitation & Digimon-PC",
+    "items": [
+      "Die Sammlung ist jetzt ein Digimon-PC wie bei Pokémon: 8 Boxen mit je 20 Plätzen – also 160 statt 8 Plätze. Boxen durchblättern, umbenennen und Digimon zwischen den Boxen verschieben.",
+      "Neu: Armor-Digitation wie in Digimon Adventure 02! Beim Erkunden findest du jetzt Armor-Eier. Gibst du einem passenden Digimon sein Armor-Ei (Rucksack), digitiert es sofort zu seiner Armor-Form.",
+      "Neun Armor-Eier: Mut (Veemon → Flamedramon), Freundschaft (Veemon → Raidramon), Liebe (Hawkmon → Halsemon), Aufrichtigkeit (Hawkmon → Shurimon), Wissen (Armadillomon → Digmon), Zuverlässigkeit (Armadillomon → Submarimon), Hoffnung (Patamon → Pegasusmon), Licht (Salamon oder Gatomon → Nefertimon) – und das sehr seltene goldene Armor-Ei der Wunder (Veemon → Magnamon).",
+      "Armor-Formen haben ihre eigene Stufe „Armor“ und sind eine Endstufe – sie digitieren nicht weiter. Im Kampf sind sie stärker als ein Champion, aber schwächer als ein Ultra.",
+      "Neu im Spiel: Poromon, Hawkmon, Aquilamon, Silphymon und Valkyrimon – woher sie kommen, verrät der Digimon-Finder.",
+      "Armadimon heißt jetzt wie in der deutschen Serie Armadillomon.",
+      "Im Rucksack leuchtet ein Armor-Ei, das zu deinem Digimon passt. Finder und Merkliste zeigen die Armor-Wege mit dem nötigen Armor-Ei.",
+      "Jede Version hat jetzt eine Nummer (steht im Changelog und unten in den Einstellungen): große Updates 1.8, 1.9 …, kleine Korrekturen 1.8.1, 1.8.2 …"
+    ],
+    "title_en": "Armor Digivolution & Digimon PC",
+    "items_en": [
+      "The collection is now a Digimon PC like in Pokémon: 8 boxes with 20 slots each – 160 slots instead of 8. Flip through boxes, rename them and move Digimon between boxes.",
+      "New: Armor Digivolution like in Digimon Adventure 02! While exploring you can now find Armor Eggs. Give a matching Digimon its Armor Egg (backpack) and it instantly digivolves into its Armor form.",
+      "Nine Armor Eggs: Courage (Veemon → Flamedramon), Friendship (Veemon → Raidramon), Love (Hawkmon → Halsemon), Sincerity (Hawkmon → Shurimon), Knowledge (Armadillomon → Digmon), Reliability (Armadillomon → Submarimon), Hope (Patamon → Pegasusmon), Light (Salamon or Gatomon → Nefertimon) – and the very rare Golden Armor Egg of Miracles (Veemon → Magnamon).",
+      "Armor forms have their own stage, “Armor”, and are a final stage – they don't digivolve any further. In battle they are stronger than a Champion but weaker than an Ultimate.",
+      "New in the game: Poromon, Hawkmon, Aquilamon, Silphymon and Valkyrimon – the Digimon Finder tells you where they come from.",
+      "Armadimon is now called Armadillomon, like in the anime.",
+      "An Armor Egg that matches your Digimon glows in the backpack. The Finder and the wishlist show Armor paths with the Armor Egg you need.",
+      "Every version now has a number (shown in the changelog and at the bottom of the settings): big updates 1.8, 1.9 …, small fixes 1.8.1, 1.8.2 …"
+    ]
+  },
+  {
+    "id": "2026-10-23-changelog-fix",
+    "version": "1.7.1",
+    "date": "2026-10-23",
+    "title": "Kleine Korrektur",
+    "items": [
+      "Die Leiste „Neu im Spiel“ zeigt jetzt das ganze Update – und sagt dazu, wenn es mehrere Neuigkeiten gibt."
+    ],
+    "title_en": "Small fix",
+    "items_en": [
+      "The “New in the game” bar now shows the whole update – and tells you when there is more than one piece of news."
+    ]
+  },
+  {
+    "id": "2026-10-23-merkliste-digidex",
+    "version": "1.7",
+    "date": "2026-10-23",
+    "title": "Merkliste, Digidex & neue Hilfe-Seite",
+    "items": [
+      "Neu: die Merkliste. Im Digimon-Finder bei einem Wunsch-Digimon auf ☆ Merken tippen – im Spiel zeigt der ★-Knopf oben dann den Weg von deinem Digimon dorthin.",
+      "Beim nächsten Schritt siehst du live, was schon passt (✓) und was noch fehlt (✗) – und wozu dein Digimon mit den jetzigen Werten werden würde.",
+      "Nach jeder Digitation rückt der Weg weiter, erledigte Schritte verschwinden. Unter „Nächste Digitation“ steht immer dein nächstes Ziel – „auf Kurs ✓“, wenn es passt.",
+      "„Was ist neu?“ hat jetzt einen eigenen Knopf oben im Spiel (mit Punkt, wenn es Neuigkeiten gibt).",
+      "Die Hilfe-Seite ist aufgeräumt: Anleitung, Digimon-Finder und Digidex sind eigene Bereiche. Die Anleitung ist in Kapitel aufgeteilt – Inhaltsverzeichnis links (am Handy oben zum Wischen) und unten blättern.",
+      "Im Digidex findest du alle Digimon mit Suche und Filtern (Stufe, Attribut, nur gemerkte).",
+      "Ein Klick auf ein Digimon im Digidex öffnet seinen Eintrag: offizielles Bild und Pixel-Sprite, Stufe, Attribut, Typ, ein deutscher Datenlog (Beschreibung), Attacken, Felder sowie vorherige und nächste Formen zum Weiterklicken.",
+      "Das Attribut „Impfstoff“ heißt jetzt richtig „Serum“ – wie in der deutschen Digimon-Serie.",
+      "Füttern im Nickerchen: Schläft dein Digimon tagsüber (Licht aus) und wird hungrig, konntest du es bisher nicht füttern und es sammelte Pflegefehler. Jetzt riecht es das Futter, wacht auf und isst – auch ein Leckerbissen aus dem Rucksack weckt es. Nachts bleibt alles wie gehabt."
+    ],
+    "title_en": "Wishlist, Digidex & a new help page",
+    "items_en": [
+      "New: the wishlist. In the Digimon Finder, tap ☆ Wishlist on a Digimon you want – in the game, the ★ button at the top then shows the path from your Digimon to it.",
+      "For the next step you see live what already fits (✓) and what's still missing (✗) – and what your Digimon would become with its current stats.",
+      "After each Digivolution the path moves on and finished steps disappear. Under “Next Digivolution” you always see your next goal – “on track ✓” when it fits.",
+      "“What's new?” now has its own button at the top of the game (with a dot when there's news).",
+      "The help page has been tidied up: the guide, the Digimon Finder and the Digidex are separate sections. The guide is split into chapters – table of contents on the left (on phones at the top to swipe) and page through at the bottom.",
+      "The Digidex lists all Digimon with search and filters (stage, attribute, wishlist only).",
+      "Clicking a Digimon in the Digidex opens its entry: official picture and pixel sprite, stage, attribute, type, a data log (description), attacks, fields and previous and next forms to click through.",
+      "The German name of the Vaccine attribute has been corrected to “Serum” – like in the German anime.",
+      "Feeding during a nap: if your Digimon napped during the day (light off) and got hungry, you couldn't feed it and it collected care mistakes. Now it smells the food, wakes up and eats – a Treat from the backpack wakes it up too. Nothing changes at night."
+    ]
+  },
+  {
+    "id": "2026-10-23-gleich",
+    "version": "1.6",
+    "date": "2026-10-23",
+    "title": "Jedes Digimon entwickelt sich überall gleich",
+    "items": [
+      "Ein Digimon wird jetzt immer zu denselben Formen – egal, aus welchem Ei es kommt. Nyaromon z. B. wird immer zu Salamon oder Lunamon. Das Ei entscheidet nur noch, welches Baby schlüpft.",
+      "Alle bekannten Wege bleiben, wie sie waren (Agumon z. B. weiterhin zu Greymon, Devimon, Meramon, Tyrannomon oder Numemon).",
+      "Gleichnamige Digimon in verschiedenen Zeichenstilen sind jetzt ein Digimon, und Eier mit demselben Baby wurden zusammengelegt: 29 verschiedene Eier.",
+      "Insgesamt rund 500 Digimon – keins ist dabei verloren gegangen.",
+      "Manche Wege haben eine Sonder-Bedingung, z. B. 3× überfüttert. Der Digimon-Finder zeigt jedes Digimon jetzt nur einmal – mit allen Eiern, aus denen es kommen kann.",
+      "Deine Digimon wurden automatisch umgestellt und entwickeln sich ganz normal weiter."
+    ],
+    "title_en": "Every Digimon digivolves the same way everywhere",
+    "items_en": [
+      "A Digimon now always digivolves into the same forms – no matter which egg it comes from. Nyaromon, for example, always becomes Salamon or Lunamon. The egg only decides which baby hatches.",
+      "All known paths stay as they were (Agumon, for example, still becomes Greymon, Devimon, Meramon, Tyrannomon or Numemon).",
+      "Digimon with the same name in different art styles are now one Digimon, and eggs with the same baby were merged: 29 different eggs.",
+      "About 500 Digimon in total – none of them got lost.",
+      "Some paths have a special condition, e.g. overfed 3×. The Digimon Finder now shows every Digimon only once – with all the eggs it can come from.",
+      "Your Digimon were switched over automatically and keep digivolving normally."
+    ]
+  },
+  {
+    "id": "2026-10-23-wege",
+    "version": "1.5",
+    "date": "2026-10-23",
+    "title": "Mehr Wege für jedes Digimon",
+    "items": [
+      "Jedes Digimon (außer Mega) hat jetzt mindestens zwei mögliche Entwicklungen.",
+      "Baby I: Wer als Baby mindestens 3× trainiert, wird zu einem anderen Baby II.",
+      "Wer nur einen Weg hatte, bekommt einen zweiten für vernachlässigte Digimon (3+ Pflegefehler) – z. B. wird ein vernachlässigtes Greymon zu DoruGreymon.",
+      "Kein Digimon bleibt mehr stecken: Auch vernachlässigte Ultras werden jetzt noch zum Mega (z. B. MetalGreymon zu MetalEtemon)."
+    ],
+    "title_en": "More paths for every Digimon",
+    "items_en": [
+      "Every Digimon (except Mega) now has at least two possible Digivolutions.",
+      "Baby I: a baby that trains at least 3× becomes a different Baby II.",
+      "Digimon that had only one path get a second one for neglected Digimon (3+ care mistakes) – e.g. a neglected Greymon becomes DoruGreymon.",
+      "No Digimon gets stuck anymore: even neglected Ultimates still become a Mega (e.g. MetalGreymon becomes MetalEtemon)."
+    ]
+  },
+  {
+    "id": "2026-10-23-anime",
+    "version": "1.4",
+    "date": "2026-10-23",
+    "title": "Anime-Digitationen",
+    "items": [
+      "Viele Digimon können jetzt so digitieren wie im Anime – z. B. Leomon → GrapLeomon → BanchoLeomon, Greymon → MetalGreymon → WarGreymon, Garurumon → WereGarurumon → MetalGarurumon und rund 25 weitere Wege.",
+      "Dafür braucht es perfekte Pflege (0 Pflegefehler) und mindestens 16 Trainings in der Stufe, dazu die üblichen Kämpfe. Sonst geht es den gewohnten Weg.",
+      "Neu im Spiel: BanchoLeomon, Dorugoramon und Shakkoumon.",
+      "Chaosmon kann jetzt per Jogress entstehen (der Partner BanchoLeomon fehlte bisher).",
+      "Mammothmon kann jetzt wirklich entstehen: Garurumon mit 3 oder mehr Pflegefehlern.",
+      "Digimon-Finder: Zeigt jetzt auch, was aus einem Digimon werden kann – zum Durchklicken.",
+      "Nach einem Update erscheint oben „Update da! – Neu laden“.",
+      "Neu: dieser Changelog („Was ist neu?“)."
+    ],
+    "title_en": "Anime Digivolutions",
+    "items_en": [
+      "Many Digimon can now digivolve like in the anime – e.g. Leomon → GrapLeomon → BanchoLeomon, Greymon → MetalGreymon → WarGreymon, Garurumon → WereGarurumon → MetalGarurumon and about 25 more paths.",
+      "For that you need perfect care (0 care mistakes) and at least 16 training sessions in the stage, plus the usual battles. Otherwise it takes the usual path.",
+      "New in the game: BanchoLeomon, Dorugoramon and Shakkoumon.",
+      "Chaosmon can now be reached through Jogress (its partner BanchoLeomon was missing before).",
+      "Mammothmon can now really appear: Garurumon with 3 or more care mistakes.",
+      "Digimon Finder: now also shows what a Digimon can turn into – to click through.",
+      "After an update, “Update ready! – Reload” appears at the top.",
+      "New: this changelog (“What's new?”)."
+    ]
+  },
+  {
+    "id": "2026-10-23-ueberraschung",
+    "version": "1.3",
+    "date": "2026-10-23",
+    "title": "Überraschungs-Eier & sanftere Töne",
+    "items": [
+      "Die Namen der Digi-Eier verraten nicht mehr, was aus ihnen wird – nur noch, welches Baby schlüpft. Gleiche Babys unterscheidet eine Farbe, z. B. „Digi-Ei Leafmon (blau)“.",
+      "Alle Soundeffekte klingen jetzt tiefer, weicher und leiser – kein Quietschen mehr im Kopfhörer."
+    ],
+    "title_en": "Surprise eggs & softer sounds",
+    "items_en": [
+      "The names of the Digi-Eggs no longer give away what they turn into – only which baby hatches. Identical babies are told apart by a color, e.g. “Digi-Egg Leafmon (blue)”.",
+      "All sound effects are now deeper, softer and quieter – no more squeaking in your headphones."
+    ]
+  },
+  {
+    "id": "2026-10-22-online",
+    "version": "1.2",
+    "date": "2026-10-22",
+    "title": "Online!",
+    "items": [
+      "Das Spiel läuft jetzt online – Freunde registrieren sich mit dem Einladungscode.",
+      "Neues Item: das Schutz-Totem (selten beim Erkunden). Hält dein Digimon es, wird es einmal vor dem Tod gerettet und landet im Kühlschrank.",
+      "Jede Aktion hat ihre eigene Animation: Besen beim Putzen, Spritze bei Medizin, Hantel, Glücksbringer, Schlüpfen, Digitation, Rückkehr vom Erkunden …",
+      "Der Kühlschrank sieht jetzt wie ein echter Kühlschrank aus – mit Tür, Gefrierfach und Frost."
+    ],
+    "title_en": "Online!",
+    "items_en": [
+      "The game is now online – friends sign up with the invite code.",
+      "New item: the Guardian Totem (rare, found while exploring). If your Digimon holds it, it gets saved from death once and goes into the fridge.",
+      "Every action has its own animation: a broom for cleaning, a syringe for medicine, a dumbbell, the Lucky Charm, hatching, Digivolution, coming back from exploring …",
+      "The fridge now looks like a real fridge – with a door, a freezer and frost."
+    ]
+  },
+  {
+    "id": "2026-10-22-feinschliff",
+    "version": "1.1",
+    "date": "2026-10-22",
+    "title": "Großer Feinschliff",
+    "items": [
+      "Am Handy: Im Training und Kampf einfach aufs Display tippen.",
+      "Benachrichtigungen funktionieren jetzt auch auf Android-Handys.",
+      "Der Digimon-Finder gibt jetzt immer stimmende Tipps – auch mit Trainingsstil ★.",
+      "Viele Fehler behoben, z. B. hängende Kämpfe gegen Freunde und doppelte Aktionen bei Doppelklick."
+    ],
+    "title_en": "Big polish",
+    "items_en": [
+      "On phones: just tap the screen during training and battles.",
+      "Notifications now also work on Android phones.",
+      "The Digimon Finder now always gives correct tips – also with training style ★.",
+      "Lots of bugs fixed, e.g. battles against friends getting stuck and double actions on double-click."
+    ]
+  },
+  {
+    "id": "2026-10-22-start",
+    "version": "1.0",
+    "date": "2026-10-22",
+    "title": "Version 1.0",
+    "items": [
+      "Ein Digimon vom Ei bis zum Mega großziehen – in Echtzeit wie das V-Pet von 1997.",
+      "53 Digi-Eier mit über 470 Digimon.",
+      "Drei Trainingsarten mit eigenen Minispielen und Trainingsstil ★.",
+      "Kämpfe gegen wilde Digimon und live gegen Freunde, mit Rangliste.",
+      "Erkunden mit sechs Gebieten, Items im Rucksack, Sammlung und Kühlschrank.",
+      "Tauschen und Jogress (Fusion) mit Freunden.",
+      "Hilfe-Seite mit Digimon-Finder – und als App installierbar."
+    ],
+    "title_en": "Version 1.0",
+    "items_en": [
+      "Raise a Digimon from egg to Mega – in real time, like the V-Pet from 1997.",
+      "53 Digi-Eggs with over 470 Digimon.",
+      "Three kinds of training with their own mini-games and training style ★.",
+      "Battles against wild Digimon and live against friends, with a leaderboard.",
+      "Exploring with six areas, items in the backpack, collection and fridge.",
+      "Trading and Jogress (fusion) with friends.",
+      "Help page with the Digimon Finder – and installable as an app."
+    ]
+  }
+]

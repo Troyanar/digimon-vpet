@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Admin – Digimon V-Pet</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,400;0,600;0,700;1,700&family=Silkscreen&display=swap" rel="stylesheet">
+  <link rel="icon" href="/icons/icon-192.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="help-page admin-page">
+  <header class="help-top">
+    <a class="small" href="/">← Zurück zum Spiel</a>
+    <p class="kicker">Admin-Bereich</p>
+    <span class="admin-user" id="admin-user"></span>
+  </header>
+
+  <main class="admin">
+    <nav class="admin-tabs" role="tablist">
+      <button class="tab active" data-tab="overview">Übersicht</button>
+      <button class="tab" data-tab="players">Spieler</button>
+      <button class="tab" data-tab="rules">Spielregeln</button>
+      <button class="tab" data-tab="prices">Shop &amp; Preise</button>
+      <button class="tab" data-tab="access">Zugang</button>
+      <button class="tab" data-tab="backups">Backups</button>
+      <button class="tab" data-tab="log">Protokoll</button>
+    </nav>
+
+    <p class="admin-msg" id="msg" role="status" hidden></p>
+
+    <!-- Übersicht -->
+    <section class="pane" id="pane-overview">
+      <div class="stat-grid" id="stats"></div>
+      <h2>Gerade online</h2>
+      <ul class="plain" id="online-list"></ul>
+    </section>
+
+    <!-- Spieler -->
+    <section class="pane" id="pane-players" hidden>
+      <div class="row-between">
+        <h2>Spieler</h2>
+        <input class="admin-input" id="player-filter" type="search" placeholder="Spieler suchen">
+      </div>
+      <div class="player-list" id="players"></div>
+    </section>
+
+    <!-- Spielregeln -->
+    <section class="pane" id="pane-rules" hidden>
+      <h2>Spielregeln für alle</h2>
+      <form class="admin-form" id="rules-form">
+        <label class="switch"><input type="checkbox" name="death">
+          <span><b>Digimon können sterben</b><small>Aus: Hunger, Krankheit und Pflegefehler sind nie tödlich.</small></span></label>
+        <label><b>Tempo von Hunger, Kraft &amp; Kacke</b>
+          <select name="need_speed"></select>
+          <small>Kleiner = entspannter. 1× ist wie beim Original-V-Pet.</small></label>
+        <label><b>Fundglück beim Erkunden</b>
+          <select name="explore_luck"></select>
+          <small>Mehr Eier und Items von Expeditionen.</small></label>
+        <label><b>Ei-Chance nach einem Sieg gegen wilde Digimon</b>
+          <input type="range" name="battle_egg_chance" min="0" max="0.5" step="0.01">
+          <output id="egg-chance-out"></output></label>
+        <label class="switch"><input type="checkbox" name="free_egg">
+          <span><b>Notfall-Ei</b><small>Wer gar kein Digimon und kein Ei mehr hat, bekommt ein Gratis-Ei.</small></span></label>
+        <button class="small primary" type="submit">Spielregeln speichern</button>
+      </form>
+    </section>
+
+    <!-- Shop & Preise: Preise ändern, Daily Steal -->
+    <section class="pane" id="pane-prices" hidden>
+      <h2>Daily Steal</h2>
+      <form class="admin-form" id="prices-form">
+        <p class="steal-today" id="steal-today"></p>
+        <label><b>Welches Item ist der Daily Steal?</b>
+          <select class="admin-input" name="daily" id="daily-select"></select>
+          <small>Der Daily Steal ist immer <b id="steal-discount">40</b> % günstiger als sein normaler Preis.
+            „Automatisch“ = jeden Tag (ab Mitternacht) ein anderes Item.</small></label>
+        <h2>Preise im Shop</h2>
+        <p class="hint">Ein geänderter Preis ist markiert; „Standard“ setzt ihn zurück. Items verkaufen bringt immer die
+          Hälfte des normalen Preises. Event-Sachen gibt es nur während ihres Events im Shop – Event-Designs und
+          -Deko kosten Event-Items (z. B. Gruselbonbons) statt Bits.</p>
+        <div class="price-table" id="price-table"></div>
+        <button class="small primary" type="submit">Preise speichern</button>
+      </form>
+    </section>
+
+    <!-- Zugang -->
+    <section class="pane" id="pane-access" hidden>
+      <h2>Registrierung</h2>
+      <form class="admin-form" id="access-form">
+        <div class="radio-row">
+          <label><input type="radio" name="registration" value="invite"> Nur mit Einladungscode</label>
+          <label><input type="radio" name="registration" value="open"> Offen für alle</label>
+          <label><input type="radio" name="registration" value="closed"> Geschlossen</label>
+        </div>
+        <div class="row">
+          <span>Einladungscode:</span> <code class="code" id="invite">----</code>
+          <button class="small" type="button" id="invite-copy">Kopieren</button>
+          <button class="small" type="button" id="invite-new">Neuer Code</button>
+        </div>
+        <label class="switch"><input type="checkbox" name="maintenance">
+          <span><b>Wartungsmodus</b><small>Nur Admins können spielen. Alle anderen sehen „Wartungsarbeiten“.</small></span></label>
+        <label><b>Nachricht an alle</b>
+          <textarea class="admin-input" name="announcement" maxlength="300" rows="3"
+            placeholder="z. B. Heute Abend Turnier um 19 Uhr!"></textarea>
+          <small>Erscheint als Banner im Spiel. Leer lassen = kein Banner.</small></label>
+        <button class="small primary" type="submit">Zugang speichern</button>
+      </form>
+    </section>
+
+    <!-- Backups -->
+    <section class="pane" id="pane-backups" hidden>
+      <div class="row-between">
+        <h2>Backups</h2>
+        <button class="small primary" id="backup-now">Backup jetzt</button>
+      </div>
+      <p class="hint">Automatisch beim Serverstart und alle 6 Stunden (die letzten 14 bleiben).
+        Beim <b>Einspielen</b> wird vorher der aktuelle Stand gesichert – so kannst du es rückgängig machen.
+        Achtung: Einspielen setzt das Spiel für <b>alle</b> Spieler auf diesen Stand zurück.</p>
+      <ul class="backup-list" id="backups"></ul>
+    </section>
+
+    <!-- Protokoll -->
+    <section class="pane" id="pane-log" hidden>
+      <div class="log-grid">
+        <div>
+          <h2>Aktivitäten</h2>
+          <ol class="log plain" id="activity"></ol>
+        </div>
+        <div>
+          <h2>Tagebücher aller Spieler</h2>
+          <ol class="log plain" id="diary"></ol>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="admin.js"></script>
+</body>
+</html>

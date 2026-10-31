@@ -1,0 +1,4 @@
+state
+backups
+*.db
+**/__pycache__

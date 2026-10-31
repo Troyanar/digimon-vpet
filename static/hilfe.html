@@ -1,0 +1,1705 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hilfe – Digimon V-Pet</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,400;0,600;0,700;1,700&family=Silkscreen&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="help-page">
+  <header class="help-top">
+    <a class="small" href="/">← Zurück zum Spiel</a>
+    <p class="kicker">Handbuch für Tamer</p>
+    <nav class="help-tabs" aria-label="Bereiche">
+      <a href="#anleitung" data-tab="anleitung">Anleitung</a>
+      <a href="#finder" data-tab="finder">Digimon-Finder</a>
+      <a href="#digidex" data-tab="digidex">Digidex</a>
+    </nav>
+    <div class="lang-switch help-lang" role="group" aria-label="Sprache · Language" data-no-i18n>
+      <button class="small" data-lang="de" lang="de" title="Deutsch">DE</button>
+      <button class="small" data-lang="en" lang="en" title="English">EN</button>
+    </div>
+  </header>
+
+  <!-- ============================================================ Anleitung (deutsch)
+       Die englische Fassung steht unten in <template id="anleitung-en"> und ersetzt
+       diesen Bereich, wenn Englisch gewählt ist. Beide gleich aufbauen (gleiche ids)! -->
+  <div class="help view" data-view="anleitung" data-no-i18n>
+    <nav class="toc" aria-label="Inhalt">
+      <span class="toc-group">Los geht's</span>
+      <a href="#schnellstart">Schnellstart</a>
+      <a href="#pflege">Versorgen</a>
+      <a href="#ruf">Rufe & Pflegefehler</a>
+      <a href="#schlaf">Schlafen & Licht</a>
+      <a href="#krank">Krankheit & Tod</a>
+      <span class="toc-group">Stärker werden</span>
+      <a href="#training">Training</a>
+      <a href="#digitation">Digitation</a>
+      <a href="#kampf">Kämpfe</a>
+      <a href="#gegner">Wilde Gegner</a>
+      <span class="toc-group">Abenteuer</span>
+      <a href="#erkunden">Erkunden & Rucksack</a>
+      <a href="#shop">Shop & Bits</a>
+      <a href="#events">Events & Halloween</a>
+      <a href="#armor">Armor-Digitation</a>
+      <a href="#sammlung">Sammlung & Kühlschrank</a>
+      <span class="toc-group">Mit Freunden</span>
+      <a href="#freunde">Kämpfe gegen Freunde</a>
+      <a href="#tausch">Tauschen</a>
+      <a href="#jogress">Jogress</a>
+      <span class="toc-group">Nachschlagen</span>
+      <a href="#merkliste">Finder & Merkliste</a>
+      <a href="#erfolge">Erfolge & Sammlung</a>
+      <a href="#einstellungen">Knöpfe & Einstellungen</a>
+      <a href="#zeiten">Zeiten</a>
+      <a href="#tipps">Tipps</a>
+      <a href="#woerter">Wörter erklärt</a>
+    </nav>
+
+    <main class="help-body">
+      <h1>So funktioniert dein V-Pet</h1>
+
+      <section id="schnellstart">
+        <h2>Schnellstart</h2>
+        <p class="tldr"><b>Kurz gesagt</b>Du ziehst ein Digimon groß. Es lebt in echter Zeit weiter, auch wenn das
+          Spiel zu ist. Je besser du dich kümmerst, desto stärker wird es.</p>
+        <ol class="steps">
+          <li><b>Konto anlegen.</b> Dafür brauchst du einen Einladungscode. Den bekommst du vom Admin.</li>
+          <li><b>Fragen beantworten.</b> Beim ersten Start stellt dir das Spiel 6 Fragen über dich. Daraus ergibt sich
+            dein Typ – zum Beispiel mutig oder schlau – und du bekommst ein Digi-Ei, das zu dir passt.</li>
+          <li><b>Ei abwarten.</b> Nach 1 Minute schlüpft ein Baby. Was daraus wird, ist eine Überraschung.</li>
+          <li><b>Am Anfang dranbleiben.</b> In den ersten 10 Minuten braucht das Baby dich oft: füttern und putzen.</li>
+          <li><b>Auf Rufe achten.</b> Blinkt oben <b>RUF</b>, braucht dein Digimon etwas. Ein roter Kasten sagt dir, was.</li>
+          <li><b>Trainieren.</b> Training macht es stark und entscheidet mit, wozu es sich entwickelt.</li>
+          <li><b>Ab Rookie</b> kann es kämpfen und die Welt erkunden. Dabei findest du neue Eier.</li>
+        </ol>
+        <p class="hint">Tipp: Schalte in den Einstellungen die <b>Benachrichtigungen</b> ein. Dann meldet sich das Spiel,
+          wenn dein Digimon ruft.</p>
+      </section>
+
+      <section id="pflege">
+        <h2>Dein Digimon versorgen</h2>
+        <p class="tldr"><b>Kurz gesagt</b>Dein Digimon hat zwei Anzeigen: Hunger und Kraft. Beide sinken mit der Zeit.
+          Halte sie voll, mach sauber und schick es pünktlich ins Bett.</p>
+        <table>
+          <thead><tr><th>Wenn …</th><th>… dann</th></tr></thead>
+          <tbody>
+            <tr><td>Hunger-Herzen leer</td><td><kbd>1</kbd> Futter → <b>Fleisch</b></td></tr>
+            <tr><td>Kraft-Herzen leer</td><td><kbd>1</kbd> Futter → <b>Protein</b> oder <kbd>2</kbd> Training</td></tr>
+            <tr><td>Kackhaufen liegen da</td><td><kbd>3</kbd> Putzen (bei 4 Haufen wird es krank)</td></tr>
+            <tr><td>Es schläft (Zz)</td><td><kbd>4</kbd> Licht aus</td></tr>
+            <tr><td>Totenkopf blinkt</td><td><kbd>5</kbd> Medizin</td></tr>
+          </tbody>
+        </table>
+        <h3>Alle Tasten</h3>
+        <table>
+          <thead><tr><th>Taste</th><th>Was sie macht</th></tr></thead>
+          <tbody>
+            <tr><td><kbd>1</kbd> Futter</td><td><b>Fleisch</b>: Hunger +1 Herz, +1 g.<br><b>Protein</b>: Kraft +1 Herz, +2 g.</td></tr>
+            <tr><td><kbd>2</kbd> Training</td><td>Drei Minispiele. Siehe <a href="#training">Training</a>.</td></tr>
+            <tr><td><kbd>3</kbd> Putzen</td><td>Macht die Kacke weg.</td></tr>
+            <tr><td><kbd>4</kbd> Licht</td><td>Licht an oder aus. Tagsüber aus = Nickerchen.</td></tr>
+            <tr><td><kbd>5</kbd> Medizin</td><td>Hilft gegen Krankheit und Verletzungen.</td></tr>
+            <tr><td><kbd>6</kbd> Kampf</td><td>Ab Rookie. Siehe <a href="#kampf">Kämpfe</a>.</td></tr>
+            <tr><td><kbd>7</kbd> Erkunden</td><td>Ab Rookie. Siehe <a href="#erkunden">Erkunden</a>.</td></tr>
+            <tr><td><kbd>8</kbd> Rucksack</td><td>Gefundene Items benutzen.</td></tr>
+            <tr><td><kbd>9</kbd> Jogress</td><td>Fusion. Leuchtet, wenn eine möglich ist. Siehe <a href="#jogress">Jogress</a>.</td></tr>
+            <tr><td><kbd>Esc</kbd></td><td>Zurück</td></tr>
+          </tbody>
+        </table>
+        <p>Du kannst die Tasten anklicken oder die Zahl auf der Tastatur drücken.</p>
+        <p><b>Nicht zu viel füttern:</b> Ist der Hunger schon voll und du gibst trotzdem Fleisch, <b>überfrisst</b> es
+          sich. Das Spiel zählt mit. Wer oft überfüttert, bekommt andere Digimon.</p>
+      </section>
+
+      <section id="ruf">
+        <h2>Rufe & Pflegefehler</h2>
+        <p class="tldr"><b>Kurz gesagt</b>Ruft dein Digimon, hast du 10 Minuten Zeit. Danach gibt es einen Pflegefehler.</p>
+        <p>Dein Digimon <b>ruft</b>, wenn</p>
+        <ul>
+          <li>der Hunger auf 0 ist,</li>
+          <li>die Kraft auf 0 ist, oder</li>
+          <li>es schlafen will, aber das Licht noch an ist.</li>
+        </ul>
+        <p>Dann blinkt <b>RUF</b> auf dem Display und es piept. Ein roter Kasten zeigt den Grund und wie viel Zeit
+          dir noch bleibt.</p>
+        <p>Kümmerst du dich nicht innerhalb von <b>10 Minuten</b>, gibt es einen <b>Pflegefehler</b>.
+          Jeder Ruf zählt höchstens einmal.</p>
+        <h3>Warum sind Pflegefehler wichtig?</h3>
+        <ul>
+          <li>Sie entscheiden mit, wozu sich dein Digimon entwickelt. Starke Digimon wollen meist wenige Pflegefehler.</li>
+          <li>Bei <b>20 Pflegefehlern</b> insgesamt stirbt dein Digimon.</li>
+        </ul>
+        <p class="hint">Nach jeder Digitation fängt der Zähler für die Entwicklung wieder bei 0 an. Die Gesamtzahl
+          (für den Tod) läuft weiter.</p>
+      </section>
+
+      <section id="schlaf">
+        <h2>Schlafen & Licht</h2>
+        <p class="tldr"><b>Kurz gesagt</b>Abends schläft dein Digimon ein. Dann mach das Licht aus. Morgens döst es im
+          Dunkeln weiter, bis du das Licht wieder anmachst.</p>
+        <ul>
+          <li>Jedes Digimon hat seine eigene <b>Schlafenszeit</b> zwischen 20 und 24 Uhr.</li>
+          <li>Schläft es bei Licht, ruft es. Nach 10 Minuten gibt es einen Pflegefehler.</li>
+          <li>Nachts bekommt es keinen Hunger und macht keine Kacke. Füttern und Trainieren geht dann nicht.</li>
+          <li><b>Digitation nur im Wachzustand:</b> Ist die Zeit für die Entwicklung im Schlaf um, digitiert es am Morgen.</li>
+        </ul>
+        <h3>Nickerchen</h3>
+        <ul>
+          <li>Machst du <b>tagsüber</b> das Licht aus, macht dein Digimon ein Nickerchen.</li>
+          <li>Hunger und Kraft sinken dann nur halb so schnell. Kacke gibt es keine.</li>
+          <li>Wecken: Licht wieder an. Oder füttern – riecht es Futter, wacht es auf.</li>
+          <li>Fängt während des Nickerchens die Schlafenszeit an, schläft es einfach bis 8 Uhr weiter.</li>
+        </ul>
+        <h3>Morgens</h3>
+        <p>Um 8 Uhr ist die Nacht vorbei. Ist das Licht noch aus, <b>döst dein Digimon als Nickerchen weiter</b>, bis du
+          das Licht anmachst. Du musst also nicht pünktlich um 8 Uhr wach sein: Im Nickerchen sinken Hunger und Kraft
+          nur halb so schnell, und es gibt keine Kacke. Hast du das Licht nachts angelassen, wacht es um 8 Uhr von
+          allein auf.</p>
+      </section>
+
+      <section id="krank">
+        <h2>Krankheit & Tod</h2>
+        <p class="tldr"><b>Kurz gesagt</b>Blinkt ein Totenkopf, gib Medizin. Wer sein Digimon zu lange allein lässt,
+          kann es verlieren.</p>
+        <ul>
+          <li><b>Krank</b> wird dein Digimon bei 4 Kackhaufen.</li>
+          <li><b>Verletzt</b> wird es manchmal, wenn es einen Kampf verliert.</li>
+          <li>Beides heilt <b>Medizin</b> (<kbd>5</kbd>).</li>
+        </ul>
+        <p>Dein Digimon <b>stirbt</b>, wenn eins davon passiert:</p>
+        <ul>
+          <li>Es hatte <b>12 Stunden</b> lang kein Hunger-Herz. Die Nacht zählt dabei nicht mit.</li>
+          <li>Es war <b>12 Stunden</b> krank oder verletzt, ohne Medizin.</li>
+          <li>Es hat <b>20 Pflegefehler</b> gesammelt.</li>
+        </ul>
+        <p><b>Rettung:</b> Hält dein Digimon ein <b>Schutz-Totem</b> aus dem Rucksack, stirbt es nicht. Das Totem
+          rettet es einmal, und es wartet im Kühlschrank auf dich.</p>
+        <p>Ist ein Digimon gestorben, geht es mit einem Ei oder Digimon aus deiner <a href="#sammlung">Sammlung</a>
+          weiter. Hast du gar keins mehr, bekommst du ein neues Zufalls-Ei.</p>
+        <p class="hint">Das sind die Standardregeln. Der Admin kann den Tod abschalten oder einstellen, wie schnell
+          Hunger und Kraft sinken.</p>
+      </section>
+
+      <section id="training">
+        <h2>Training</h2>
+        <p class="tldr"><b>Kurz gesagt</b>Es gibt drei Minispiele. Jedes Training zählt für die Entwicklung.
+          Gewinnst du, wird dein Digimon auch im Kampf besser.</p>
+        <p>Drück <kbd>2</kbd> und wähle eine Trainingsart. Egal ob gewonnen oder verloren: <b>Jedes Training</b> zählt
+          für die Digitation und macht 2 g leichter. Gewinnst du, gibt es zusätzlich <b>1 Kraft-Herz</b> und
+          <b>1 Punkt</b> in dieser Trainingsart.</p>
+        <table>
+          <thead><tr><th>Training</th><th>So geht's</th><th>Bringt im Kampf</th></tr></thead>
+          <tbody>
+            <tr><td>Kraft</td><td>Ein Zeiger läuft hoch und runter. Drück, wenn er im Kasten ist. Schaffe 3 von 5.</td>
+              <td>Deine Schüsse treffen öfter.</td></tr>
+            <tr><td>Tempo</td><td>Drück 5 Sekunden lang so oft du kannst. Schaffe 25 Mal. Festhalten zählt nicht.</td>
+              <td>Mehr Zeit zum <a href="#kampf">Ausweichen</a>. Dein Digimon weicht auch von selbst öfter aus.</td></tr>
+            <tr><td>Verteidigung</td><td>Ein Angriff fliegt heran. Drück kurz bevor er einschlägt. Zu früh zählt nicht.
+              Schaffe 3 von 5.</td>
+              <td>Seltener verletzt. Ab 8 Punkten 1 Leben mehr.</td></tr>
+          </tbody>
+        </table>
+        <p class="hint">Pro Stufe zählen höchstens 10 Punkte je Art. Nach jeder Digitation geht es wieder bei 0 los.
+          Am Handy kannst du statt auf den Knopf auch aufs Display tippen. Nach Training und Kampf sind die Tasten
+          1,5 Sekunden lang blass. So drückst du nicht aus Versehen etwas anderes.</p>
+        <h3>Trainingsstil ★</h3>
+        <p>Trainierst du eine Art besonders oft, bekommt dein Digimon einen <b>Trainingsstil</b>. Dafür brauchst du in
+          einer Stufe mindestens <b>5 Erfolge</b> in einer Art. Das müssen mindestens <b>60 %</b> all deiner Erfolge sein.</p>
+        <p>Bei der nächsten Digitation wird dann ein Digimon mit <b>passendem Element</b> bevorzugt:</p>
+        <ul>
+          <li><b>Kraft</b> → Feuer, Donner, Metall (z. B. Greymon)</li>
+          <li><b>Tempo</b> → Wind, Licht, Dunkel (z. B. Devimon)</li>
+          <li><b>Verteidigung</b> → Erde, Eis, Holz, Wasser (z. B. Seadramon)</li>
+        </ul>
+        <p class="hint">Der Stil ersetzt nur die Anzahl der Trainings. Pflegefehler, Überfüttern und Kämpfe müssen
+          trotzdem passen.</p>
+      </section>
+
+      <section id="digitation">
+        <h2>Digitation</h2>
+        <p class="tldr"><b>Kurz gesagt</b>Nach einer festen Zeit entwickelt sich dein Digimon weiter. Wozu, hängt davon ab,
+          wie du dich in dieser Stufe gekümmert hast.</p>
+        <p>Ein Digimon durchläuft diese <b>Stufen</b>:</p>
+        <p class="stage-row">Ei → Baby I → Baby II → Rookie → Champion → Ultra → Mega</p>
+        <p>Wie lange jede Stufe dauert, steht unter <a href="#zeiten">Zeiten</a>. Ist die Zeit um, schaut das Spiel,
+          was in <b>dieser Stufe</b> passiert ist:</p>
+        <ul>
+          <li><b>Pflegefehler</b> – wie oft du einen Ruf verpasst hast</li>
+          <li><b>Trainings</b> – wie oft du trainiert hast (auch verlorene)</li>
+          <li><b>Überfüttert</b> – wie oft es sich überfressen hat</li>
+          <li><b>Kämpfe und Siege</b> – vor allem für Ultra wichtig</li>
+        </ul>
+        <p>Danach wählt es die passende nächste Form. Alle Zähler fangen wieder bei 0 an. Die aktuellen Zähler siehst
+          du im Spiel rechts.</p>
+        <h3>Ein Beispiel</h3>
+        <p>Agumon wird mit <b>höchstens 2 Pflegefehlern</b> und <b>mindestens 16 Trainings</b> zu Greymon.
+          Mit weniger Training wird es Devimon. Mit 3 oder mehr Pflegefehlern wird es zum Beispiel Numemon.</p>
+        <h3>Gut zu wissen</h3>
+        <ul>
+          <li><b>Das Ei bestimmt nur das Baby.</b> Danach entwickelt sich jedes Digimon immer gleich, egal aus welchem
+            Ei es kam.</li>
+          <li><b>Fast immer gibt es mehrere Wege.</b> Jedes Digimon außer Mega und Armor hat mindestens zwei mögliche
+            nächste Formen.</li>
+          <li><b>Ultra braucht Kämpfe.</b> Ein Champion braucht meist 15 Kämpfe mit mindestens 12 Siegen. Den Stand siehst
+            du im Spiel unter „Nächste Digitation“.</li>
+          <li><b>Anime-Wege:</b> Viele Digimon können sich wie im Anime entwickeln, zum Beispiel Greymon → MetalGreymon
+            → WarGreymon. Dafür brauchst du <b>0 Pflegefehler</b> und <b>mindestens 16 Trainings</b> in der Stufe.</li>
+          <li><b>Sonderwege:</b> Manche Digimon entstehen nur durch <a href="#jogress">Jogress</a> oder
+            <a href="#armor">Armor-Digitation</a>.</li>
+        </ul>
+        <p><b>Was braucht mein Wunsch-Digimon?</b> Das zeigt dir der <a href="#finder">Digimon-Finder</a>. Merk es dir dort,
+          dann zeigt dir das Spiel den Weg (siehe <a href="#merkliste">Finder & Merkliste</a>).</p>
+      </section>
+
+      <section id="kampf">
+        <h2>Kämpfe</h2>
+        <p class="tldr"><b>Kurz gesagt</b>Ab Rookie kann dein Digimon gegen wilde Digimon kämpfen. Halte ↑ oder ↓
+          gedrückt, um zu laden. Lass los, um zu schießen. Fliegt ein Ball auf dich zu, weich aus.</p>
+        <ol class="steps">
+          <li>Drück <kbd>6</kbd> und wähle <b>Wildes Digimon</b>. Du siehst den Gegner und wie er wirkt (siehe
+            <a href="#gegner">Wilde Gegner</a>). <b>Fliehen</b> kostet nichts.</li>
+          <li><b>Kämpfen</b> kostet 1 Hunger-Herz und 1 Kraft-Herz. Dein Digimon muss wach, gesund und satt sein.</li>
+          <li><b>Angreifen:</b> Halte <kbd>↑</kbd> (oben) oder <kbd>↓</kbd> (unten) gedrückt. Oben auf dem Display lädt
+            sich eine Leiste. Ist sie <b>voll</b>, lass los. Das ist ein <b>Power-Schuss</b>.</li>
+          <li><b>Ausweichen:</b> Dann schießt der Gegner. Sein Ball fliegt oben oder unten auf dein Digimon zu.
+            Ball unten: mit <kbd>↑</kbd> springen. Ball oben: mit <kbd>↓</kbd> ducken.</li>
+          <li>So geht es Runde für Runde. Jeder hat 3 Leben, ein gepanzerter Gegner 4. Wer zuerst alle verliert,
+            hat verloren.</li>
+        </ol>
+        <h3>Oben oder unten angreifen?</h3>
+        <p>Der Gegner deckt in jeder Runde eine Seite. Greifst du die <b>offene</b> Seite an, erscheint <b>„Lücke!“</b>.
+          Dann triffst du viel öfter. Greifst du die gedeckte Seite an, triffst du seltener.</p>
+        <p>Vorher siehst du nicht, welche Seite gedeckt ist. Nach deinem Schuss zeigt es dir ein kleiner Schild.
+          Ein <a href="#gegner">listiger Gegner</a> deckt gern die Seite, die du zuletzt angegriffen hast.</p>
+        <h3>Laden: Wie lange halten?</h3>
+        <p>Die Leiste ist nach gut einer Sekunde voll. Hältst du weiter, füllt sich eine zweite Stufe: <b>MEGA</b>.
+          Sie blinkt und braucht noch einmal so lange.</p>
+        <table>
+          <thead><tr><th>Du hältst …</th><th>… dann</th></tr></thead>
+          <tbody>
+            <tr><td>nur kurz</td><td>Schwacher Schuss. Trifft selten.</td></tr>
+            <tr><td>bis die Leiste voll ist</td><td><b>Power-Schuss</b>. Trifft oft. Der sichere Weg.</td></tr>
+            <tr><td>weiter, in die MEGA-Stufe</td><td>Trifft noch öfter. Aber dein Digimon kann <b>unterbrochen</b> werden.
+              Je länger du hältst, desto eher.</td></tr>
+            <tr><td>bis MEGA ganz voll ist</td><td><b>Mega-Schuss</b>. Er geht von selbst los. Trifft er, macht er
+              <b>2 Schaden</b> – der Gegner verliert 2 Leben auf einmal. Aber: Mehr als jedes zweite Mal wirst du
+              vorher unterbrochen.</td></tr>
+          </tbody>
+        </table>
+        <p><b>Unterbrochen</b> heißt: Dein Schuss fällt aus. Der Gegner greift trotzdem an.</p>
+        <h3>Ausweichen</h3>
+        <ul>
+          <li>Ball <b>unten</b> → <b>springen</b> mit <kbd>↑</kbd>.</li>
+          <li>Ball <b>oben</b> → <b>ducken</b> mit <kbd>↓</kbd>.</li>
+          <li>Drück <b>kurz vor dem Einschlag</b>. Zu früh, zu spät oder die falsche Taste: nicht ausgewichen.</li>
+          <li>Ausgewichen heißt: Der Schuss zählt nicht.</li>
+          <li><b>Tempo-Training</b> gibt dir mehr Zeit dafür. Mit 10 Punkten ist das Zeitfenster fast doppelt so lang.</li>
+          <li>Einer <b>Spezialattacke</b> kann man nicht ausweichen.</li>
+        </ul>
+        <h3>Spezialattacke</h3>
+        <ol class="steps">
+          <li>Auf dem Display siehst du deine <b>Spezial-Leiste</b>. Sie hat 3 Stufen. Jeder Treffer füllt eine Stufe –
+            egal ob du triffst oder getroffen wirst.</li>
+          <li>Ist sie voll, erscheint der Knopf <b>Spezial</b> mit dem Namen deiner Attacke, zum Beispiel
+            „Spezial: Fox Tail“. Drück ihn oder <kbd>E</kbd>.</li>
+          <li>Jetzt <b>2 Sekunden lang so schnell drücken, wie du kannst</b>: <kbd>Leertaste</kbd>, <kbd>E</kbd> oder
+            aufs Display tippen. Je öfter, desto sicherer trifft sie.</li>
+          <li>Trifft sie, macht sie <b>2 Schaden</b>. Der Gegner kann sie weder decken noch ausweichen. Danach ist die
+            Leiste wieder leer.</li>
+        </ol>
+        <p class="hint">Auch der Gegner hat eine Spezial-Leiste. Ist sie voll, setzt er seine Spezialattacke ein.
+          Siehe <a href="#gegner">Wilde Gegner</a>.</p>
+        <h3>Tasten im Kampf</h3>
+        <table>
+          <thead><tr><th>Was</th><th>Am PC</th><th>Am Handy</th></tr></thead>
+          <tbody>
+            <tr><td>Oben angreifen</td><td><kbd>↑</kbd> oder <kbd>W</kbd> halten, dann loslassen. Auch
+              <kbd>Leertaste</kbd> geht.</td><td>Knopf <b>Oben ↑</b> halten. Oder die obere Hälfte des Displays.</td></tr>
+            <tr><td>Unten angreifen</td><td><kbd>↓</kbd> oder <kbd>S</kbd> halten, dann loslassen.</td>
+              <td>Knopf <b>Unten ↓</b> halten. Oder die untere Hälfte des Displays.</td></tr>
+            <tr><td>Springen (Ball unten)</td><td><kbd>↑</kbd> oder <kbd>W</kbd></td>
+              <td>Knopf <b>Springen ↑</b> oder obere Display-Hälfte antippen</td></tr>
+            <tr><td>Ducken (Ball oben)</td><td><kbd>↓</kbd> oder <kbd>S</kbd></td>
+              <td>Knopf <b>Ducken ↓</b> oder untere Display-Hälfte antippen</td></tr>
+            <tr><td>Spezialattacke starten</td><td><kbd>E</kbd></td><td>Knopf <b>Spezial: …</b></td></tr>
+            <tr><td>Spezialattacke: schnell drücken</td><td><kbd>Leertaste</kbd> oder <kbd>E</kbd></td>
+              <td>Display oder Knopf antippen</td></tr>
+          </tbody>
+        </table>
+        <p class="hint">Merk dir: ↑ ist immer oben, ↓ ist immer unten. Über einen tiefen Ball springst du drüber. Unter
+          einem hohen Ball duckst du dich weg. Die Knöpfe gehen auch am PC mit der Maus.</p>
+        <h3>So gewinnst du öfter</h3>
+        <ul>
+          <li>volle <b>Kraft-Herzen</b></li>
+          <li>viel <b>Training</b> in dieser Stufe (siehe <a href="#training">Training</a>)</li>
+          <li>kein Übergewicht</li>
+          <li>das richtige <b>Attribut</b>: Serum schlägt Virus, Virus schlägt Daten, Daten schlägt Serum</li>
+          <li>die <b>Lücke</b> treffen und gut <b>ausweichen</b></li>
+          <li>die <b>Spezialattacke</b> einsetzen, sobald die Leiste voll ist</li>
+        </ul>
+        <p><b>Sieg:</b> 1–2 g leichter. Manchmal lässt der Gegner ein <b>Digi-Ei</b> fallen. Es kommt in deine Sammlung.<br>
+          <b>Niederlage:</b> Manchmal wird dein Digimon verletzt. Dann Medizin geben!</p>
+        <p class="hint">Nach 25 Runden ist Schluss – die Rundenzahl steht im Kampf („Runde 5 von 25“). Dann gewinnt, wer
+          mehr Leben übrig hat; bei gleich vielen ist es ein Unentschieden (keine Verletzung). Lässt du einen
+          Kampf einfach liegen, zählt er nach 15 Minuten als Niederlage. Die Rangliste aller Spieler öffnest du oben
+          mit dem Pokal.</p>
+      </section>
+
+      <section id="gegner">
+        <h2>Wilde Gegner</h2>
+        <p class="tldr"><b>Kurz gesagt</b>Jedes wilde Digimon hat eine Persönlichkeit. Das Spiel sagt dir, wie es wirkt.
+          Kündigt es einen starken Angriff an, weich unbedingt aus.</p>
+        <p>Taucht ein wildes Digimon auf, steht in der Meldung, wie es wirkt. Zum Beispiel: <b>„Es wirkt aggressiv.“</b>
+          Das ist seine <b>Persönlichkeit</b>. Sie verändert, wie es kämpft.</p>
+        <table>
+          <thead><tr><th>Persönlichkeit</th><th>Was sie macht</th><th>Tipp</th></tr></thead>
+          <tbody>
+            <tr><td>ruhig</td><td>Kämpft ganz normal.</td><td>Gut zum Üben.</td></tr>
+            <tr><td>aggressiv</td><td>Schießt oft zweimal in einer Runde. Greift öfter stark an.</td>
+              <td>Nach dem ersten Ball auf den zweiten achten.</td></tr>
+            <tr><td>gepanzert</td><td>Hat 4 Leben statt 3.</td><td>Mega-Schuss und Spezialattacke helfen.</td></tr>
+            <tr><td>flink</td><td>Ist schwerer zu treffen. Beim Laden unterbricht es dich öfter.</td>
+              <td>Nicht zu lange laden. Ein Power-Schuss reicht.</td></tr>
+            <tr><td>listig</td><td>Deckt meistens die Seite, auf die du zuletzt angegriffen hast.</td>
+              <td>Wechsle jede Runde zwischen oben und unten.</td></tr>
+          </tbody>
+        </table>
+        <h3>Starker Angriff</h3>
+        <ol class="steps">
+          <li>Holt der Gegner zu einem starken Angriff aus, <b>blinkt</b> er. Auf dem Display erscheint ein <b>„!“</b>.
+            Dazu kommt die Meldung „Starker Angriff – weich aus!“.</li>
+          <li>Dann fliegt sein Ball – oben oder unten, wie immer.</li>
+          <li>Weich aus wie sonst auch. Trifft er dich, macht er <b>2 Schaden</b>. Du verlierst also 2 Leben auf einmal.</li>
+        </ol>
+        <p>Starke Angriffe kann jeder wilde Gegner machen. Aggressive machen sie am häufigsten.</p>
+        <h3>Spezialattacke des Gegners</h3>
+        <p>Auch wilde Digimon füllen ihre Spezial-Leiste. Ist sie voll, kommt statt des normalen Schusses ein Ball mit
+          <b>„SPEZIAL“</b>. Dem kannst du <b>nicht</b> ausweichen. Trifft er, macht er 2 Schaden.</p>
+        <p class="hint">Auch Geister zu Halloween haben eine Persönlichkeit. Gegen Freunde gibt es keine Persönlichkeiten
+          und keine starken Angriffe.</p>
+      </section>
+
+      <section id="erkunden">
+        <h2>Erkunden & Rucksack</h2>
+        <p class="tldr"><b>Kurz gesagt</b>Schick dein Digimon auf Reisen. Es bringt Ei-Scherben und Items mit.
+          4 Scherben aus demselben Gebiet ergeben ein Digi-Ei.</p>
+        <ol class="steps">
+          <li>Drück <kbd>7</kbd> und wähle ein <b>Gebiet</b>.</li>
+          <li>Wähle die <b>Dauer</b>: 30 Minuten, 2 Stunden oder 8 Stunden. Die Reise kostet 1 Hunger-Herz als Proviant.</li>
+          <li>Warte. Unterwegs bekommt dein Digimon keinen Hunger und ruft nicht.</li>
+          <li>Kommt es zurück, siehst du, was es gefunden hat. Drück <b>OK</b> – erst dann geht es weiter.</li>
+        </ol>
+        <p><b>Kein Stress bei der Rückkehr:</b> Bis du OK drückst, wartet dein Digimon. So lange bekommt es keinen
+          Hunger, ruft nicht und kann keinen Pflegefehler bekommen – auch wenn du erst Stunden später reinschaust.</p>
+        <p>Lange Reisen bringen mehr: 30 Minuten = 1 Fundchance, 2 Stunden = 3, 8 Stunden = 6. Bei jeder Chance findet es
+          mit etwas Glück eine <b>Ei-Scherbe</b> oder ein <b>Item</b>. Beides kommt in den Rucksack.
+          Manchmal folgt ihm ein <b>wildes Digimon</b> nach Hause – drück erst <b>OK</b>, dann kannst du kämpfen
+          oder fliehen. <b>Zurückrufen</b> geht jederzeit, dann aber ohne Funde.</p>
+        <h3>Ei-Scherben</h3>
+        <p>Jedes Gebiet hat seine eigenen Scherben, z. B. „Ei-Scherbe Urwald“. Hast du <b>4 gleiche</b>, tipp sie im
+          Rucksack an und wähle <b>Zusammensetzen</b>. Daraus wird ein Digi-Ei aus diesem Gebiet – welches, ist eine
+          Überraschung. Es kommt in deine Sammlung. Ist die Sammlung voll, bleiben die Scherben im Rucksack. Scherben
+          kannst du auch verkaufen (15 Bits pro Stück).</p>
+        <table>
+          <thead><tr><th>Gebiet</th><th>Ab</th></tr></thead>
+          <tbody>
+            <tr><td>Urwald</td><td>Rookie</td></tr>
+            <tr><td>Küste</td><td>Rookie</td></tr>
+            <tr><td>Wolkenberge</td><td>Champion</td></tr>
+            <tr><td>Metallstadt</td><td>Champion</td></tr>
+            <tr><td>Drachenvulkan</td><td>Ultra</td></tr>
+            <tr><td>Dunkle Zone</td><td>Ultra</td></tr>
+          </tbody>
+        </table>
+        <h3>Rucksack (<kbd>8</kbd>)</h3>
+        <ul>
+          <li><b>Leckerbissen</b> – Hunger und Kraft sofort voll (+2 g).</li>
+          <li><b>Trainingsgewicht</b> – zählt wie 2 Trainings in dieser Stufe.</li>
+          <li><b>Glücksbringer</b> – der nächste Kampf wird deutlich leichter.</li>
+          <li><b>Schutz-Totem</b> (selten) – dein Digimon hält es fest. Würde es sterben, rettet das Totem es einmal.
+            Es landet dann im Kühlschrank und wartet dort auf dich.</li>
+          <li><b>Ewigstein</b> – solange dein Digimon ihn hält, digitiert es nicht. Im Rucksack kannst du ihn jederzeit
+            wieder abnehmen.</li>
+          <li><b>Sanduhren</b> (1, 3 oder 6 Std) – spulen das Warten vor: Die Digitation kommt früher. Ist dein Digimon
+            unterwegs, ist es außerdem schneller vom Erkunden zurück. Hunger, Kacke und Rufe laufen dabei <b>nicht</b> mit.</li>
+          <li><b>Löschdiskette</b> – löscht 1 Pflegefehler.</li>
+          <li><b>Virus-Diskette</b> – fügt 1 Pflegefehler hinzu. Praktisch für Digitationen, die Pflegefehler brauchen
+            (z. B. Numemon). Sie hört auf, bevor es gefährlich wird: Mehr als 19 Pflegefehler macht sie nie.</li>
+          <li><b>Ei-Scherben</b> – 4 gleiche ergeben ein Digi-Ei (siehe oben).</li>
+          <li><b>Reset-Kristall</b> (nur im Shop) – dein Digimon wird wieder zu einem zufälligen Digi-Ei.</li>
+          <li><b>Gruselbonbon</b> (nur zu Halloween) – Hunger +1 und Kraft +1.</li>
+          <li><b>Armor-Eier</b> (selten) – sofortige <a href="#armor">Armor-Digitation</a> für das passende Digimon.</li>
+        </ul>
+        <p class="hint">Sanduhr, Lösch- und Virus-Diskette gehen auch, wenn dein Digimon schläft oder unterwegs ist. Sanduhren
+          kannst du im Digimon-PC auch für Digimon aus deiner Sammlung benutzen – aber nur, solange sie gerade erkunden
+          (in der Sammlung steht die Zeit still). Auch Digimon
+          aus deiner Sammlung können erkunden. Siehe <a href="#sammlung">Sammlung</a>.</p>
+      </section>
+
+      <section id="shop">
+        <h2>Shop & Bits</h2>
+        <p class="tldr"><b>Kurz gesagt</b>Mit Bits kaufst du im Shop Items für deinen Rucksack. Bits verdienst du beim
+          Erkunden, in Kämpfen und manchmal beim Putzen.</p>
+        <p>Den Shop öffnest du oben im Spiel mit dem <b>Münz-Knopf</b>. Deine Bits stehen dort und auf der Taste
+          <kbd>8</kbd> Rucksack.</p>
+        <h3>So bekommst du Bits</h3>
+        <table>
+          <thead><tr><th>Wo</th><th>Wie viele</th></tr></thead>
+          <tbody>
+            <tr><td>Erkunden</td><td>30 Min: 5–10 · 2 Std: 15–30 · 8 Std: 50–80</td></tr>
+            <tr><td>Kampf gewonnen</td><td>Rookie 10, Champion 15, Armor 18, Ultra 22, Mega 30 (+ bis zu 5)</td></tr>
+            <tr><td>Kampf verloren</td><td>2</td></tr>
+            <tr><td>Kampf gegen Freunde</td><td>Sieg 25 · Unentschieden 10 · Niederlage 5 · Aufgeben 0</td></tr>
+            <tr><td>Putzen</td><td>selten 3–8 – manchmal glitzert etwas zwischen der Kacke</td></tr>
+          </tbody>
+        </table>
+        <h3>Das gibt es im Shop</h3>
+        <table>
+          <thead><tr><th>Item</th><th>Preis</th></tr></thead>
+          <tbody>
+            <tr><td>Leckerbissen</td><td>30 Bits</td></tr>
+            <tr><td>Kleine Sanduhr (1 Std)</td><td>40 Bits</td></tr>
+            <tr><td>Trainingsgewicht</td><td>50 Bits</td></tr>
+            <tr><td>Glücksbringer</td><td>60 Bits</td></tr>
+            <tr><td>Virus-Diskette</td><td>80 Bits</td></tr>
+            <tr><td>Sanduhr (3 Std)</td><td>100 Bits</td></tr>
+            <tr><td>Löschdiskette</td><td>120 Bits</td></tr>
+            <tr><td>Ewigstein</td><td>150 Bits</td></tr>
+            <tr><td>Große Sanduhr (6 Std)</td><td>180 Bits</td></tr>
+            <tr><td>Schutz-Totem</td><td>300 Bits</td></tr>
+            <tr><td>Reset-Kristall (nur im Shop)</td><td>500 Bits</td></tr>
+            <tr><td>Gruselbonbon (nur zu Halloween)</td><td>90 Bits</td></tr>
+          </tbody>
+        </table>
+        <p class="hint">Das sind die Standardpreise – der Admin kann sie ändern. Was gerade gilt, steht im Shop.</p>
+        <h3>Daily Steal</h3>
+        <p>Jeden Tag ist ein Item im Shop <b>40 % günstiger</b>. Es steht ganz oben, orange umrandet, mit dem alten Preis
+          durchgestrichen. Um Mitternacht kommt das nächste dran.</p>
+        <p><b>Reset-Kristall:</b> Dein aktives Digimon wird wieder zu einem <b>zufälligen Digi-Ei</b> – ein ganz neuer
+          Anfang. Spitzname und Siege bleiben, und alles, was du gesammelt hast, auch. Weil man das nicht rückgängig
+          machen kann, musst du zweimal drücken. Den Kristall gibt es nur im Shop.</p>
+        <p class="hint"><b>Armor-Eier</b> kann man nicht kaufen – die findest du nur beim <a href="#erkunden">Erkunden</a>.
+          Die meisten anderen Items findet man dort auch, nur seltener.</p>
+        <h3>Items verkaufen</h3>
+        <ol>
+          <li>Öffne den <b>Rucksack</b> und tipp ein Item an.</li>
+          <li>Wähl <b>Verkaufen</b> (oder <b>Benutzen</b>, wie bisher).</li>
+          <li>Stell mit <b>− 1</b>, <b>+ 1</b> oder <b>Alle</b> ein, wie viele du verkaufen willst, und drück „verkaufen“.</li>
+        </ol>
+        <p>Verkaufen kannst du alles, egal wie viele. Shop-Items bringen die <b>Hälfte</b> ihres Preises,
+          Armor-Eier <b>50 Bits</b>, das goldene Armor-Ei der Wunder <b>200 Bits</b>, ein Gruselbonbon <b>10 Bits</b>.</p>
+        <h3>V-Pet-Designs</h3>
+        <p>Im Shop-Tab <b>V-Pet-Designs</b> gibt es neue Farben für dein ganzes Spiel: Gehäuse, Display, Hintergrund,
+          Knöpfe und Anzeigen. Jedes Design zeigt eine Vorschau mit deinem Digimon. Gekaufte Designs kannst du dort
+          jederzeit wechseln – auch die Hilfe-Seite übernimmt die Farben.</p>
+        <table>
+          <thead><tr><th>Design</th><th>Preis</th></tr></thead>
+          <tbody>
+            <tr><td>Klassisch</td><td>gratis</td></tr>
+            <tr><td>Original Grau, Agumon Orange, Gabumon Blau, Biyomon Pink, Palmon Grün</td><td>je 150 Bits</td></tr>
+            <tr><td>Nachtmodus (helle Pixel auf dunklem Display)</td><td>250 Bits</td></tr>
+            <tr><td>Gold</td><td>600 Bits</td></tr>
+            <tr><td>Halloween (nur während Halloween im Shop)</td><td>10 Gruselbonbons</td></tr>
+          </tbody>
+        </table>
+        <h3>Deko</h3>
+        <p>Unter den Designs gibt es <b>Deko</b> – kleine Extras, die blass hinter deinem Digimon im Display laufen.
+          Gekaufte Deko gehört deinem Konto und lässt sich jederzeit mit einem Knopf an- und ausschalten.</p>
+        <table>
+          <thead><tr><th>Deko</th><th>Preis</th></tr></thead>
+          <tbody>
+            <tr><td>Sternenfunkeln – kleine Sterne funkeln oben im Display</td><td>100 Bits</td></tr>
+            <tr><td>Seifenblasen – Blasen steigen am Rand auf</td><td>120 Bits</td></tr>
+            <tr><td>Herzchen – ab und zu steigt ein Herz über deinem Digimon auf</td><td>120 Bits</td></tr>
+            <tr><td>Schneefall – Schneeflocken rieseln durchs Display</td><td>150 Bits</td></tr>
+            <tr><td>Fledermäuse – flattern durch die Symbolleiste (zu Halloween gratis an, behalten nur gekauft)</td><td>5 Gruselbonbons</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section id="events">
+        <h2>Events & Halloween</h2>
+        <p class="tldr"><b>Kurz gesagt</b>Zu besonderen Zeiten im Jahr gibt es Events mit Extras. Zu Halloween spuken
+          Geister durch die Digital World – und nur dann gibt es das Pumpkinmon-Ei.</p>
+        <p>Läuft ein Event, siehst du oben im Spiel ein Banner. Mit <b>✕</b> blendest du es aus (bis zum nächsten Event).
+          Oben in der Symbolleiste erscheint dann ein <b>Event-Symbol</b> (zu Halloween ein Kürbis). Dort – oder über
+          „Mehr“ im Banner – öffnet sich der <b>Event-Tab</b> mit allem auf einen Blick:</p>
+        <ul>
+          <li>die kleine <b>Geschichte</b> des Events und wie lange es noch läuft,</li>
+          <li>alle <b>Belohnungen</b> mit ihren Chancen,</li>
+          <li>das <b>Event-Ei</b> mit seiner ganzen Reihe,</li>
+          <li>was es im <b>Shop</b> und zum <b>Tauschen</b> gibt (mit Knöpfen direkt dorthin),</li>
+          <li>welche Digimon <b>Geister</b> sind.</li>
+        </ul>
+        <h3>Halloween (25. Oktober bis 2. November)</h3>
+        <ul>
+          <li><b>Geister:</b> Jedes zweite wilde Digimon ist ein Geist, zum Beispiel Bakemon, Wizardmon, Phantomon oder
+            Pumpkinmon. Besiegst du einen, gibt es <b>doppelte Bits</b> und manchmal ein <b>Gruselbonbon</b>.</li>
+          <li><b>Gruselbonbon:</b> Hunger +1 und Kraft +1. Gibt es nur zu Halloween – von Geistern, beim Erkunden und im Shop.
+            Im Shop gibt es während des Events einen <b>Bonbon-Tausch</b>: 15 Gruselbonbons = ein Digi-Ei Halloween
+            (garantiert Pumpkinmon), 10 Gruselbonbons = das <b>Halloween-Design</b> (Tab „V-Pet-Designs“). Gekauft
+            bleibt es dir für immer.</li>
+          <li><b>Fledermäuse:</b> Während Halloween flattern bei allen Fledermäuse durchs Display. Abschalten kannst du
+            sie im Shop unter „V-Pet-Designs“ → Deko. Für 5 Gruselbonbons kaufst du sie – dann bleiben sie auch nach dem Event.</li>
+          <li><b>Erkunden:</b> Öfter Grusel-Eier und Gruselbonbons.</li>
+          <li><b>Digi-Ei Halloween:</b> Das gibt es <b>nur</b> während Halloween – beim Erkunden und selten von besiegten Geistern.</li>
+        </ul>
+        <h3>Das Halloween-Ei</h3>
+        <p>Aus dem Halloween-Ei wird immer dieselbe Reihe – <b>egal, wie du dich kümmerst</b>:</p>
+        <p class="stage-row">Yuramon → Tanemon → Candlemon → Bakemon → Pumpkinmon → NoblePumpkinmon</p>
+        <p>Jede Stufe digitiert einfach, wenn ihre Zeit um ist. Pflegefehler, Training und Kämpfe spielen keine Rolle.
+          Sterben kann es aber trotzdem, wenn du es zu lange allein lässt.</p>
+        <p><b>Pumpkinmon</b> und <b>NoblePumpkinmon</b> gibt es <b>nur</b> aus diesem Ei – auf keinem anderen Weg.</p>
+        <p class="hint">Das Ei bleibt dir natürlich auch nach dem Event – nur neue gibt es dann erst wieder nächstes Jahr.</p>
+      </section>
+
+      <section id="armor">
+        <h2>Armor-Digitation</h2>
+        <p class="tldr"><b>Kurz gesagt</b>Mit einem Armor-Ei digitiert ein passendes Digimon sofort – wie in
+          Digimon Adventure 02.</p>
+        <ol class="steps">
+          <li>Finde beim <a href="#erkunden">Erkunden</a> ein Armor-Ei. Es landet im Rucksack.</li>
+          <li>Passt es zu deinem Digimon, leuchtet es im Rucksack orange.</li>
+          <li>Benutze es. Dein Digimon digitiert sofort, ohne Warten und ohne Kämpfe.</li>
+        </ol>
+        <table>
+          <thead><tr><th>Armor-Ei</th><th>Für</th><th>Wird zu</th></tr></thead>
+          <tbody>
+            <tr><td>Mut</td><td>Veemon</td><td>Flamedramon</td></tr>
+            <tr><td>Freundschaft</td><td>Veemon</td><td>Raidramon</td></tr>
+            <tr><td>Liebe</td><td>Hawkmon</td><td>Halsemon</td></tr>
+            <tr><td>Aufrichtigkeit</td><td>Hawkmon</td><td>Shurimon</td></tr>
+            <tr><td>Wissen</td><td>Armadillomon</td><td>Digmon</td></tr>
+            <tr><td>Zuverlässigkeit</td><td>Armadillomon</td><td>Submarimon</td></tr>
+            <tr><td>Hoffnung</td><td>Patamon</td><td>Pegasusmon</td></tr>
+            <tr><td>Licht</td><td>Salamon oder Gatomon</td><td>Nefertimon</td></tr>
+            <tr><td>Wunder (golden, sehr selten)</td><td>Veemon</td><td>Magnamon</td></tr>
+          </tbody>
+        </table>
+        <ul>
+          <li>Armor-Formen sind eine eigene Stufe „Armor“. Sie sind eine <b>Endstufe</b> und entwickeln sich nicht weiter.
+            Überleg also gut, ob du lieber zu Ultra und Mega willst.</li>
+          <li>Im Kampf ist eine Armor-Form stärker als ein Champion und schwächer als ein Ultra.</li>
+          <li>Dein Digimon muss wach und gesund sein. Danach ist das Armor-Ei verbraucht.</li>
+          <li>Ohne Armor-Ei digitiert dein Digimon ganz normal weiter.</li>
+        </ul>
+      </section>
+
+      <section id="sammlung">
+        <h2>Sammlung & Kühlschrank</h2>
+        <p class="tldr"><b>Kurz gesagt</b>In der Sammlung bewahrst du weitere Digimon und Eier auf. Dort steht die Zeit still.</p>
+        <p>Du öffnest die Sammlung oben im Spiel mit dem <b>Ei-Knopf</b>. Sie ist wie der PC bei Pokémon:
+          <b>8 Boxen</b> mit je <b>20 Plätzen</b>. In der Sammlung wird niemand hungrig, und nichts entwickelt sich.</p>
+        <ul>
+          <li>Mit ◀ ▶ (oder den Pfeiltasten) blätterst du durch die Boxen. Tipp auf den Box-Namen, um ihn zu ändern.</li>
+          <li>Tipp ein Digimon an. Darunter erscheinen seine Werte und diese Knöpfe:</li>
+        </ul>
+        <table>
+          <thead><tr><th>Knopf</th><th>Was er macht</th></tr></thead>
+          <tbody>
+            <tr><td>Aktiv setzen</td><td>Tauscht es mit deinem aktiven Digimon. Bei Eiern heißt der Knopf <b>Ausbrüten</b>.</td></tr>
+            <tr><td>Tauschen</td><td>An einen Freund geben. Siehe <a href="#tausch">Tauschen</a>.</td></tr>
+            <tr><td>Freilassen</td><td>Für immer weg. Du musst zweimal drücken.</td></tr>
+            <tr><td>Erkunden</td><td>Auf Reisen schicken (ab Rookie).</td></tr>
+            <tr><td>Name geben</td><td>Spitzname vergeben.</td></tr>
+            <tr><td>Verschieben</td><td>In eine andere Box legen.</td></tr>
+          </tbody>
+        </table>
+        <h3>Erkunden aus der Sammlung</h3>
+        <p>Bis zu <b>3 Digimon</b> aus der Sammlung können gleichzeitig unterwegs sein. Dein aktives Digimon zählt nicht mit.
+          Ihre Zeit steht weiter still, also bekommen sie keinen Hunger. Funde (Scherben, Items, Bits) kommen wie gewohnt in den Rucksack,
+          aber wilde Digimon folgen ihnen nicht nach Hause. Solange sie unterwegs sind, kannst du sie nur zurückrufen.
+          Was sie mitgebracht haben, steht in der Sammlung unter <b>Zurück vom Erkunden</b> (die letzten 15 Ausflüge).</p>
+        <h3>Neue Eier und Erinnerungen</h3>
+        <p>Neue Eier setzt du aus 4 <b>Ei-Scherben</b> vom Erkunden zusammen, manchmal gibt es auch eins nach gewonnenen
+          Kämpfen. Nur wenn du gar kein Digimon und
+          kein Ei mehr hast, gibt es ein Gratis-Ei. Unter <b>Erinnerungen</b> stehen deine gestorbenen Digimon.</p>
+        <h3>Kühlschrank</h3>
+        <p>Fährst du in den Urlaub? In den <b>Einstellungen</b> legst du dein <b>aktives</b> Digimon in den Kühlschrank.
+          Dort steht die Zeit still: kein Hunger, keine Rufe, keine Entwicklung. Mit <b>Auftauen</b> geht alles genau da
+          weiter, wo es aufgehört hat.</p>
+      </section>
+
+      <section id="freunde">
+        <h2>Kämpfe gegen Freunde</h2>
+        <p class="tldr"><b>Kurz gesagt</b>Fordere einen Freund heraus, der gerade online ist. Ihr ladet gleichzeitig.
+          Danach weicht jeder dem Ball des anderen aus.</p>
+        <h3>Freunde hinzufügen</h3>
+        <p>Jedes Konto hat einen eigenen <b>Freundescode</b> (Einstellungen → Freunde). Gib deinen Code einem Freund,
+          oder tipp seinen Code bei „Freund hinzufügen“ ein – dann seid ihr <b>beide</b> befreundet. Kämpfen, Tauschen und
+          Jogress gehen nur mit Freunden. Andere sehen nur, ob ein Freund online ist und welches Digimon er hat – nicht,
+          was es gerade macht oder wann es vom Erkunden zurückkommt. Mit „Neuer Code“ gilt dein alter Code nicht mehr;
+          wer schon dein Freund ist, bleibt es. „Entfernen“ beendet die Freundschaft für beide.</p>
+        <h3>Was haben deine Freunde?</h3>
+        <p>Bei jedem Freund in der Liste steht <b>„Ansehen“</b>. Damit siehst du seinen Partner, alle Digimon in seiner
+          Sammlung, wie viele Eier er hat, seinen Digidex-Stand, seine Erfolge und Siege. Tippst du ein Digimon an,
+          öffnet sich sein Digidex-Eintrag. Das geht <b>nur bei Freunden</b> – Fremde sehen deine Digimon nicht. Werte,
+          Reisen und Rückkehrzeiten bleiben auch für Freunde geheim.</p>
+        <h3>So läuft ein Kampf</h3>
+        <ol class="steps">
+          <li>Drück <kbd>6</kbd> und wähle <b>Freund herausfordern</b>. Du siehst deine Freunde. Herausfordern kannst du
+            jeden, der online ist und ein kampfbereites Digimon hat (ab Rookie, wach, gesund, satt).</li>
+          <li>Dein Freund hört einen Ton und hat <b>60 Sekunden</b>, um anzunehmen.</li>
+          <li>Der Kampf kostet beide 1 Hunger-Herz und 1 Kraft-Herz.</li>
+          <li><b>Angreifen:</b> In jeder Runde ladet ihr <b>gleichzeitig</b>. Halte <kbd>↑</kbd> oder <kbd>↓</kbd> gedrückt
+            und lass los – genau wie gegen wilde Digimon (siehe <a href="#kampf">Kämpfe</a>). Wer nach 25 Sekunden nicht
+            geschossen hat, schießt automatisch – aber schwach.</li>
+          <li><b>Ausweichen:</b> Dann fliegen die Bälle. Jeder weicht dem Ball des anderen aus. Ball unten: mit
+            <kbd>↑</kbd> springen. Ball oben: mit <kbd>↓</kbd> ducken.</li>
+          <li>Wer zuerst keine Leben mehr hat, verliert. Fallen beide gleichzeitig, ist es unentschieden. Nach 25 Runden
+            gewinnt, wer mehr Leben hat – bei gleich vielen unentschieden.</li>
+        </ol>
+        <h3>Was ist anders als gegen wilde Digimon?</h3>
+        <ul>
+          <li>Es gibt <b>keine Deckung</b> und darum auch keine „Lücke!“. Oben oder unten entscheidet nur, wohin dein
+            Ball fliegt. Dein Freund muss dann richtig ausweichen.</li>
+          <li>Es gibt keine Persönlichkeiten und keine starken Angriffe.</li>
+          <li>Die <b>Spezial-Leiste</b> füllt sich, wenn <b>du</b> getroffen wirst oder einem Ball <b>ausweichst</b> –
+            nicht, wenn du selbst triffst. Wer hinten liegt, kommt so schneller an seine Spezialattacke.</li>
+          <li>Gleich bleiben: Power-Schuss, MEGA-Stufe mit Risiko, Mega-Schuss und Spezialattacke. Der Spezialattacke
+            kann auch dein Freund nicht ausweichen.</li>
+        </ul>
+        <p>Es zählen dieselben Werte wie gegen wilde Digimon. Der Kampf zählt für die Digitation und die Rangliste.
+          Wer verliert, kann verletzt werden. <b>Aufgeben</b> zählt als Niederlage.</p>
+        <p class="hint">Tempo-Training lohnt sich hier besonders: Du hast mehr Zeit zum Ausweichen.</p>
+      </section>
+
+      <section id="tausch">
+        <h2>Tauschen</h2>
+        <p class="tldr"><b>Kurz gesagt</b>Eier und Digimon aus deiner Sammlung kannst du mit Freunden tauschen oder verschenken.</p>
+        <ol class="steps">
+          <li>Öffne die Sammlung, tipp ein Digimon oder Ei an und drück <b>Tauschen</b>.</li>
+          <li>Wähl einen Freund. Hak <b>als Geschenk</b> an, wenn du nichts zurück willst. Dann <b>Angebot schicken</b>.</li>
+          <li>Dein Freund sieht das Angebot in seiner Sammlung. Der Ei-Knopf bekommt dafür einen orangen Punkt. Er kann
+            das Geschenk annehmen, ein <b>Gegenangebot</b> machen oder ablehnen.</li>
+          <li>Bei einem Gegenangebot musst <b>du</b> den Tausch noch bestätigen. Erst dann wird getauscht.</li>
+        </ol>
+        <p class="hint">Dein Freund muss dafür nicht online sein. Tauschen geht nur mit Digimon aus der Sammlung.
+          Willst du dein aktives Digimon tauschen, setz zuerst ein anderes aktiv.</p>
+      </section>
+
+      <section id="jogress">
+        <h2>Jogress (Fusion)</h2>
+        <p class="tldr"><b>Kurz gesagt</b>Zwei Digimon verschmelzen zu einem neuen. Leuchtet die Taste <kbd>9</kbd>,
+          ist eine Fusion möglich.</p>
+        <p>Beispiele: WarGreymon + MetalGarurumon → Omnimon, BlitzGreymon + CresGarurumon → Omnimon Alter-S.</p>
+        <ul>
+          <li>Der <b>Partner</b> ist entweder ein bestimmtes Digimon oder ein Digimon derselben Stufe mit passendem
+            Attribut (zum Beispiel „ein Virus-Digimon“). Was genau, steht im Jogress-Menü und im Finder.</li>
+          <li>Der Partner kann aus deiner <b>Sammlung</b> kommen. Oder es ist das aktive Digimon eines <b>Freundes</b>.
+            Der muss online sein und innerhalb von 60 Sekunden zustimmen.</li>
+          <li>Nur <b>dein</b> Digimon digitiert. Der Partner bleibt, wie er ist.</li>
+          <li>Verlangt die Fusion außerdem zum Beispiel wenige Pflegefehler, muss das auch passen.</li>
+        </ul>
+      </section>
+
+      <section id="merkliste">
+        <h2>Finder & Merkliste</h2>
+        <p class="tldr"><b>Kurz gesagt</b>Such dir ein Wunsch-Digimon aus. Das Spiel zeigt dir dann Schritt für Schritt,
+          was du tun musst.</p>
+        <ol class="steps">
+          <li>Öffne oben auf dieser Seite den <a href="#finder">Digimon-Finder</a> und such dein Wunsch-Digimon.</li>
+          <li>Bist du angemeldet, steht ganz oben <b>„Von deinen Digimon aus“</b>: der Weg von deinen eigenen Digimon
+            (aktiv und in der Sammlung) zum Wunsch-Digimon. Darunter kommt für <b>jedes Ei</b> der einfachste Weg –
+            antippen zum Aufklappen. Bei jedem Schritt steht ein Beispiel, das sicher klappt.</li>
+          <li>Tipp auf <b>☆ Merken</b>.</li>
+          <li>Im Spiel öffnet der <b>★-Knopf</b> oben deine Merkliste.</li>
+          <li>Tipp bei deinem Wunsch-Digimon auf <b>Als Ziel</b>. Jetzt ist es das Ziel von <b>diesem</b> Digimon.</li>
+        </ol>
+        <p><b>Jedes Digimon hat sein eigenes Ziel.</b> Dein Gabumon kann Omnimon anpeilen und dein Impmon Beelzemon – unter
+          „Nächste Digitation“ steht immer nur das Ziel des Digimon, das gerade aktiv ist. Das Ziel bleibt beim Digimon,
+          auch wenn es in die Sammlung wandert. Ganz oben in der Merkliste steht das aktuelle Ziel mit dem ganzen Weg;
+          die anderen Wunsch-Digimon sind eingeklappt („Weg anzeigen“). Hat dein Digimon kein Ziel, erinnert dich ein
+          Hinweis daran – mit <b>✕</b> blendest du ihn aus.</p>
+        <p>Beim nächsten Schritt siehst du live, was schon passt (✓) und was noch fehlt (✗). Nach jeder Digitation
+          rückt der Weg weiter, und „auf Kurs ✓“ zeigt, wenn gerade alles passt.</p>
+        <p class="hint">Ist ein Ziel von deinem Digimon aus nicht mehr erreichbar, steht dabei, aus welchem Ei es kommt.
+          Die Merkliste gilt für dein Konto auf allen Geräten. Alle Digimon mit Bild und Beschreibung findest du im
+          <a href="#digidex">Digidex</a>.</p>
+      </section>
+
+      <section id="erfolge">
+        <h2>Erfolge & Sammlung</h2>
+        <p class="tldr"><b>Kurz gesagt</b>Sammle so viele verschiedene Digimon wie möglich und schaffe Erfolge. Jeder
+          Erfolg bringt einmal Bits.</p>
+        <p><b>Sammlung:</b> Jede Form, die eines deiner Digimon je hatte, zählt als gesammelt – auch wenn es sich
+          längst weiterentwickelt hat, freigelassen oder getauscht wurde. Im <a href="#digidex">Digidex</a> siehst du oben,
+          wie viele du schon hast („Gesammelt: 37 / 521“). Was noch fehlt, ist blass. Mit den Knöpfen „Gesammelt“ und
+          „Fehlt noch“ filterst du die Liste.</p>
+        <p><b>Erfolge:</b> Öffne im Spiel den <b>Pokal-Knopf</b> und wechsle auf <b>Erfolge</b>. Dort stehen alle Erfolge mit
+          Fortschritt, zum Beispiel:</p>
+        <ul>
+          <li>Stufen erreichen: Rookie, Champion, Ultra, Mega, eine Armor-Form</li>
+          <li>Sammeln: 10, 25, 50, 100 oder 250 verschiedene Digimon, alle Armor-Formen</li>
+          <li>Kämpfen: 10, 50 oder 200 Siege, Siege gegen Freunde</li>
+          <li>Erkunden, Jogress, Geister zu Halloween, ein Pumpkinmon großziehen</li>
+        </ul>
+        <p class="hint">Schaffst du einen Erfolg, erscheint eine Meldung und die Bits landen sofort auf deinem Konto.</p>
+      </section>
+
+      <section id="einstellungen">
+        <h2>Knöpfe & Einstellungen</h2>
+        <p class="tldr"><b>Kurz gesagt</b>Oben rechts im Spiel findest du alle Menüs.</p>
+        <table>
+          <thead><tr><th>Knopf</th><th>Was er öffnet</th></tr></thead>
+          <tbody>
+            <tr><td>★</td><td>Merkliste – dein Weg zu Wunsch-Digimon</td></tr>
+            <tr><td>Ei</td><td>Sammlung (Digimon-PC) und Tauschangebote</td></tr>
+            <tr><td>Münze</td><td>Shop – Items für Bits kaufen</td></tr>
+            <tr><td>Pokal</td><td>Rangliste (die Siege aller Spieler) und deine Erfolge</td></tr>
+            <tr><td>Zeitung</td><td>„Was ist neu?“ – mit Punkt, wenn es Neuigkeiten gibt</td></tr>
+            <tr><td>?</td><td>diese Hilfe</td></tr>
+            <tr><td>Zahnrad</td><td>Einstellungen</td></tr>
+          </tbody>
+        </table>
+        <p>Tipp auf den <b>Namen</b> deines Digimon, um seinen Digidex-Eintrag zu öffnen. Mit <b>✎ Name</b> gibst du ihm
+          einen Spitznamen (bis 12 Zeichen). Der bleibt bei jeder Digitation.</p>
+        <h3>In den Einstellungen</h3>
+        <ul>
+          <li><b>Sprache · Language</b>: Deutsch oder Englisch. Gilt für dein Konto auf allen Geräten.</li>
+          <li><b>Passwort ändern</b>: Andere Geräte werden dabei abgemeldet. Passwort vergessen? Der Admin kann dir ein
+            neues geben.</li>
+          <li><b>Als App installieren</b>: Das Spiel kommt als Symbol auf den Startbildschirm und startet ohne Browserleiste.</li>
+          <li><b>Ton</b>: Lautstärke (0 = aus). Gilt nur für dieses Gerät.</li>
+          <li><b>Benachrichtigungen</b>: Der Browser meldet sich, wenn dein Digimon ruft, krank wird, schlüpft, sich
+            entwickelt oder stirbt. Das klappt, solange das Spiel in einem Tab offen ist.</li>
+          <li><b>Kühlschrank</b>: Für den Urlaub. Siehe <a href="#sammlung">Sammlung & Kühlschrank</a>.</li>
+          <li><b>Freunde</b>: Dein Freundescode, Freunde per Code hinzufügen, ansehen und entfernen. Siehe
+            <a href="#freunde">Kämpfe gegen Freunde</a>.</li>
+          <li><b>Freunde einladen</b> (nur Admin): Einladungscode kopieren oder einen neuen machen. Den braucht man,
+            um ein Konto anzulegen – mit dem Freundescode hat er nichts zu tun.</li>
+          <li><b>Abmelden</b></li>
+        </ul>
+      </section>
+
+      <section id="zeiten">
+        <h2>Zeiten</h2>
+        <p class="tldr"><b>Kurz gesagt</b>Je jünger dein Digimon, desto öfter braucht es dich.</p>
+        <table>
+          <thead><tr><th>Stufe</th><th>Digitation nach</th><th>−1 Hunger alle</th><th>−1 Kraft alle</th><th>Kacke alle</th></tr></thead>
+          <tbody>
+            <tr><td>Ei</td><td>1 Min</td><td>–</td><td>–</td><td>–</td></tr>
+            <tr><td>Baby I</td><td>10 Min</td><td>3 Min</td><td>3 Min</td><td>3 Min</td></tr>
+            <tr><td>Baby II</td><td>12 Std</td><td>30 Min</td><td>30 Min</td><td>1 Std</td></tr>
+            <tr><td>Rookie</td><td>24 Std</td><td>48 Min</td><td>38 Min</td><td>2 Std</td></tr>
+            <tr><td>Champion</td><td>36 Std + Kämpfe</td><td>59 Min</td><td>48 Min</td><td>2 Std</td></tr>
+            <tr><td>Armor</td><td>Endstufe</td><td>59 Min</td><td>48 Min</td><td>2 Std</td></tr>
+            <tr><td>Ultra</td><td>48 Std</td><td>79 Min</td><td>59 Min</td><td>3 Std</td></tr>
+            <tr><td>Mega</td><td>Endstufe</td><td>99 Min</td><td>79 Min</td><td>3 Std</td></tr>
+          </tbody>
+        </table>
+        <p class="hint">Ein Baby I (zum Beispiel Botamon) braucht dich also die ersten 10 Minuten fast ununterbrochen.
+          Die Zeiten gelten bei normalem Tempo. Der Admin kann das Spiel entspannter oder stressiger einstellen.</p>
+      </section>
+
+      <section id="tipps">
+        <h2>Tipps</h2>
+        <ul>
+          <li>Füttere <b>nicht zu viel</b>, wenn du ein starkes Digimon willst. Überfüttern führt zu anderen Formen.</li>
+          <li>Für starke Champions brauchst du als Rookie meist <b>16 oder mehr Trainings</b>. Verteile sie über den Tag.</li>
+          <li>Behalte die <b>Schlafenszeit</b> im Blick und mach rechtzeitig das Licht aus.</li>
+          <li>Schalte die <b>Benachrichtigungen</b> ein und lass den Tab offen. Dann verpasst du keinen Ruf.</li>
+          <li>Kämpfe erst mit vollen Kraft-Herzen und nach ein paar Trainings.</li>
+          <li>Im Kampf ist der <b>Power-Schuss</b> der sichere Weg. Weiter laden lohnt sich nur, wenn du etwas riskieren
+            willst.</li>
+          <li>Plane mit der <b>Merkliste</b>: Sie sagt dir genau, was für dein Wunsch-Digimon noch fehlt.</li>
+        </ul>
+      </section>
+
+      <section id="woerter">
+        <h2>Wörter erklärt</h2>
+        <dl class="glossary">
+          <dt>Digitation</dt><dd>Dein Digimon verwandelt sich in eine neue, meist stärkere Form.</dd>
+          <dt>Stufe</dt><dd>Wie weit ein Digimon entwickelt ist: Baby I, Baby II, Rookie, Champion, Ultra, Mega (und Armor).</dd>
+          <dt>Endstufe</dt><dd>Danach kommt keine Digitation mehr (Mega und Armor).</dd>
+          <dt>Ruf</dt><dd>Dein Digimon braucht etwas: Futter, Kraft oder Licht aus.</dd>
+          <dt>Pflegefehler</dt><dd>Ein Ruf, um den du dich 10 Minuten lang nicht gekümmert hast.</dd>
+          <dt>Überfüttert</dt><dd>Fleisch gegeben, obwohl der Hunger schon voll war.</dd>
+          <dt>Kraft-Herzen</dt><dd>Die zweite Anzeige neben Hunger. Voll = stark im Kampf.</dd>
+          <dt>Power-Schuss</dt><dd>Ein Schuss mit voller Ladeleiste. Trifft oft.</dd>
+          <dt>Mega-Schuss</dt><dd>Ein Schuss, bei dem auch die MEGA-Stufe ganz voll ist. Macht 2 Schaden. Aber beim Laden
+            wirst du oft unterbrochen.</dd>
+          <dt>Lücke</dt><dd>Die Seite (oben oder unten), die ein wildes Digimon gerade nicht deckt. Dort triffst du öfter.</dd>
+          <dt>Ausweichen</dt><dd>Einem Ball entgehen: springen (↑), wenn er unten kommt, ducken (↓), wenn er oben kommt.</dd>
+          <dt>Spezial-Leiste</dt><dd>Füllt sich mit jedem Treffer. Ist sie voll, kannst du deine Spezialattacke einsetzen.</dd>
+          <dt>Spezialattacke</dt><dd>Die besondere Attacke deines Digimon, mit ihrem echten Namen. Macht 2 Schaden, und man kann ihr nicht ausweichen.</dd>
+          <dt>Persönlichkeit</dt><dd>Der Charakter eines wilden Digimon: ruhig, aggressiv, gepanzert, flink oder listig.</dd>
+          <dt>Starker Angriff</dt><dd>Ein angekündigter Angriff des Gegners (er blinkt, „!“). Macht 2 Schaden, wenn du
+            nicht ausweichst.</dd>
+          <dt>Trainingsstil ★</dt><dd>Eine Trainingsart, die du klar am meisten machst. Sie beeinflusst die nächste Digitation.</dd>
+          <dt>Attribut</dt><dd>Serum, Daten, Virus oder Frei. Wichtig im Kampf und für Jogress.</dd>
+          <dt>Element</dt><dd>Feuer, Wasser, Wind und so weiter. Wichtig für den Trainingsstil.</dd>
+          <dt>Jogress</dt><dd>Zwei Digimon verschmelzen zu einem neuen.</dd>
+          <dt>Armor-Ei</dt><dd>Ein Item, mit dem ein passendes Digimon sofort digitiert.</dd>
+          <dt>Bits</dt><dd>Das Geld der Digital World. Damit kaufst du im Shop ein.</dd>
+          <dt>Sammlung</dt><dd>Dein Digimon-PC mit 8 Boxen. Dort steht die Zeit still.</dd>
+          <dt>Kühlschrank</dt><dd>Friert dein aktives Digimon ein, zum Beispiel im Urlaub.</dd>
+          <dt>Merkliste</dt><dd>Deine Wunsch-Digimon, mit dem Weg dorthin.</dd>
+          <dt>Digidex</dt><dd>Lexikon aller Digimon im Spiel.</dd>
+        </dl>
+      </section>
+
+      <nav class="chapter-nav" id="chapter-nav" aria-label="Kapitel blättern"></nav>
+    </main>
+  </div>
+
+  <!-- ============================================================ Finder -->
+  <main class="help-wide view finder" data-view="finder" hidden>
+    <h1>Digimon-Finder</h1>
+    <p class="hint" data-i18n>Such dir ein Digimon aus. Du siehst, wie du es bekommst und was daraus werden kann. Mit <b>☆ Merken</b> kommt es auf deine Merkliste im Spiel.</p>
+    <div class="finder-row">
+      <label class="finder-pick">
+        <span>Suchen</span>
+        <input id="search" type="search" placeholder="z. B. Beelzemon" autocomplete="off">
+      </label>
+      <label class="finder-pick">
+        <span>Digimon</span>
+        <select id="target"></select>
+      </label>
+    </div>
+    <div class="finder-head" id="finder-head"></div>
+    <div id="routes"></div>
+  </main>
+
+  <!-- ============================================================ Digidex -->
+  <main class="help-wide view" data-view="digidex" hidden>
+    <h1>Digidex</h1>
+    <div class="dex-filters">
+      <input id="dex-search" class="dex-search" type="search" placeholder="Name suchen …" autocomplete="off">
+      <div class="chips" id="dex-stage"></div>
+      <div class="chips" id="dex-attr"></div>
+      <div class="chips" id="dex-own" hidden></div>
+      <label class="dex-only"><input type="checkbox" id="dex-wish"> nur gemerkte ★</label>
+    </div>
+    <p class="hint" id="dex-count"></p>
+    <div class="dex-grid" id="dex-grid"></div>
+    <button class="small" id="dex-more" hidden>Mehr anzeigen</button>
+  </main>
+
+  <!-- ============================================================ ein Digimon (Digidex-Eintrag) -->
+  <main class="help-wide view" data-view="digimon" hidden>
+    <a class="small" href="#digidex">← Zurück zum Digidex</a>
+    <article class="dex-entry" id="dex-entry"></article>
+  </main>
+
+  <!-- ============================================================ Anleitung (englisch) -->
+  <template id="anleitung-en">
+    <nav class="toc" aria-label="Contents">
+      <span class="toc-group">Getting started</span>
+      <a href="#schnellstart">Quick start</a>
+      <a href="#pflege">Taking care</a>
+      <a href="#ruf">Calls & care mistakes</a>
+      <a href="#schlaf">Sleep & light</a>
+      <a href="#krank">Sickness & death</a>
+      <span class="toc-group">Getting stronger</span>
+      <a href="#training">Training</a>
+      <a href="#digitation">Digivolution</a>
+      <a href="#kampf">Battles</a>
+      <a href="#gegner">Wild opponents</a>
+      <span class="toc-group">Adventure</span>
+      <a href="#erkunden">Exploring & backpack</a>
+      <a href="#shop">Shop & Bits</a>
+      <a href="#events">Events & Halloween</a>
+      <a href="#armor">Armor Digivolution</a>
+      <a href="#sammlung">Collection & fridge</a>
+      <span class="toc-group">With friends</span>
+      <a href="#freunde">Battling friends</a>
+      <a href="#tausch">Trading</a>
+      <a href="#jogress">Jogress</a>
+      <span class="toc-group">Reference</span>
+      <a href="#merkliste">Finder & wishlist</a>
+      <a href="#erfolge">Achievements & collection</a>
+      <a href="#einstellungen">Buttons & settings</a>
+      <a href="#zeiten">Timings</a>
+      <a href="#tipps">Tips</a>
+      <a href="#woerter">Glossary</a>
+    </nav>
+
+    <main class="help-body">
+      <h1>How your V-Pet works</h1>
+
+      <section id="schnellstart">
+        <h2>Quick start</h2>
+        <p class="tldr"><b>In short</b>You raise a Digimon. It keeps living in real time, even when the game is closed.
+          The better you take care of it, the stronger it gets.</p>
+        <ol class="steps">
+          <li><b>Create an account.</b> You need an invite code for that. You get it from the admin.</li>
+          <li><b>Answer the questions.</b> When you start for the first time, the game asks you 6 questions about
+            yourself. They reveal your type – brave or clever, for example – and you get a Digi-Egg that suits you.</li>
+          <li><b>Wait for your egg.</b> After 1 minute a baby hatches. What it grows into is a surprise.</li>
+          <li><b>Stay close at the start.</b> In the first 10 minutes the baby needs you a lot: feed it and clean up.</li>
+          <li><b>Watch for calls.</b> When <b>CALL</b> blinks at the top, your Digimon needs something. A red box tells you what.</li>
+          <li><b>Train.</b> Training makes it strong and helps decide what it digivolves into.</li>
+          <li><b>From Rookie on</b> it can battle and explore the world. That's how you find new eggs.</li>
+        </ol>
+        <p class="hint">Tip: Turn on <b>notifications</b> in the settings. Then the game lets you know when your Digimon calls.</p>
+      </section>
+
+      <section id="pflege">
+        <h2>Taking care of your Digimon</h2>
+        <p class="tldr"><b>In short</b>Your Digimon has two gauges: Hunger and Strength. Both go down over time.
+          Keep them full, clean up, and send it to bed on time.</p>
+        <table>
+          <thead><tr><th>If …</th><th>… then</th></tr></thead>
+          <tbody>
+            <tr><td>Hunger hearts are empty</td><td><kbd>1</kbd> Food → <b>Meat</b></td></tr>
+            <tr><td>Strength hearts are empty</td><td><kbd>1</kbd> Food → <b>Protein</b> or <kbd>2</kbd> Training</td></tr>
+            <tr><td>There's poop</td><td><kbd>3</kbd> Clean (4 piles make it sick)</td></tr>
+            <tr><td>It's asleep (Zz)</td><td><kbd>4</kbd> Light off</td></tr>
+            <tr><td>A skull is blinking</td><td><kbd>5</kbd> Medicine</td></tr>
+          </tbody>
+        </table>
+        <h3>All keys</h3>
+        <table>
+          <thead><tr><th>Key</th><th>What it does</th></tr></thead>
+          <tbody>
+            <tr><td><kbd>1</kbd> Food</td><td><b>Meat</b>: Hunger +1 heart, +1 g.<br><b>Protein</b>: Strength +1 heart, +2 g.</td></tr>
+            <tr><td><kbd>2</kbd> Training</td><td>Three mini-games. See <a href="#training">Training</a>.</td></tr>
+            <tr><td><kbd>3</kbd> Clean</td><td>Cleans up the poop.</td></tr>
+            <tr><td><kbd>4</kbd> Light</td><td>Light on or off. Off during the day = nap.</td></tr>
+            <tr><td><kbd>5</kbd> Medicine</td><td>Cures sickness and injuries.</td></tr>
+            <tr><td><kbd>6</kbd> Battle</td><td>From Rookie on. See <a href="#kampf">Battles</a>.</td></tr>
+            <tr><td><kbd>7</kbd> Explore</td><td>From Rookie on. See <a href="#erkunden">Exploring</a>.</td></tr>
+            <tr><td><kbd>8</kbd> Backpack</td><td>Use items you've found.</td></tr>
+            <tr><td><kbd>9</kbd> Jogress</td><td>Fusion. Lights up when one is possible. See <a href="#jogress">Jogress</a>.</td></tr>
+            <tr><td><kbd>Esc</kbd></td><td>Back</td></tr>
+          </tbody>
+        </table>
+        <p>You can click the keys or press the number on your keyboard.</p>
+        <p><b>Don't feed too much:</b> If Hunger is already full and you still give meat, it <b>overeats</b>. The game
+          counts this. Overfeeding a lot leads to different Digimon.</p>
+      </section>
+
+      <section id="ruf">
+        <h2>Calls & care mistakes</h2>
+        <p class="tldr"><b>In short</b>When your Digimon calls, you have 10 minutes. After that you get a care mistake.</p>
+        <p>Your Digimon <b>calls</b> when</p>
+        <ul>
+          <li>Hunger is at 0,</li>
+          <li>Strength is at 0, or</li>
+          <li>it wants to sleep but the light is still on.</li>
+        </ul>
+        <p>Then <b>CALL</b> blinks on the screen and it beeps. A red box shows the reason and how much time you have left.</p>
+        <p>If you don't take care of it within <b>10 minutes</b>, you get a <b>care mistake</b>. Each call counts at most once.</p>
+        <h3>Why do care mistakes matter?</h3>
+        <ul>
+          <li>They help decide what your Digimon digivolves into. Strong Digimon usually want few care mistakes.</li>
+          <li>At <b>20 care mistakes</b> in total, your Digimon dies.</li>
+        </ul>
+        <p class="hint">After each Digivolution the counter for digivolving starts at 0 again. The total (for dying)
+          keeps counting.</p>
+      </section>
+
+      <section id="schlaf">
+        <h2>Sleep & light</h2>
+        <p class="tldr"><b>In short</b>In the evening your Digimon falls asleep. Then turn off the light. In the
+          morning it keeps dozing in the dark until you turn the light back on.</p>
+        <ul>
+          <li>Every Digimon has its own <b>bedtime</b> between 8 pm and midnight.</li>
+          <li>If it sleeps with the light on, it calls. After 10 minutes you get a care mistake.</li>
+          <li>At night it doesn't get hungry and doesn't poop. You can't feed or train it then.</li>
+          <li><b>It only digivolves while awake:</b> If its time is up while it sleeps, it digivolves in the morning.</li>
+        </ul>
+        <h3>Naps</h3>
+        <ul>
+          <li>If you turn off the light <b>during the day</b>, your Digimon takes a nap.</li>
+          <li>Hunger and Strength then go down only half as fast. No poop.</li>
+          <li>To wake it: turn the light back on. Or feed it – when it smells food, it wakes up.</li>
+          <li>If its bedtime starts during the nap, it simply sleeps on until 8 am.</li>
+        </ul>
+        <h3>In the morning</h3>
+        <p>At 8 am the night is over. If the light is still off, <b>your Digimon keeps dozing as a nap</b> until you
+          turn the light on. So you don't have to be up at exactly 8 am: during a nap Hunger and Strength go down only
+          half as fast, and there's no poop. If you left the light on at night, it wakes up on its own at 8 am.</p>
+      </section>
+
+      <section id="krank">
+        <h2>Sickness & death</h2>
+        <p class="tldr"><b>In short</b>If a skull is blinking, give medicine. If you leave your Digimon alone for too
+          long, you can lose it.</p>
+        <ul>
+          <li>Your Digimon gets <b>sick</b> at 4 piles of poop.</li>
+          <li>It sometimes gets <b>injured</b> when it loses a battle.</li>
+          <li><b>Medicine</b> (<kbd>5</kbd>) cures both.</li>
+        </ul>
+        <p>Your Digimon <b>dies</b> if one of these happens:</p>
+        <ul>
+          <li>It had no Hunger heart for <b>12 hours</b>. Night time doesn't count.</li>
+          <li>It was sick or injured for <b>12 hours</b> without medicine.</li>
+          <li>It collected <b>20 care mistakes</b>.</li>
+        </ul>
+        <p><b>Rescue:</b> If your Digimon holds a <b>Guardian Totem</b> from the backpack, it doesn't die. The totem saves it
+          once, and it waits for you in the fridge.</p>
+        <p>When a Digimon has died, you continue with an egg or Digimon from your <a href="#sammlung">collection</a>.
+          If you have none left, you get a new random egg.</p>
+        <p class="hint">These are the default rules. The admin can turn off death or change how fast Hunger and Strength go down.</p>
+      </section>
+
+      <section id="training">
+        <h2>Training</h2>
+        <p class="tldr"><b>In short</b>There are three mini-games. Every training session counts for Digivolution.
+          If you win, your Digimon also gets better in battle.</p>
+        <p>Press <kbd>2</kbd> and choose a kind of training. Win or lose: <b>every session</b> counts for Digivolution and
+          makes it 2 g lighter. If you win, you also get <b>1 Strength heart</b> and <b>1 point</b> in that kind of training.</p>
+        <table>
+          <thead><tr><th>Training</th><th>How it works</th><th>Helps in battle</th></tr></thead>
+          <tbody>
+            <tr><td>Power</td><td>A pointer moves up and down. Press when it's inside the box. Get 3 out of 5.</td>
+              <td>Your shots hit more often.</td></tr>
+            <tr><td>Speed</td><td>Press as often as you can for 5 seconds. Reach 25 presses. Holding the key doesn't count.</td>
+              <td>More time to <a href="#kampf">dodge</a>. Your Digimon also dodges on its own more often.</td></tr>
+            <tr><td>Defense</td><td>An attack flies toward you. Press just before it hits. Too early doesn't count.
+              Get 3 out of 5.</td>
+              <td>Injured less often. From 8 points on: 1 extra life.</td></tr>
+          </tbody>
+        </table>
+        <p class="hint">Each kind counts up to 10 points per stage. After each Digivolution it starts at 0 again.
+          On a phone you can tap the screen instead of the button. After training and battles the keys are faded for
+          1.5 seconds, so you don't press something else by accident.</p>
+        <h3>Training style ★</h3>
+        <p>If you train one kind a lot, your Digimon gets a <b>training style</b>. For that you need at least
+          <b>5 successes</b> in one kind within a stage, and they must be at least <b>60%</b> of all your successes.</p>
+        <p>At the next Digivolution, a Digimon with a <b>matching element</b> is then preferred:</p>
+        <ul>
+          <li><b>Power</b> → Fire, Thunder, Metal (e.g. Greymon)</li>
+          <li><b>Speed</b> → Wind, Light, Dark (e.g. Devimon)</li>
+          <li><b>Defense</b> → Earth, Ice, Wood, Water (e.g. Seadramon)</li>
+        </ul>
+        <p class="hint">The style only replaces the number of training sessions. Care mistakes, overfeeding and battles
+          still have to fit.</p>
+      </section>
+
+      <section id="digitation">
+        <h2>Digivolution</h2>
+        <p class="tldr"><b>In short</b>After a set time your Digimon digivolves. What it becomes depends on how you took
+          care of it during that stage.</p>
+        <p>A Digimon goes through these <b>stages</b>:</p>
+        <p class="stage-row">Egg → Baby I → Baby II → Rookie → Champion → Ultimate → Mega</p>
+        <p>How long each stage lasts is listed under <a href="#zeiten">Timings</a>. When the time is up, the game looks at
+          what happened during <b>this stage</b>:</p>
+        <ul>
+          <li><b>Care mistakes</b> – how often you missed a call</li>
+          <li><b>Training sessions</b> – how often you trained (lost ones count too)</li>
+          <li><b>Overfed</b> – how often it overate</li>
+          <li><b>Battles and wins</b> – mostly important for Ultimate</li>
+        </ul>
+        <p>Then it picks the matching next form. All counters start at 0 again. You can see the current counters on the
+          right side of the game.</p>
+        <h3>An example</h3>
+        <p>Agumon becomes Greymon with <b>at most 2 care mistakes</b> and <b>at least 16 training sessions</b>.
+          With less training it becomes Devimon. With 3 or more care mistakes it becomes Numemon, for example.</p>
+        <h3>Good to know</h3>
+        <ul>
+          <li><b>The egg only decides the baby.</b> After that every Digimon always digivolves the same way, no matter which
+            egg it came from.</li>
+          <li><b>There's almost always more than one way.</b> Every Digimon except Mega and Armor has at least two possible
+            next forms.</li>
+          <li><b>Ultimate needs battles.</b> A Champion usually needs 15 battles with at least 12 wins. You can see your
+            progress in the game under “Next Digivolution”.</li>
+          <li><b>Anime paths:</b> Many Digimon can digivolve like in the anime, for example Greymon → MetalGreymon →
+            WarGreymon. For that you need <b>0 care mistakes</b> and <b>at least 16 training sessions</b> in that stage.</li>
+          <li><b>Special paths:</b> Some Digimon can only be reached through <a href="#jogress">Jogress</a> or
+            <a href="#armor">Armor Digivolution</a>.</li>
+        </ul>
+        <p><b>What does my dream Digimon need?</b> The <a href="#finder">Digimon Finder</a> shows you. Add it to your
+          wishlist there, and the game will show you the way (see <a href="#merkliste">Finder & wishlist</a>).</p>
+      </section>
+
+      <section id="kampf">
+        <h2>Battles</h2>
+        <p class="tldr"><b>In short</b>From Rookie on, your Digimon can battle wild Digimon. Hold ↑ or ↓ to charge.
+          Let go to shoot. When a ball flies at you, dodge.</p>
+        <ol class="steps">
+          <li>Press <kbd>6</kbd> and choose <b>Wild Digimon</b>. You see your opponent and how it seems (see
+            <a href="#gegner">Wild opponents</a>). <b>Fleeing</b> costs nothing.</li>
+          <li><b>Fighting</b> costs 1 Hunger heart and 1 Strength heart. Your Digimon must be awake, healthy and fed.</li>
+          <li><b>Attack:</b> Hold <kbd>↑</kbd> (high) or <kbd>↓</kbd> (low). A bar charges at the top of the screen.
+            When it's <b>full</b>, let go. That's a <b>power shot</b>.</li>
+          <li><b>Dodge:</b> Then your opponent shoots. Its ball flies at your Digimon, high or low.
+            Ball low: <kbd>↑</kbd> to jump. Ball high: <kbd>↓</kbd> to duck.</li>
+          <li>It goes on like this round by round. Each side has 3 lives, an armored opponent has 4. Whoever loses all
+            of them first loses.</li>
+        </ol>
+        <h3>Attack high or low?</h3>
+        <p>Each round your opponent guards one side. If you attack the <b>open</b> side, you see <b>“Gap!”</b>.
+          Then you hit much more often. If you attack the guarded side, you hit less often.</p>
+        <p>You can't see beforehand which side is guarded. After your shot, a small shield shows you.
+          A <a href="#gegner">sly opponent</a> likes to guard the side you attacked last.</p>
+        <h3>Charging: how long to hold?</h3>
+        <p>The bar is full after a little over a second. If you keep holding, a second level fills up: <b>MEGA</b>.
+          It blinks and takes just as long again.</p>
+        <table>
+          <thead><tr><th>You hold …</th><th>… then</th></tr></thead>
+          <tbody>
+            <tr><td>only briefly</td><td>Weak shot. Rarely hits.</td></tr>
+            <tr><td>until the bar is full</td><td><b>Power shot</b>. Hits often. The safe way.</td></tr>
+            <tr><td>longer, into the MEGA level</td><td>Hits even more often. But your Digimon can get
+              <b>interrupted</b>. The longer you hold, the more likely.</td></tr>
+            <tr><td>until MEGA is completely full</td><td><b>Mega Shot</b>. It fires by itself. If it hits, it does
+              <b>2 damage</b> – your opponent loses 2 lives at once. But: more than every second time you get
+              interrupted first.</td></tr>
+          </tbody>
+        </table>
+        <p><b>Interrupted</b> means: your shot is lost. Your opponent still attacks.</p>
+        <h3>Dodging</h3>
+        <ul>
+          <li>Ball <b>low</b> → <b>jump</b> with <kbd>↑</kbd>.</li>
+          <li>Ball <b>high</b> → <b>duck</b> with <kbd>↓</kbd>.</li>
+          <li>Press <b>just before it hits</b>. Too early, too late or the wrong key: no dodge.</li>
+          <li>A dodge means: the shot doesn't count.</li>
+          <li><b>Speed training</b> gives you more time for it. With 10 points the time window is almost twice as long.</li>
+          <li>You can't dodge a <b>special attack</b>.</li>
+        </ul>
+        <h3>Special attack</h3>
+        <ol class="steps">
+          <li>On the screen you see your <b>special gauge</b>. It has 3 levels. Every hit fills one level – whether you
+            hit or get hit.</li>
+          <li>When it's full, the <b>Special</b> button appears with the name of your attack, for example
+            “Special: Fox Tail”. Press it or <kbd>E</kbd>.</li>
+          <li>Now <b>press as fast as you can for 2 seconds</b>: <kbd>Space</kbd>, <kbd>E</kbd> or tap the screen.
+            The more often, the surer it hits.</li>
+          <li>If it hits, it does <b>2 damage</b>. Your opponent can neither guard against it nor dodge it. Afterwards
+            the gauge is empty again.</li>
+        </ol>
+        <p class="hint">Your opponent has a special gauge too. When it's full, it uses its special attack.
+          See <a href="#gegner">Wild opponents</a>.</p>
+        <h3>Battle controls</h3>
+        <table>
+          <thead><tr><th>What</th><th>On a computer</th><th>On a phone</th></tr></thead>
+          <tbody>
+            <tr><td>Attack high</td><td>Hold <kbd>↑</kbd> or <kbd>W</kbd>, then let go. <kbd>Space</kbd> works
+              too.</td><td>Hold the <b>Up ↑</b> button. Or the top half of the screen.</td></tr>
+            <tr><td>Attack low</td><td>Hold <kbd>↓</kbd> or <kbd>S</kbd>, then let go.</td>
+              <td>Hold the <b>Down ↓</b> button. Or the bottom half of the screen.</td></tr>
+            <tr><td>Jump (ball low)</td><td><kbd>↑</kbd> or <kbd>W</kbd></td>
+              <td><b>Jump ↑</b> button or tap the top half of the screen</td></tr>
+            <tr><td>Duck (ball high)</td><td><kbd>↓</kbd> or <kbd>S</kbd></td>
+              <td><b>Duck ↓</b> button or tap the bottom half of the screen</td></tr>
+            <tr><td>Start the special attack</td><td><kbd>E</kbd></td><td><b>Special: …</b> button</td></tr>
+            <tr><td>Special attack: press fast</td><td><kbd>Space</kbd> or <kbd>E</kbd></td>
+              <td>Tap the screen or the button</td></tr>
+          </tbody>
+        </table>
+        <p class="hint">Remember: ↑ is always high, ↓ is always low. You jump over a low ball. You duck under a high
+          ball. The buttons also work with a mouse on a computer.</p>
+        <h3>How to win more often</h3>
+        <ul>
+          <li>full <b>Strength hearts</b></li>
+          <li>lots of <b>training</b> in this stage (see <a href="#training">Training</a>)</li>
+          <li>no overweight</li>
+          <li>the right <b>attribute</b>: Vaccine beats Virus, Virus beats Data, Data beats Vaccine</li>
+          <li>hit the <b>gap</b> and <b>dodge</b> well</li>
+          <li>use your <b>special attack</b> as soon as the gauge is full</li>
+        </ul>
+        <p><b>Win:</b> 1–2 g lighter. Sometimes the opponent drops a <b>Digi-Egg</b>. It goes into your collection.<br>
+          <b>Loss:</b> Sometimes your Digimon gets injured. Give it medicine!</p>
+        <p class="hint">After 25 rounds the battle ends – the round count is shown during the fight (“Round 5 of 25”).
+          Then whoever has more lives left wins; with the same number it's a draw (no injury). If you just leave
+          a battle, it counts as a loss after 15 minutes. Open the leaderboard of all players with the trophy button at
+          the top.</p>
+      </section>
+
+      <section id="gegner">
+        <h2>Wild opponents</h2>
+        <p class="tldr"><b>In short</b>Every wild Digimon has a personality. The game tells you how it seems.
+          If it announces a strong attack, make sure to dodge.</p>
+        <p>When a wild Digimon appears, the message tells you how it seems. For example: <b>“It seems aggressive.”</b>
+          That's its <b>personality</b>. It changes how it fights.</p>
+        <table>
+          <thead><tr><th>Personality</th><th>What it does</th><th>Tip</th></tr></thead>
+          <tbody>
+            <tr><td>calm</td><td>Fights completely normally.</td><td>Good for practice.</td></tr>
+            <tr><td>aggressive</td><td>Often shoots twice in one round. Uses strong attacks more often.</td>
+              <td>After the first ball, watch out for the second.</td></tr>
+            <tr><td>armored</td><td>Has 4 lives instead of 3.</td><td>Mega Shots and special attacks help.</td></tr>
+            <tr><td>nimble</td><td>Is harder to hit. Interrupts you more often while you charge.</td>
+              <td>Don't charge too long. A power shot is enough.</td></tr>
+            <tr><td>sly</td><td>Usually guards the side you attacked last.</td>
+              <td>Switch between high and low every round.</td></tr>
+          </tbody>
+        </table>
+        <h3>Strong attack</h3>
+        <ol class="steps">
+          <li>When your opponent winds up for a strong attack, it <b>blinks</b>. A <b>“!”</b> appears on the screen,
+            along with the message “Strong attack – dodge!”.</li>
+          <li>Then its ball flies – high or low, as always.</li>
+          <li>Dodge as usual. If it hits you, it does <b>2 damage</b>. So you lose 2 lives at once.</li>
+        </ol>
+        <p>Any wild opponent can use strong attacks. Aggressive ones use them the most.</p>
+        <h3>Your opponent's special attack</h3>
+        <p>Wild Digimon fill their special gauge too. When it's full, instead of its normal shot a ball with
+          <b>“SPECIAL”</b> comes. You <b>can't</b> dodge it. If it hits, it does 2 damage.</p>
+        <p class="hint">Ghosts at Halloween have a personality too. Against friends there are no personalities and no
+          strong attacks.</p>
+      </section>
+
+      <section id="erkunden">
+        <h2>Exploring & backpack</h2>
+        <p class="tldr"><b>In short</b>Send your Digimon on a trip. It brings back egg shards and items.
+          4 shards from the same area make a Digi-Egg.</p>
+        <ol class="steps">
+          <li>Press <kbd>7</kbd> and choose an <b>area</b>.</li>
+          <li>Choose how <b>long</b>: 30 minutes, 2 hours or 8 hours. The trip costs 1 Hunger heart for supplies.</li>
+          <li>Wait. While it's away, your Digimon doesn't get hungry and doesn't call.</li>
+          <li>When it comes back, you see what it found. Press <b>OK</b> – only then does it carry on.</li>
+        </ol>
+        <p><b>No stress when it returns:</b> Your Digimon waits until you press OK. Until then it doesn't get hungry,
+          doesn't call and can't get a care mistake – even if you only check in hours later.</p>
+        <p>Longer trips bring more: 30 minutes = 1 chance to find something, 2 hours = 3, 8 hours = 6. With a bit of luck,
+          each chance finds an <b>egg shard</b> or an <b>item</b>. Both go into your backpack.
+          Sometimes a <b>wild Digimon</b> follows it home – press <b>OK</b> first, then you can fight or flee. You can <b>call it back</b> at any time, but then it finds nothing.</p>
+        <h3>Egg shards</h3>
+        <p>Every area has its own shards, e.g. “Egg Shard Jungle”. Once you have <b>4 of the same kind</b>, tap them in
+          the backpack and choose <b>Put together</b>. They become a Digi-Egg from that area – which one is a surprise.
+          It goes into your collection. If your collection is full, the shards stay in your backpack. You can also sell
+          shards (15 Bits each).</p>
+        <table>
+          <thead><tr><th>Area</th><th>From</th></tr></thead>
+          <tbody>
+            <tr><td>Jungle</td><td>Rookie</td></tr>
+            <tr><td>Coast</td><td>Rookie</td></tr>
+            <tr><td>Cloud Peaks</td><td>Champion</td></tr>
+            <tr><td>Metal City</td><td>Champion</td></tr>
+            <tr><td>Dragon Volcano</td><td>Ultimate</td></tr>
+            <tr><td>Dark Zone</td><td>Ultimate</td></tr>
+          </tbody>
+        </table>
+        <h3>Backpack (<kbd>8</kbd>)</h3>
+        <ul>
+          <li><b>Treat</b> – Hunger and Strength instantly full (+2 g).</li>
+          <li><b>Training Weight</b> – counts as 2 training sessions in this stage.</li>
+          <li><b>Lucky Charm</b> – the next battle gets much easier.</li>
+          <li><b>Guardian Totem</b> (rare) – your Digimon holds on to it. If it would die, the totem saves it once.
+            It then goes into the fridge and waits for you there.</li>
+          <li><b>Everstone</b> – as long as your Digimon holds it, it won't digivolve. You can take it off again any
+            time in the backpack.</li>
+          <li><b>Hourglasses</b> (1, 3 or 6 h) – skip waiting: the Digivolution comes sooner. If your Digimon is out
+            exploring, it also gets back sooner. Hunger, poop and calls do <b>not</b> run during the skip.</li>
+          <li><b>Erase Disk</b> – erases 1 care mistake.</li>
+          <li><b>Virus Disk</b> – adds 1 care mistake. Handy for Digivolutions that need care mistakes (e.g. Numemon).
+            It stops before things get dangerous: it never goes above 19 care mistakes.</li>
+          <li><b>Egg shards</b> – 4 of the same kind make a Digi-Egg (see above).</li>
+          <li><b>Reset Crystal</b> (shop only) – your Digimon turns back into a random Digi-Egg.</li>
+          <li><b>Spooky Candy</b> (Halloween only) – Hunger +1 and Strength +1.</li>
+          <li><b>Armor Eggs</b> (rare) – instant <a href="#armor">Armor Digivolution</a> for the matching Digimon.</li>
+        </ul>
+        <p class="hint">Hourglasses, Erase Disks and Virus Disks also work while your Digimon is asleep or out exploring. You can also
+          use hourglasses on Digimon in your collection, in the Digimon PC – but only while they're out exploring (time
+          stands still in the collection). Digimon from
+          your collection can explore too. See <a href="#sammlung">Collection</a>.</p>
+      </section>
+
+      <section id="shop">
+        <h2>Shop & Bits</h2>
+        <p class="tldr"><b>In short</b>Use Bits to buy items for your backpack in the shop. You earn Bits by exploring,
+          in battles and sometimes while cleaning.</p>
+        <p>Open the shop with the <b>coin button</b> at the top of the game. Your Bits are shown there and on key
+          <kbd>8</kbd> Backpack.</p>
+        <h3>How to earn Bits</h3>
+        <table>
+          <thead><tr><th>Where</th><th>How many</th></tr></thead>
+          <tbody>
+            <tr><td>Exploring</td><td>30 min: 5–10 · 2 h: 15–30 · 8 h: 50–80</td></tr>
+            <tr><td>Battle won</td><td>Rookie 10, Champion 15, Armor 18, Ultimate 22, Mega 30 (+ up to 5)</td></tr>
+            <tr><td>Battle lost</td><td>2</td></tr>
+            <tr><td>Battle against friends</td><td>Win 25 · Draw 10 · Loss 5 · Giving up 0</td></tr>
+            <tr><td>Cleaning</td><td>rarely 3–8 – sometimes something sparkles in the poop</td></tr>
+          </tbody>
+        </table>
+        <h3>What the shop sells</h3>
+        <table>
+          <thead><tr><th>Item</th><th>Price</th></tr></thead>
+          <tbody>
+            <tr><td>Treat</td><td>30 Bits</td></tr>
+            <tr><td>Small Hourglass (1 h)</td><td>40 Bits</td></tr>
+            <tr><td>Training Weight</td><td>50 Bits</td></tr>
+            <tr><td>Lucky Charm</td><td>60 Bits</td></tr>
+            <tr><td>Virus Disk</td><td>80 Bits</td></tr>
+            <tr><td>Hourglass (3 h)</td><td>100 Bits</td></tr>
+            <tr><td>Erase Disk</td><td>120 Bits</td></tr>
+            <tr><td>Everstone</td><td>150 Bits</td></tr>
+            <tr><td>Big Hourglass (6 h)</td><td>180 Bits</td></tr>
+            <tr><td>Guardian Totem</td><td>300 Bits</td></tr>
+            <tr><td>Reset Crystal (shop only)</td><td>500 Bits</td></tr>
+            <tr><td>Spooky Candy (Halloween only)</td><td>90 Bits</td></tr>
+          </tbody>
+        </table>
+        <p class="hint">These are the standard prices – the admin can change them. The shop always shows what applies right now.</p>
+        <h3>Daily Steal</h3>
+        <p>Every day one item in the shop is <b>40% cheaper</b>. It's at the very top, framed in orange, with the old price
+          crossed out. At midnight the next one takes its place.</p>
+        <p><b>Reset Crystal:</b> Your active Digimon turns back into a <b>random Digi-Egg</b> – a brand-new start. Its
+          nickname and wins stay, and so does everything you've collected. Because it can't be undone, you have to press
+          twice. The crystal is only sold in the shop.</p>
+        <p class="hint"><b>Armor Eggs</b> can't be bought – you can only find them while <a href="#erkunden">exploring</a>.
+          You can find most of the other items there too, just more rarely.</p>
+        <h3>Selling items</h3>
+        <ol>
+          <li>Open your <b>bag</b> and tap an item.</li>
+          <li>Choose <b>Sell</b> (or <b>Use</b>, as before).</li>
+          <li>Set how many you want to sell with <b>− 1</b>, <b>+ 1</b> or <b>All</b>, then press “Sell”.</li>
+        </ol>
+        <p>You can sell anything, any amount. Shop items give <b>half</b> their price, Armor Eggs <b>50 Bits</b>, the
+          golden Armor Egg of Miracles <b>200 Bits</b>, a Spooky Candy <b>10 Bits</b>.</p>
+        <h3>V-Pet designs</h3>
+        <p>The shop tab <b>V-Pet designs</b> has new colors for your whole game: shell, screen, background, buttons and
+          gauges. Each design shows a preview with your Digimon. You can switch between designs you've bought there at
+          any time – the help page uses the colors too.</p>
+        <table>
+          <thead><tr><th>Design</th><th>Price</th></tr></thead>
+          <tbody>
+            <tr><td>Classic</td><td>free</td></tr>
+            <tr><td>Original Grey, Agumon Orange, Gabumon Blue, Biyomon Pink, Palmon Green</td><td>150 Bits each</td></tr>
+            <tr><td>Night Mode (bright pixels on a dark screen)</td><td>250 Bits</td></tr>
+            <tr><td>Gold</td><td>600 Bits</td></tr>
+            <tr><td>Halloween (only in the shop during Halloween)</td><td>10 Spooky Candies</td></tr>
+          </tbody>
+        </table>
+        <h3>Decorations</h3>
+        <p>Below the designs you'll find <b>decorations</b> – little extras that play faintly behind your Digimon on the
+          screen. Decorations you buy belong to your account and can be switched on and off at any time with one button.</p>
+        <table>
+          <thead><tr><th>Decoration</th><th>Price</th></tr></thead>
+          <tbody>
+            <tr><td>Twinkling Stars – little stars twinkle at the top of the screen</td><td>100 Bits</td></tr>
+            <tr><td>Bubbles – bubbles rise along the edges</td><td>120 Bits</td></tr>
+            <tr><td>Little Hearts – now and then a heart rises above your Digimon</td><td>120 Bits</td></tr>
+            <tr><td>Snowfall – snowflakes drift across the screen</td><td>150 Bits</td></tr>
+            <tr><td>Bats – flutter through the top bar (free during Halloween, yours to keep only if bought)</td><td>5 Spooky Candies</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section id="events">
+        <h2>Events & Halloween</h2>
+        <p class="tldr"><b>In short</b>At special times of the year there are events with extras. At Halloween, ghosts
+          haunt the Digital World – and that's the only time you can get the Pumpkinmon egg.</p>
+        <p>When an event is running, you'll see a banner at the top of the game. Press <b>✕</b> to hide it (until the next
+          event). An <b>event icon</b> then appears in the top bar (a pumpkin at Halloween). It – or “More” in the banner –
+          opens the <b>event tab</b> with everything at a glance:</p>
+        <ul>
+          <li>the event's little <b>story</b> and how long it still runs,</li>
+          <li>all <b>rewards</b> with their chances,</li>
+          <li>the <b>event egg</b> with its whole line,</li>
+          <li>what's in the <b>shop</b> and up for <b>trade</b> (with buttons that take you there),</li>
+          <li>which Digimon are <b>ghosts</b>.</li>
+        </ul>
+        <h3>Halloween (October 25 to November 2)</h3>
+        <ul>
+          <li><b>Ghosts:</b> Every second wild Digimon is a ghost, for example Bakemon, Wizardmon, Phantomon or
+            Pumpkinmon. Beat one for <b>double Bits</b> and sometimes a <b>Spooky Candy</b>.</li>
+          <li><b>Spooky Candy:</b> Hunger +1 and Strength +1. Only at Halloween – from ghosts, while exploring and in the shop.
+            During the event the shop has a <b>candy trade</b>: 15 Spooky Candies = a Digi-Egg Halloween (always
+            Pumpkinmon), 10 Spooky Candies = the <b>Halloween design</b> (“V-Pet designs” tab). Once bought, it's yours
+            forever.</li>
+          <li><b>Bats:</b> During Halloween, bats flutter across everyone's screen. You can switch them off in the shop
+            under “V-Pet designs” → Decorations. Buy them for 5 Spooky Candies and they stay even after the event.</li>
+          <li><b>Exploring:</b> spooky eggs and Spooky Candy more often.</li>
+          <li><b>Digi-Egg Halloween:</b> <b>only</b> available during Halloween – while exploring and rarely from beaten ghosts.</li>
+        </ul>
+        <h3>The Halloween egg</h3>
+        <p>The Halloween egg always grows the same way – <b>no matter how you take care of it</b>:</p>
+        <p class="stage-row">Yuramon → Tanemon → Candlemon → Bakemon → Pumpkinmon → NoblePumpkinmon</p>
+        <p>Each stage simply digivolves when its time is up. Care mistakes, training and battles don't matter. It can
+          still die if you leave it alone for too long, though.</p>
+        <p><b>Pumpkinmon</b> and <b>NoblePumpkinmon</b> <b>only</b> come from this egg – there's no other way to get them.</p>
+        <p class="hint">Of course you keep the egg after the event – you just can't get new ones until next year.</p>
+      </section>
+
+      <section id="armor">
+        <h2>Armor Digivolution</h2>
+        <p class="tldr"><b>In short</b>With an Armor Egg, a matching Digimon digivolves instantly – just like in
+          Digimon Adventure 02.</p>
+        <ol class="steps">
+          <li>Find an Armor Egg while <a href="#erkunden">exploring</a>. It goes into your backpack.</li>
+          <li>If it matches your Digimon, it glows orange in the backpack.</li>
+          <li>Use it. Your Digimon digivolves right away, no waiting and no battles.</li>
+        </ol>
+        <table>
+          <thead><tr><th>Armor Egg</th><th>For</th><th>Becomes</th></tr></thead>
+          <tbody>
+            <tr><td>Courage</td><td>Veemon</td><td>Flamedramon</td></tr>
+            <tr><td>Friendship</td><td>Veemon</td><td>Raidramon</td></tr>
+            <tr><td>Love</td><td>Hawkmon</td><td>Halsemon</td></tr>
+            <tr><td>Sincerity</td><td>Hawkmon</td><td>Shurimon</td></tr>
+            <tr><td>Knowledge</td><td>Armadillomon</td><td>Digmon</td></tr>
+            <tr><td>Reliability</td><td>Armadillomon</td><td>Submarimon</td></tr>
+            <tr><td>Hope</td><td>Patamon</td><td>Pegasusmon</td></tr>
+            <tr><td>Light</td><td>Salamon or Gatomon</td><td>Nefertimon</td></tr>
+            <tr><td>Miracles (golden, very rare)</td><td>Veemon</td><td>Magnamon</td></tr>
+          </tbody>
+        </table>
+        <ul>
+          <li>Armor forms are their own stage, “Armor”. It's a <b>final stage</b>: they don't digivolve any further.
+            So think carefully whether you'd rather go for Ultimate and Mega.</li>
+          <li>In battle, an Armor form is stronger than a Champion and weaker than an Ultimate.</li>
+          <li>Your Digimon must be awake and healthy. The Armor Egg is used up afterwards.</li>
+          <li>Without an Armor Egg, your Digimon digivolves normally.</li>
+        </ul>
+      </section>
+
+      <section id="sammlung">
+        <h2>Collection & fridge</h2>
+        <p class="tldr"><b>In short</b>Your collection holds more Digimon and eggs. Time stands still in there.</p>
+        <p>Open your collection with the <b>egg button</b> at the top of the game. It works like the PC in Pokémon:
+          <b>8 boxes</b> with <b>20 slots</b> each. In the collection nobody gets hungry and nothing digivolves.</p>
+        <ul>
+          <li>Use ◀ ▶ (or the arrow keys) to flip through the boxes. Tap a box name to rename it.</li>
+          <li>Tap a Digimon. Its stats and these buttons appear below:</li>
+        </ul>
+        <table>
+          <thead><tr><th>Button</th><th>What it does</th></tr></thead>
+          <tbody>
+            <tr><td>Make active</td><td>Swaps it with your active Digimon. For eggs the button is called <b>Hatch</b>.</td></tr>
+            <tr><td>Trade</td><td>Give it to a friend. See <a href="#tausch">Trading</a>.</td></tr>
+            <tr><td>Release</td><td>Gone forever. You have to press twice.</td></tr>
+            <tr><td>Explore</td><td>Send it on a trip (from Rookie on).</td></tr>
+            <tr><td>Give name</td><td>Give it a nickname.</td></tr>
+            <tr><td>Move</td><td>Put it into another box.</td></tr>
+          </tbody>
+        </table>
+        <h3>Exploring from the collection</h3>
+        <p>Up to <b>3 Digimon</b> from your collection can be on a trip at the same time. Your active Digimon doesn't count.
+          Their time still stands still, so they don't get hungry. Finds (shards, items, Bits) go into your backpack as usual,
+          but wild Digimon don't follow them home. While they're away, you can only call them back. What they brought
+          back is listed in the collection under <b>Back from exploring</b> (the last 15 trips).</p>
+        <h3>New eggs and memories</h3>
+        <p>You put new eggs together from 4 <b>egg shards</b> found while exploring, and sometimes you get one after
+          winning a battle. Only if you have no Digimon and no egg
+          left at all do you get a free egg. <b>Memories</b> lists your Digimon that have died.</p>
+        <h3>Fridge</h3>
+        <p>Going on vacation? In the <b>settings</b> you can put your <b>active</b> Digimon into the fridge. Time stands
+          still there: no hunger, no calls, no Digivolution. <b>Thaw</b> it and everything continues exactly where it stopped.</p>
+      </section>
+
+      <section id="freunde">
+        <h2>Battling friends</h2>
+        <p class="tldr"><b>In short</b>Challenge a friend who is online right now. You both charge at the same time.
+          Then each of you dodges the other's ball.</p>
+        <h3>Adding friends</h3>
+        <p>Every account has its own <b>friend code</b> (Settings → Friends). Give your code to a friend, or type their
+          code into “Add friend” – then you're <b>both</b> friends. Battles, trades and Jogress only work with friends.
+          Others only see whether a friend is online and which Digimon they have – not what it's doing or when it comes
+          back from exploring. “New code” makes your old code stop working; people who are already your friends stay
+          friends. “Remove” ends the friendship for both of you.</p>
+        <h3>What do your friends have?</h3>
+        <p>Every friend in the list has a <b>“View”</b> button. It shows their partner, every Digimon in their
+          collection, how many eggs they have, their Digidex progress, achievements and wins. Tap a Digimon to open its
+          Digidex entry. This works <b>for friends only</b> – strangers can't see your Digimon. Stats, trips and return
+          times stay secret even from friends.</p>
+        <h3>How a battle works</h3>
+        <ol class="steps">
+          <li>Press <kbd>6</kbd> and choose <b>Challenge a friend</b>. You see your friends. You can challenge anyone who is
+            online and has a Digimon ready to battle (Rookie or higher, awake, healthy, fed).</li>
+          <li>Your friend hears a sound and has <b>60 seconds</b> to accept.</li>
+          <li>The battle costs both of you 1 Hunger heart and 1 Strength heart.</li>
+          <li><b>Attack:</b> Each round you both charge <b>at the same time</b>. Hold <kbd>↑</kbd> or <kbd>↓</kbd> and let
+            go – just like against wild Digimon (see <a href="#kampf">Battles</a>). If you haven't shot after
+            25 seconds, you shoot automatically – but weakly.</li>
+          <li><b>Dodge:</b> Then the balls fly. Each of you dodges the other's ball. Ball low: <kbd>↑</kbd> to jump.
+            Ball high: <kbd>↓</kbd> to duck.</li>
+          <li>Whoever runs out of lives first loses. If both fall at the same time, it's a draw. After 25 rounds, whoever
+            has more lives wins – with the same number it's a draw.</li>
+        </ol>
+        <h3>What's different from wild Digimon?</h3>
+        <ul>
+          <li>There's <b>no guarding</b>, so there's no “Gap!” either. High or low only decides where your ball flies.
+            Your friend then has to dodge the right way.</li>
+          <li>There are no personalities and no strong attacks.</li>
+          <li>Your <b>special gauge</b> fills when <b>you</b> get hit or <b>dodge</b> a ball – not when you land a hit
+            yourself. So whoever is behind gets to their special attack sooner.</li>
+          <li>These stay the same: power shot, the MEGA level with its risk, Mega Shot and special attack. Your friend
+            can't dodge your special attack either.</li>
+        </ul>
+        <p>The same stats count as against wild Digimon. The battle counts for Digivolution and the leaderboard.
+          The loser can get injured. <b>Giving up</b> counts as a loss.</p>
+        <p class="hint">Speed training is especially worth it here: you get more time to dodge.</p>
+      </section>
+
+      <section id="tausch">
+        <h2>Trading</h2>
+        <p class="tldr"><b>In short</b>You can trade eggs and Digimon from your collection with friends, or give them as gifts.</p>
+        <ol class="steps">
+          <li>Open your collection, tap a Digimon or egg and press <b>Trade</b>.</li>
+          <li>Pick a friend. Tick <b>as a gift</b> if you don't want anything back. Then <b>Send offer</b>.</li>
+          <li>Your friend sees the offer in their collection – the egg button gets an orange dot. They can accept the gift,
+            make a <b>counter-offer</b> or decline.</li>
+          <li>For a counter-offer, <b>you</b> still have to confirm the trade. Only then is it traded.</li>
+        </ol>
+        <p class="hint">Your friend doesn't need to be online. You can only trade Digimon from your collection. If you
+          want to trade your active Digimon, make a different one active first.</p>
+      </section>
+
+      <section id="jogress">
+        <h2>Jogress (fusion)</h2>
+        <p class="tldr"><b>In short</b>Two Digimon fuse into a new one. When key <kbd>9</kbd> lights up, a fusion is possible.</p>
+        <p>Examples: WarGreymon + MetalGarurumon → Omnimon, BlitzGreymon + CresGarurumon → Omnimon Alter-S.</p>
+        <ul>
+          <li>The <b>partner</b> is either one specific Digimon or a Digimon of the same stage with a matching attribute
+            (for example “a Virus Digimon”). The Jogress menu and the Finder tell you exactly which.</li>
+          <li>The partner can come from your <b>collection</b>. Or it's the active Digimon of a <b>friend</b>, who must be
+            online and agree within 60 seconds.</li>
+          <li>Only <b>your</b> Digimon digivolves. The partner stays as it is.</li>
+          <li>If the fusion also asks for something like few care mistakes, that has to fit too.</li>
+        </ul>
+      </section>
+
+      <section id="merkliste">
+        <h2>Finder & wishlist</h2>
+        <p class="tldr"><b>In short</b>Pick a dream Digimon. The game then shows you step by step what to do.</p>
+        <ol class="steps">
+          <li>Open the <a href="#finder">Digimon Finder</a> at the top of this page and search for your dream Digimon.</li>
+          <li>When you're logged in, <b>“From your Digimon”</b> is at the very top: the path from your own Digimon
+            (active and in the collection) to your dream Digimon. Below that you get the easiest path for <b>every egg</b> –
+            tap to expand. Each step comes with an example that's sure to work.</li>
+          <li>Tap <b>☆ Wishlist</b>.</li>
+          <li>In the game, the <b>★ button</b> at the top opens your wishlist.</li>
+          <li>Tap <b>Set as goal</b> on the Digimon you want. Now it's the goal of <b>this</b> Digimon.</li>
+        </ol>
+        <p><b>Every Digimon has its own goal.</b> Your Gabumon can aim for Omnimon and your Impmon for Beelzemon – under
+          “Next Digivolution” you only ever see the goal of the Digimon that's active right now. The goal stays with the
+          Digimon, even when it goes into the collection. At the top of the wishlist you see the current goal with the
+          whole path; the other Digimon you want are collapsed (“Show path”). If your Digimon has no goal, a hint reminds
+          you – press <b>✕</b> to hide it.</p>
+        <p>For the next step you see live what already fits (✓) and what's still missing (✗). After each Digivolution the
+          path moves on, and “on track ✓” shows when everything fits.</p>
+        <p class="hint">If a goal can no longer be reached from your Digimon, it tells you which egg it comes from. Your
+          wishlist belongs to your account and works on all devices. You can find every Digimon with picture and
+          description in the <a href="#digidex">Digidex</a>.</p>
+      </section>
+
+      <section id="erfolge">
+        <h2>Achievements & collection</h2>
+        <p class="tldr"><b>In short</b>Collect as many different Digimon as you can and unlock achievements. Each
+          achievement gives Bits once.</p>
+        <p><b>Collection:</b> Every form any of your Digimon ever had counts as collected – even if it digivolved long
+          ago, was released or traded. At the top of the <a href="#digidex">Digidex</a> you see how many you have
+          (“Collected: 37 / 521”). Missing ones are faded. Use the “Collected” and “Missing” buttons to filter the list.</p>
+        <p><b>Achievements:</b> In the game, open the <b>trophy button</b> and switch to <b>Achievements</b>. There you'll
+          find all achievements with your progress, for example:</p>
+        <ul>
+          <li>Reaching stages: Rookie, Champion, Ultimate, Mega, an Armor form</li>
+          <li>Collecting: 10, 25, 50, 100 or 250 different Digimon, all Armor forms</li>
+          <li>Battling: 10, 50 or 200 wins, wins against friends</li>
+          <li>Exploring, Jogress, ghosts at Halloween, raising a Pumpkinmon</li>
+        </ul>
+        <p class="hint">When you unlock an achievement, a message pops up and the Bits go straight to your account.</p>
+      </section>
+
+      <section id="einstellungen">
+        <h2>Buttons & settings</h2>
+        <p class="tldr"><b>In short</b>All menus are at the top right of the game.</p>
+        <table>
+          <thead><tr><th>Button</th><th>What it opens</th></tr></thead>
+          <tbody>
+            <tr><td>★</td><td>Wishlist – your path to dream Digimon</td></tr>
+            <tr><td>Egg</td><td>Collection (Digimon PC) and trade offers</td></tr>
+            <tr><td>Coin</td><td>Shop – buy items with Bits</td></tr>
+            <tr><td>Trophy</td><td>Leaderboard (the wins of all players) and your achievements</td></tr>
+            <tr><td>Newspaper</td><td>“What's new?” – with a dot when there's news</td></tr>
+            <tr><td>?</td><td>this help</td></tr>
+            <tr><td>Gear</td><td>Settings</td></tr>
+          </tbody>
+        </table>
+        <p>Tap your Digimon's <b>name</b> to open its Digidex entry. With <b>✎ Name</b> you give it a nickname
+          (up to 12 characters). It stays through every Digivolution.</p>
+        <h3>In the settings</h3>
+        <ul>
+          <li><b>Sprache · Language</b>: German or English. Applies to your account on all devices.</li>
+          <li><b>Change password</b>: Other devices get logged out. Forgot your password? The admin can give you a new one.</li>
+          <li><b>Install as app</b>: The game gets an icon on your home screen and starts without the browser bar.</li>
+          <li><b>Sound</b>: Volume (0 = off). Only for this device.</li>
+          <li><b>Notifications</b>: Your browser lets you know when your Digimon calls, gets sick, hatches, digivolves or
+            dies. This works as long as the game is open in a tab.</li>
+          <li><b>Fridge</b>: For vacations. See <a href="#sammlung">Collection & fridge</a>.</li>
+          <li><b>Friends</b>: your friend code, add friends by code, view and remove them. See
+            <a href="#freunde">Battling friends</a>.</li>
+          <li><b>Invite friends</b> (admin only): copy the invite code or make a new one. It's needed to create an
+            account – it has nothing to do with the friend code.</li>
+          <li><b>Log out</b></li>
+        </ul>
+      </section>
+
+      <section id="zeiten">
+        <h2>Timings</h2>
+        <p class="tldr"><b>In short</b>The younger your Digimon, the more often it needs you.</p>
+        <table>
+          <thead><tr><th>Stage</th><th>Digivolves after</th><th>−1 Hunger every</th><th>−1 Strength every</th><th>Poop every</th></tr></thead>
+          <tbody>
+            <tr><td>Egg</td><td>1 min</td><td>–</td><td>–</td><td>–</td></tr>
+            <tr><td>Baby I</td><td>10 min</td><td>3 min</td><td>3 min</td><td>3 min</td></tr>
+            <tr><td>Baby II</td><td>12 h</td><td>30 min</td><td>30 min</td><td>1 h</td></tr>
+            <tr><td>Rookie</td><td>24 h</td><td>48 min</td><td>38 min</td><td>2 h</td></tr>
+            <tr><td>Champion</td><td>36 h + battles</td><td>59 min</td><td>48 min</td><td>2 h</td></tr>
+            <tr><td>Armor</td><td>final stage</td><td>59 min</td><td>48 min</td><td>2 h</td></tr>
+            <tr><td>Ultimate</td><td>48 h</td><td>79 min</td><td>59 min</td><td>3 h</td></tr>
+            <tr><td>Mega</td><td>final stage</td><td>99 min</td><td>79 min</td><td>3 h</td></tr>
+          </tbody>
+        </table>
+        <p class="hint">So a Baby I (for example Botamon) needs you almost all the time for the first 10 minutes.
+          These timings are for normal speed. The admin can make the game more relaxed or more stressful.</p>
+      </section>
+
+      <section id="tipps">
+        <h2>Tips</h2>
+        <ul>
+          <li><b>Don't overfeed</b> if you want a strong Digimon. Overfeeding leads to different forms.</li>
+          <li>For strong Champions, a Rookie usually needs <b>16 or more training sessions</b>. Spread them over the day.</li>
+          <li>Keep an eye on <b>bedtime</b> and turn off the light in time.</li>
+          <li>Turn on <b>notifications</b> and leave the tab open. Then you won't miss a call.</li>
+          <li>Only battle with full Strength hearts and after a few training sessions.</li>
+          <li>In battle, the <b>power shot</b> is the safe way. Charging further is only worth it if you want to take
+            a risk.</li>
+          <li>Plan with your <b>wishlist</b>: it tells you exactly what your dream Digimon still needs.</li>
+        </ul>
+      </section>
+
+      <section id="woerter">
+        <h2>Glossary</h2>
+        <dl class="glossary">
+          <dt>Digivolution</dt><dd>Your Digimon turns into a new, usually stronger form.</dd>
+          <dt>Stage</dt><dd>How far a Digimon has grown: Baby I, Baby II, Rookie, Champion, Ultimate, Mega (and Armor).</dd>
+          <dt>Final stage</dt><dd>No more Digivolution after this (Mega and Armor).</dd>
+          <dt>Call</dt><dd>Your Digimon needs something: food, strength or the light turned off.</dd>
+          <dt>Care mistake</dt><dd>A call you didn't take care of for 10 minutes.</dd>
+          <dt>Overfed</dt><dd>You gave meat although Hunger was already full.</dd>
+          <dt>Strength hearts</dt><dd>The second gauge next to Hunger. Full = strong in battle.</dd>
+          <dt>Power shot</dt><dd>A shot with a full charge bar. Hits often.</dd>
+          <dt>Mega Shot</dt><dd>A shot where the MEGA level is completely full too. Does 2 damage. But you often get
+            interrupted while charging.</dd>
+          <dt>Gap</dt><dd>The side (high or low) a wild Digimon isn't guarding right now. You hit more often there.</dd>
+          <dt>Dodge</dt><dd>Avoiding a ball: jump (↑) when it comes low, duck (↓) when it comes high.</dd>
+          <dt>Special gauge</dt><dd>Fills up with every hit. When it's full, you can use your special attack.</dd>
+          <dt>Special attack</dt><dd>Your Digimon's signature attack, with its real name. Does 2 damage, and it can't
+            be dodged.</dd>
+          <dt>Personality</dt><dd>The character of a wild Digimon: calm, aggressive, armored, nimble or sly.</dd>
+          <dt>Strong attack</dt><dd>An opponent's attack that is announced first (it blinks, “!”). Does 2 damage if you
+            don't dodge.</dd>
+          <dt>Training style ★</dt><dd>The kind of training you do clearly the most. It affects the next Digivolution.</dd>
+          <dt>Attribute</dt><dd>Vaccine, Data, Virus or Free. Important in battle and for Jogress.</dd>
+          <dt>Element</dt><dd>Fire, Water, Wind and so on. Important for the training style.</dd>
+          <dt>Jogress</dt><dd>Two Digimon fuse into a new one.</dd>
+          <dt>Armor Egg</dt><dd>An item that makes a matching Digimon digivolve instantly.</dd>
+          <dt>Bits</dt><dd>The money of the Digital World. You use it to shop.</dd>
+          <dt>Collection</dt><dd>Your Digimon PC with 8 boxes. Time stands still in there.</dd>
+          <dt>Fridge</dt><dd>Freezes your active Digimon, for example while you're on vacation.</dd>
+          <dt>Wishlist</dt><dd>Your dream Digimon, with the path to get there.</dd>
+          <dt>Digidex</dt><dd>An encyclopedia of all Digimon in the game.</dd>
+        </dl>
+      </section>
+
+      <nav class="chapter-nav" id="chapter-nav" aria-label="Chapters"></nav>
+    </main>
+  </template>
+
+  <script src="i18n.js"></script>
+  <script src="i18n/en-rules.js"></script>
+  <script src="i18n/en-help.js"></script>
+  <script src="rules.js"></script>
+  <script src="hilfe.js"></script>
+</body>
+</html>

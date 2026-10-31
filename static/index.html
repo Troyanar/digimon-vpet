@@ -1,0 +1,501 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Digimon V-Pet</title>
+  <link rel="manifest" href="/manifest.webmanifest">
+  <meta name="theme-color" content="#061031">
+  <link rel="icon" href="/icons/icon-192.png">
+  <link rel="apple-touch-icon" href="/icons/icon-180.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="V-Pet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,400;0,600;0,700;1,700&family=Silkscreen&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app">
+    <!-- linke Hälfte: Digital World mit dem Display -->
+    <section class="world" aria-label="Display">
+      <canvas id="rain" aria-hidden="true"></canvas>
+      <div class="device">
+        <div class="lcd">
+          <div class="lcd-row lcd-head">
+            <span id="lcd-name">----</span>
+            <span id="lcd-clock">--:--</span>
+          </div>
+          <div class="lcd-canvas" id="lcd-box">
+            <canvas id="lcd"></canvas>
+          </div>
+          <div class="lcd-row lcd-flags">
+            <span class="flag" id="flag-call"><canvas data-icon="call"></canvas><span id="call-text">RUF</span></span>
+            <span class="flag" id="flag-sick"><canvas data-icon="skull"></canvas>KRANK</span>
+            <span class="flag" id="flag-sleep"><canvas data-icon="zz"></canvas>SCHLAF</span>
+            <span class="flag" id="flag-light"><canvas data-icon="light"></canvas>LICHT</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- rechte Hälfte: Anzeige und Bedienung -->
+    <section class="console" id="console" hidden>
+      <header class="head">
+        <div>
+          <p class="kicker">Partner-Digimon
+            <button class="nick-edit" id="nick-edit" type="button" title="Spitzname geben" hidden>✎ Name</button></p>
+          <h1 id="name">Digimon V-Pet</h1>
+          <form class="nick-form" id="nick-form" hidden>
+            <input name="nick" maxlength="12" placeholder="Spitzname (max. 12 Zeichen)" aria-label="Spitzname" autocomplete="off">
+            <button class="small primary" type="submit">OK</button>
+            <button class="small" type="button" id="nick-clear">Entfernen</button>
+          </form>
+          <p id="meta">Verbinde ...</p>
+        </div>
+        <div class="head-buttons">
+          <!-- nur während eines Events: Story, Belohnungen, Angebote -->
+          <button class="gear gear-event" id="open-event" aria-label="Event" title="Event: Story und Belohnungen" hidden>
+            <canvas data-icon="pumpkin"></canvas>
+          </button>
+          <button class="gear" id="open-wishlist" aria-label="Merkliste" title="Merkliste: der Weg zu deinen Wunsch-Digimon">
+            <canvas data-icon="star"></canvas>
+          </button>
+          <button class="gear" id="open-collection" aria-label="Sammlung" title="Sammlung: deine Digimon und Eier">
+            <canvas data-icon="egg"></canvas>
+          </button>
+          <button class="gear" id="open-shop" aria-label="Shop" title="Shop: Items für Bits kaufen">
+            <canvas data-icon="coin"></canvas>
+          </button>
+          <button class="gear" id="open-ranking" aria-label="Rangliste & Erfolge" title="Rangliste & Erfolge">
+            <canvas data-icon="trophy"></canvas>
+          </button>
+          <button class="gear" id="open-changelog" aria-label="Was ist neu?" title="Was ist neu?">
+            <canvas data-icon="news"></canvas>
+          </button>
+          <a class="gear" href="hilfe.html" aria-label="Hilfe" title="Hilfe: So funktioniert das Spiel">
+            <canvas data-icon="help"></canvas>
+          </a>
+          <button class="gear" id="open-settings" aria-label="Einstellungen" title="Einstellungen">
+            <canvas data-icon="gear"></canvas>
+          </button>
+        </div>
+      </header>
+
+      <div class="announcement" id="announcement" hidden></div>
+      <!-- laufendes Event (z. B. Halloween, game/events.py) -->
+      <div class="event-bar" id="event-bar" hidden>
+        <canvas data-icon="pumpkin" id="event-icon"></canvas>
+        <span><b id="event-name"></b><span id="event-text"></span></span>
+        <span class="row event-bar-actions">
+          <button class="small primary" id="event-more">Mehr</button>
+          <button class="small" id="event-close" aria-label="Banner ausblenden" title="Banner ausblenden">✕</button>
+        </span>
+      </div>
+      <div class="update-bar" id="update-bar" hidden>
+        <span><b>Update da!</b> <span id="update-text">Es gibt eine neue Version des Spiels.</span></span>
+        <button class="small primary" id="update-reload">Neu laden</button>
+      </div>
+      <div class="update-bar news-bar" id="news-bar" hidden>
+        <span><b>Neu im Spiel</b><span id="news-title"></span></span>
+        <span class="row">
+          <button class="small primary" id="news-open">Ansehen</button>
+          <button class="small" id="news-close" aria-label="Ausblenden">✕</button>
+        </span>
+      </div>
+
+      <div class="gauges">
+        <div class="gauge" id="gauge-hunger"><span>Hunger</span><div class="segs hunger" id="g-hunger"></div></div>
+        <div class="gauge" id="gauge-strength"><span>Kraft</span><div class="segs strength" id="g-strength"></div></div>
+      </div>
+
+      <dl class="stats" id="stats"></dl>
+
+      <div class="evo">
+        <div class="evo-label"><span>Nächste Digitation</span><b id="evo-text">–</b></div>
+        <div class="evo-bar"><div id="evo-fill"></div></div>
+      </div>
+      <button class="goal" id="goal" hidden></button>
+
+      <div class="alert" id="alert" hidden></div>
+      <!-- zurück vom Erkunden: wartet auf OK (Fail-Safe, game/pet.py confirm_return) -->
+      <div class="return-box" id="return-box" hidden></div>
+      <p class="message" id="message" role="status"></p>
+
+      <div class="keys" id="keys"></div>
+
+      <div class="log-wrap">
+        <h2>Tagebuch</h2>
+        <ol class="log" id="log"></ol>
+      </div>
+    </section>
+
+    <!-- rechte Hälfte, wenn niemand angemeldet ist -->
+    <section class="auth" id="auth" hidden>
+      <p class="kicker">Willkommen in der Digital World</p>
+      <h1>Digimon V-Pet</h1>
+      <div class="tabs" role="tablist">
+        <button class="tab" id="tab-login" role="tab">Anmelden</button>
+        <button class="tab" id="tab-register" role="tab">Registrieren</button>
+      </div>
+      <form id="auth-form" autocomplete="on">
+        <label>Name
+          <input name="name" autocomplete="username" required minlength="3" maxlength="20">
+        </label>
+        <label>Passwort
+          <input name="password" type="password" autocomplete="current-password" required minlength="6">
+        </label>
+        <label id="invite-field">Einladungscode
+          <input name="invite" autocomplete="off" placeholder="XXXX-XXXX-XXXX">
+        </label>
+        <p class="hint" id="auth-hint"></p>
+        <p class="form-error" id="auth-error" role="alert"></p>
+        <button class="key primary wide" type="submit" id="auth-submit">Anmelden</button>
+      </form>
+      <p class="hint"><a class="auth-help" href="hilfe.html">Wie funktioniert das Spiel?</a></p>
+      <div class="lang-switch auth-lang" role="group" aria-label="Sprache · Language" data-no-i18n>
+        <button class="small" data-lang="de" lang="de">Deutsch</button>
+        <button class="small" data-lang="en" lang="en">English</button>
+      </div>
+    </section>
+
+    <!-- rechte Hälfte beim ersten Start: Fragenkatalog fürs erste Digi-Ei (Texte setzt game.js) -->
+    <section class="quiz" id="quiz" hidden>
+      <p class="kicker" id="quiz-kicker"></p>
+      <h1 id="quiz-title"></h1>
+      <div class="quiz-progress" id="quiz-progress" aria-hidden="true"></div>
+      <p class="quiz-text" id="quiz-text"></p>
+      <div class="quiz-answers" id="quiz-answers"></div>
+      <p class="form-error" id="quiz-error" role="alert"></p>
+      <div class="quiz-foot" id="quiz-foot"></div>
+    </section>
+  </main>
+
+  <!-- Einstellungen -->
+  <div class="scrim" id="scrim" hidden></div>
+  <aside class="settings" id="settings" hidden aria-label="Einstellungen">
+    <header>
+      <h2>Einstellungen</h2>
+      <button class="close" id="close-settings" aria-label="Schließen">✕</button>
+    </header>
+
+    <section>
+      <h3 data-no-i18n>Sprache · Language</h3>
+      <div class="lang-switch" role="group" aria-label="Sprache · Language" data-no-i18n>
+        <button class="small" data-lang="de" lang="de">Deutsch</button>
+        <button class="small" data-lang="en" lang="en">English</button>
+      </div>
+      <p class="hint">Gilt für dein Konto auf allen Geräten.</p>
+    </section>
+
+    <section>
+      <h3>Konto</h3>
+      <p>Angemeldet als <b id="set-user">–</b></p>
+      <form class="cheat-grid pw-form" id="pw-form">
+        <label>Altes Passwort<input name="old" type="password" autocomplete="current-password" required></label>
+        <label>Neues Passwort<input name="new" type="password" autocomplete="new-password" minlength="6" required></label>
+        <button class="small" type="submit">Passwort ändern</button>
+      </form>
+    </section>
+
+    <!-- Freunde: eigener Freundescode, Code eingeben, Freundesliste -->
+    <section id="friends-section">
+      <h3>Freunde</h3>
+      <p class="hint">Kämpfen, Tauschen und Jogress gehen nur mit Freunden. Gib deinen Freundescode nur Leuten, mit denen du spielen willst.</p>
+      <p class="friend-label">Dein Freundescode</p>
+      <div class="row">
+        <code class="code" id="friend-code">----</code>
+        <button class="small" id="friend-copy">Kopieren</button>
+        <button class="small" id="friend-newcode">Neuer Code</button>
+      </div>
+      <form class="row friend-add" id="friend-add">
+        <input name="code" autocomplete="off" placeholder="XXXX-XXXX" aria-label="Freundescode eingeben" maxlength="12">
+        <button class="small primary" type="submit">Freund hinzufügen</button>
+      </form>
+      <p class="hint friend-msg" id="friend-msg" role="status"></p>
+      <ul class="friend-list" id="friend-list"></ul>
+    </section>
+
+    <section>
+      <h3>Als App installieren</h3>
+      <p class="hint" id="install-text">Auf dem Handy: im Browser-Menü „Zum Startbildschirm hinzufügen“ (iPhone: Teilen-Knopf → „Zum Home-Bildschirm“).
+        Dann startet das Spiel wie eine App, ohne Browserleiste.</p>
+      <button class="small primary" id="install-btn" hidden>Jetzt installieren</button>
+    </section>
+
+    <section>
+      <h3>Ton</h3>
+      <div class="row">
+        <input type="range" id="volume" min="0" max="100" step="5" aria-label="Lautstärke">
+        <output id="volume-out">50 %</output>
+      </div>
+      <button class="small" id="sound-test">Ton testen</button>
+    </section>
+
+    <section>
+      <h3>Benachrichtigungen</h3>
+      <p class="hint" id="notify-text">Meldet sich, wenn dein Digimon ruft, krank wird oder sich entwickelt, solange die Seite in einem Tab offen ist.</p>
+      <button class="small" id="notify-toggle">Aktivieren</button>
+    </section>
+
+    <section id="admin-section" hidden>
+      <h3>Admin</h3>
+      <p class="hint">Spieler verwalten, Spielregeln, Zugang, Backups und Protokoll.</p>
+      <a class="small primary" href="admin.html">Admin-Bereich öffnen</a>
+    </section>
+
+    <section id="cheat-section" hidden>
+      <h3>Cheats (nur Admin)</h3>
+      <p class="hint" data-i18n>Zum Testen: Zeit vorspulen, Werte setzen, verwandeln … Auch mit <kbd>Shift</kbd> + <kbd>C</kbd>.</p>
+      <button class="small" id="open-cheats">Cheat-Menü öffnen</button>
+    </section>
+
+    <section id="invite-section" hidden>
+      <h3>Freunde einladen</h3>
+      <p class="hint">Mit diesem Code können sich Freunde registrieren.</p>
+      <div class="row">
+        <code class="code" id="invite-code">----</code>
+        <button class="small" id="invite-copy">Kopieren</button>
+        <button class="small" id="invite-new">Neuer Code</button>
+      </div>
+    </section>
+
+    <section>
+      <h3>Kühlschrank</h3>
+      <p class="hint" id="fridge-text">Für den Urlaub: Dein Digimon wird eingefroren, die Zeit steht still – kein Hunger, keine Rufe, keine Entwicklung –, bis du es auftaust.</p>
+      <button class="small" id="fridge-toggle">In den Kühlschrank</button>
+    </section>
+
+    <section>
+      <button class="small" id="logout">Abmelden</button>
+      <p class="hint version-label" id="version-label"></p>
+    </section>
+  </aside>
+
+  <!-- Sammlung -->
+  <aside class="settings collection" id="collection" hidden aria-label="Sammlung">
+    <header>
+      <h2>Sammlung</h2>
+      <button class="close" id="close-collection" aria-label="Schließen">✕</button>
+    </header>
+    <p class="hint" id="box-info">In der Sammlung steht die Zeit still.</p>
+    <section>
+      <h3>Aktiv</h3>
+      <div id="box-active"></div>
+    </section>
+    <section id="trades-section" hidden>
+      <h3>Tauschangebote</h3>
+      <div class="box-list" id="trade-list"></div>
+    </section>
+    <section>
+      <h3 id="box-title">In der Sammlung</h3>
+      <!-- Boxen wie im Pokémon-PC: blättern, umbenennen, Digimon antippen -->
+      <div class="pc">
+        <div class="pc-head">
+          <button class="pc-nav" id="box-prev" aria-label="Vorherige Box">◀</button>
+          <button class="pc-name" id="box-name" title="Box umbenennen"></button>
+          <button class="pc-nav" id="box-next" aria-label="Nächste Box">▶</button>
+        </div>
+        <form class="pc-rename" id="box-rename" hidden>
+          <input class="cheat-select" name="name" maxlength="16" aria-label="Name der Box">
+          <button class="small primary" type="submit">OK</button>
+        </form>
+        <div class="pc-grid" id="box-list"></div>
+        <div class="pc-tabs" id="box-tabs"></div>
+      </div>
+      <div id="box-detail"></div>
+      <p class="hint" data-i18n>Neue Eier findest du beim <b>Erkunden</b> und manchmal nach gewonnenen <b>Kämpfen</b>.
+        Tipp ein Digimon an, um es aktiv zu setzen, zu tauschen oder in eine andere Box zu legen.</p>
+      <button class="small primary" id="box-new-egg" hidden>Neues Digi-Ei holen</button>
+    </section>
+    <!-- was Digimon aus der Sammlung vom Erkunden mitgebracht haben (die letzten 15) -->
+    <section id="box-trips-section" hidden>
+      <h3>Zurück vom Erkunden</h3>
+      <ul class="trip-reports" id="box-trips"></ul>
+    </section>
+    <section id="box-memories-section" hidden>
+      <h3>Erinnerungen</h3>
+      <ul class="memories" id="box-memories"></ul>
+    </section>
+  </aside>
+
+  <!-- Merkliste -->
+  <aside class="settings wishlist" id="wishlist" hidden aria-label="Merkliste">
+    <header>
+      <h2>Merkliste</h2>
+      <button class="close" id="close-wishlist" aria-label="Schließen">✕</button>
+    </header>
+    <p class="hint">Der Weg von deinem Digimon zu deinen Wunsch-Digimon – mit allem, was du dafür
+      brauchst. Nach jeder Digitation rückt er einen Schritt weiter.</p>
+    <div id="wish-list"></div>
+    <a class="small primary" href="hilfe.html#finder">Im Digimon-Finder etwas merken</a>
+  </aside>
+
+  <!-- Event-Tab: Story, Belohnungen, Geister, Event-Ei, Angebote (game/events.py details) -->
+  <aside class="settings event-panel" id="event-panel" hidden aria-label="Event">
+    <header>
+      <h2 id="event-panel-title">Event</h2>
+      <button class="close" id="close-event" aria-label="Schließen">✕</button>
+    </header>
+    <div id="event-body"><p class="hint">Lade ...</p></div>
+  </aside>
+
+  <!-- Profil eines Freundes: Partner, Sammlung, Digidex (nur für Freunde, game/friends.py profile) -->
+  <aside class="settings friend-panel" id="friend-panel" hidden aria-label="Freund">
+    <header>
+      <h2 id="friend-panel-title">Freund</h2>
+      <button class="close" id="close-friend" aria-label="Schließen">✕</button>
+    </header>
+    <div id="friend-body"><p class="hint">Lade ...</p></div>
+    <button class="small" id="friend-back">← Zurück zu den Freunden</button>
+  </aside>
+
+  <!-- Shop: Items für Bits (Armor-Eier gibt es hier nicht) -->
+  <aside class="settings shop" id="shop" hidden aria-label="Shop">
+    <header>
+      <h2>Shop</h2>
+      <button class="close" id="close-shop" aria-label="Schließen">✕</button>
+    </header>
+    <p class="shop-balance"><span>Deine Bits</span><b id="shop-bits">0</b></p>
+    <div class="tabs panel-tabs" role="tablist">
+      <button class="tab active" id="tab-shop-items" role="tab">Items</button>
+      <button class="tab" id="tab-shop-themes" role="tab">V-Pet-Designs</button>
+    </div>
+    <div id="shop-items-view">
+      <!-- nur während eines Events: Event-Items eintauschen (z. B. Gruselbonbons) -->
+      <section class="candy-trade" id="candy-trade" hidden></section>
+      <p class="hint" data-i18n>Bits verdienst du beim <b>Erkunden</b>, in <b>Kämpfen</b> und manchmal beim <b>Putzen</b>. Armor-Eier gibt es hier nicht – die findest du nur beim Erkunden.</p>
+      <div class="shop-list" id="shop-list"><p class="hint">Lade ...</p></div>
+      <p class="hint shop-sell-hint" data-i18n>Verkaufen geht im <b>Rucksack</b>: Item antippen → „Verkaufen“ – egal was und wie viele. Shop-Items bringen die Hälfte ihres Preises, Armor-Eier 50 Bits.</p>
+    </div>
+    <div id="shop-themes-view" hidden>
+      <p class="hint">Neue Farben für dein V-Pet und das ganze Spiel. Gekaufte Designs kannst du jederzeit wechseln.</p>
+      <div class="theme-list" id="theme-list"></div>
+      <h3 class="decor-head">Deko</h3>
+      <p class="hint">Kleine Extras fürs Display. Gekaufte Deko kannst du jederzeit an- und ausschalten.</p>
+      <div class="decor-list" id="decor-list"></div>
+    </div>
+  </aside>
+
+  <!-- Rangliste -->
+  <aside class="settings ranking-panel" id="ranking-panel" hidden aria-label="Rangliste & Erfolge">
+    <header>
+      <h2 id="ranking-title">Rangliste</h2>
+      <button class="close" id="close-ranking" aria-label="Schließen">✕</button>
+    </header>
+    <div class="tabs panel-tabs" role="tablist">
+      <button class="tab active" id="tab-ranking" role="tab">Rangliste</button>
+      <button class="tab" id="tab-achievements" role="tab">Erfolge</button>
+    </div>
+    <div id="ranking-view">
+      <p class="hint">Siege aller Spieler – über alle ihre Digimon zusammen (Kämpfe gegen wilde Digimon und Freunde).</p>
+      <ol class="ranking" id="ranking"><li class="hint">Lade ...</li></ol>
+    </div>
+    <div id="achievements-view" hidden>
+      <p class="dex-progress" id="dex-progress"></p>
+      <p class="hint">Jeder Erfolg bringt einmal Bits für den Shop. Gesammelt zählt jede Form, die eines deiner Digimon je hatte.</p>
+      <ul class="achievements" id="achievements"></ul>
+    </div>
+  </aside>
+
+  <!-- Changelog -->
+  <aside class="settings changelog" id="changelog" hidden aria-label="Was ist neu?">
+    <header>
+      <h2>Was ist neu?</h2>
+      <button class="close" id="close-changelog" aria-label="Schließen">✕</button>
+    </header>
+    <div id="changelog-list"><p class="hint">Lade ...</p></div>
+  </aside>
+
+  <!-- Cheat-Menü (nur Admin) – bleibt deutsch -->
+  <aside class="settings cheats" id="cheats" hidden aria-label="Cheat-Menü" data-no-i18n>
+    <header>
+      <h2>Cheats</h2>
+      <button class="close" id="close-cheats" aria-label="Schließen">✕</button>
+    </header>
+    <p class="hint">Alles hier markiert dein Digimon als „gecheatet“.</p>
+
+    <section>
+      <h3>Zeit</h3>
+      <div class="row">
+        <button class="small" data-warp="10">+10 Min</button>
+        <button class="small" data-warp="60">+1 Std</button>
+        <button class="small" data-warp="360">+6 Std</button>
+        <button class="small" data-warp="1440">+1 Tag</button>
+      </div>
+      <button class="small primary" id="cheat-evolve">Digitation jetzt</button>
+      <p class="hint">Digitation jetzt: nimmt die nächste Form, die zu den Werten passt.</p>
+    </section>
+
+    <section>
+      <h3>Werte (diese Stufe)</h3>
+      <form class="cheat-grid" id="cheat-values">
+        <label>Hunger<input name="hunger" type="number" min="0" max="4"></label>
+        <label>Kraft<input name="strength" type="number" min="0" max="4"></label>
+        <label>Gewicht<input name="weight" type="number" min="0" max="99"></label>
+        <label>Pflegefehler<input name="mistakes" type="number" min="0" max="99"></label>
+        <label>Fehler gesamt<input name="mistakes_total" type="number" min="0" max="19"></label>
+        <label>Trainings<input name="trainings" type="number" min="0" max="99"></label>
+        <label>Kraft-Training<input name="power" type="number" min="0" max="10"></label>
+        <label>Tempo-Training<input name="speed" type="number" min="0" max="10"></label>
+        <label>Verteidigung<input name="defense" type="number" min="0" max="10"></label>
+        <label>Überfüttert<input name="overfeeds" type="number" min="0" max="99"></label>
+        <label>Kämpfe<input name="battles_stage" type="number" min="0" max="99"></label>
+        <label>Siege<input name="wins_stage" type="number" min="0" max="99"></label>
+        <label>Kacke<input name="poop" type="number" min="0" max="4"></label>
+        <button class="small primary" type="submit">Übernehmen</button>
+      </form>
+    </section>
+
+    <section>
+      <h3>Zustand</h3>
+      <div class="row">
+        <button class="small" data-status="full">Satt & stark</button>
+        <button class="small" data-status="calls">Rufe weg</button>
+        <button class="small" data-status="heal">Gesund</button>
+        <button class="small" data-status="sick">Krank</button>
+        <button class="small" data-status="injured">Verletzt</button>
+        <button class="small" data-status="poop">Kacke +1</button>
+      </div>
+      <label class="check"><input type="checkbox" id="cheat-immortal"> Unsterblich</label>
+      <label class="check"><input type="checkbox" id="cheat-day"> Immer Tag – deine Digimon schlafen nicht</label>
+      <label class="check"><input type="checkbox" id="cheat-event"> Halloween-Event jetzt (für alle Spieler!)</label>
+      <p class="hint">„Immer Tag“ gilt für alle Digimon deines Kontos, auch für neue – bis du es wieder ausschaltest.</p>
+    </section>
+
+    <section>
+      <h3>Items</h3>
+      <div class="row">
+        <select class="cheat-select" id="cheat-item"></select>
+        <input class="cheat-amount" id="cheat-amount" type="number" min="1" max="99" value="1" aria-label="Anzahl">
+      </div>
+      <button class="small primary" id="cheat-item-btn">In den Rucksack</button>
+      <button class="small" id="cheat-bits">+100 Bits</button>
+    </section>
+
+    <section>
+      <h3>Verwandeln</h3>
+      <select class="cheat-select" id="cheat-mon"></select>
+      <button class="small primary" id="cheat-become">Verwandeln</button>
+    </section>
+
+    <section>
+      <h3>Neues Ei</h3>
+      <select class="cheat-select" id="cheat-egg"></select>
+      <button class="small" id="cheat-egg-btn">Dieses Ei holen</button>
+      <p class="hint">Dein jetziges Digimon kommt dabei in die Sammlung.</p>
+    </section>
+
+    <section>
+      <button class="small" id="cheat-revive">Wiederbeleben</button>
+    </section>
+  </aside>
+
+  <script src="i18n.js"></script>
+  <script src="i18n/en-game.js"></script>
+  <script src="i18n/en-rules.js"></script>
+  <script src="rules.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>

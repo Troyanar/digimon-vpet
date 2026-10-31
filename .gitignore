@@ -1,0 +1,25 @@
+# Spielstände (enthalten Konten mit Passwort-Hashes und Sitzungen) – nie hochladen
+*.db
+*.db-journal
+*.db-wal
+*.db-shm
+state/
+backups/
+
+# Python
+__pycache__/
+*.pyc
+
+# Editor / System
+.vscode/
+.idea/
+Thumbs.db
+.DS_Store
+
+# server-specific deploy script (contains the server address)
+deploy.bat
+.env
+_test*/
+
+# Local server notes
+DEPLOY.local.md

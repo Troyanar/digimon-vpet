@@ -1,0 +1,21 @@
+services:
+  vpet:
+    build: .
+    container_name: vpet
+    restart: unless-stopped
+    environment:
+      VPET_PUBLIC: "1"          # erstes Konto wird NICHT automatisch Admin
+      VPET_TRUST_PROXY: "1"     # läuft hinter dem Nginx Proxy Manager
+    volumes:
+      - ./state:/app/state      # Spielstand (savegame.db)
+      - ./backups:/app/backups  # automatische Backups
+    ports:
+      - "8000:8000"
+    networks:
+      - default
+      - npm                     # damit der Proxy Manager den Container direkt erreicht
+
+networks:
+  npm:
+    external: true
+    name: npm_default
