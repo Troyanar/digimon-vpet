@@ -1,7 +1,7 @@
 # Hinweise für Agenten
 
-Alles Wichtige steht in **README.de.md** (deutsche Projekt-Doku; README.md ist die kurze englische Fassung) – vor jeder Änderung den Abschnitt
-„Regeln für Änderungen“ lesen. Das Wichtigste in Kürze:
+Alles Wichtige steht in **README.md** (Projekt-Doku, englisch) – vor jeder Änderung den Abschnitt
+„Rules for changes“ lesen. Das Wichtigste in Kürze:
 
 - Der Projekt-Besitzer spricht Deutsch und programmiert nicht selbst: Antworten auf Deutsch,
   einfach erklärt, ohne Fachjargon.
