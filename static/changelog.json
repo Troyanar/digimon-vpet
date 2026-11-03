@@ -1,5 +1,22 @@
 [
   {
+    "id": "2026-11-03-push",
+    "version": "3.7",
+    "date": "2026-11-03",
+    "title": "Mitteilungen auch bei geschlossener App",
+    "items": [
+      "In den Einstellungen kannst du Mitteilungen für dieses Gerät aktivieren und mit „Test-Mitteilung“ ausprobieren – auch wenn VPet geschlossen ist.",
+      "Auf iPhone und iPad ab iOS 16.4: VPet in Safari über „Teilen → Zum Home-Bildschirm“ hinzufügen, über das Symbol öffnen und Mitteilungen aktivieren.",
+      "Dein Digimon meldet neue Rufe, Krankheit, Schlüpfen, Digitation, Tod und die Rettung durch ein Schutz-Totem. Auch die Rückkehr vom Erkunden wird gemeldet – beim aktiven Digimon und in der Sammlung. Nach dem Abmelden enden die Mitteilungen auf diesem Gerät."
+    ],
+    "title_en": "Notifications even when the app is closed",
+    "items_en": [
+      "Enable notifications for this device in Settings and try “Test notification”, even when VPet is closed.",
+      "On iPhone and iPad with iOS 16.4 or later: add VPet in Safari using “Share → Add to Home Screen”, open its icon and enable notifications.",
+      "Your Digimon reports new calls, sickness, hatching, digivolution, death and rescue by a Protection Totem. Returns from exploring are reported for both your active Digimon and your collection. Logging out stops notifications on this device."
+    ]
+  },
+  {
     "id": "2026-10-29-sanduhr-sammlung",
     "version": "3.6.2",
     "date": "2026-10-29",

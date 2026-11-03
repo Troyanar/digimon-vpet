@@ -720,3 +720,29 @@ EN = {
     "Spaß mit Freunden": "Having fun with friends",
     "Frei sein": "Being free",
 }
+
+# Web-Push
+EN.update({
+    "{name} ist gestorben": "{name} has died",
+    "Das Schutz-Totem hat dein Digimon gerettet!": "The Guardian Totem saved your Digimon!",
+    "Das Ei ist geschlüpft!": "The egg has hatched!",
+    "Es ist ein {name}!": "It's a {name}!",
+    "Digitation!": "Digivolution!",
+    "Gib ihm schnell Medizin.": "Give it medicine quickly.",
+    "{name} ist krank!": "{name} is sick!",
+    "{name} ruft dich!": "{name} is calling you!",
+    "Ungültige Push-Anmeldung.": "Invalid push subscription.",
+    "Du kannst höchstens 8 Geräte für Mitteilungen anmelden.": "You can register up to 8 devices for notifications.",
+    "{name} wartet im Kühlschrank auf dich.": "{name} is waiting in the fridge for you.",
+    "Dein Digimon ist jetzt {name}.": "Your Digimon is now {name}.",
+    "Schau nach deinem Digimon.": "Check on your Digimon.",
+    "{name} ist zurück vom Erkunden!": "{name} is back from exploring!",
+    "Deine Funde warten im Spiel.": "Your finds are waiting in the game.",
+    "Ein Sammlungs-Digimon ist zurück!": "A Digimon from your collection is back!",
+    "Push-Mitteilungen sind auf diesem Server nicht verfügbar.": "Push notifications are not available on this server.",
+    "Aktiviere zuerst die Mitteilungen auf diesem Gerät.": "Enable notifications on this device first.",
+    "Warte 30 Sekunden vor der nächsten Test-Mitteilung.": "Wait 30 seconds before sending another test notification.",
+    "Die Mitteilung kam nicht an. Schalte die Benachrichtigungen aus und wieder ein.": "The notification could not be delivered. Turn notifications off and on again.",
+    "Benachrichtigungen sind an": "Notifications are on",
+    "So sieht es aus, wenn dein Digimon dich ruft.": "This is what it looks like when your Digimon calls you."
+})

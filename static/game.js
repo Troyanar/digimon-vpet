@@ -2548,8 +2548,33 @@ function sfx(name) {
 
 // ------------------------------------------------------------ Browser-Benachrichtigungen
 const canNotify = "Notification" in window;
+let pushSubscription = null;
+let pushActive = false;
+let pushKey = null;
+let pushUser = null;
+let pushBusy = false;
+const isIos = () => /iPhone|iPad|iPod/.test(navigator.userAgent) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+const isStandalone = () => navigator.standalone === true || matchMedia("(display-mode: standalone)").matches;
+const canPush = () => canNotify && "serviceWorker" in navigator && "PushManager" in window;
+
+async function refreshPush() {
+  if (pushBusy) return;
+  const user = S.state && S.state.user.name;
+  if (!user || !canPush()) return;
+  try {
+    const info = await request("/api/push");
+    const reg = await navigator.serviceWorker.ready;
+    const sub = await reg.pushManager.getSubscription();
+    if (!S.state || S.state.user.name !== user) return;
+    pushKey = info.key;
+    pushSubscription = sub;
+    pushActive = !!sub && info.endpoints.includes(sub.endpoint) && Notification.permission === "granted";
+  } catch { pushActive = false; }
+  renderNotifySetting();
+}
 
 function notify(title, body, tag) {
+  if (pushActive) return;             // der Server sendet bereits an dieses Gerät
   if (!settings.notify || !canNotify || Notification.permission !== "granted") return;
   if (!document.hidden && document.hasFocus()) return;   // du schaust gerade eh hin
   const pet = S.state && S.state.pet;
@@ -2679,6 +2704,11 @@ function setMessage(text) { $("#message").textContent = text; }
 function apply(state) {
   const before = S.state && S.state.pet;
   S.state = state;
+  if (pushUser !== state.user.name) {
+    pushUser = state.user.name;
+    pushActive = false;
+    refreshPush();
+  }
   const pet = state.pet;
   // neue Tagebucheinträge (Entwicklung, Krankheit ...) als Nachricht zeigen
   if (before && pet && before.id === pet.id && pet.log.length) {
@@ -2777,6 +2807,7 @@ function openSettings() {
   $("#volume").value = settings.volume;
   $("#volume-out").textContent = settings.volume + " %";
   renderNotifySetting();
+  refreshPush();
   renderFridgeSetting();
   const admin = S.state && S.state.user.admin;
   $("#invite-section").hidden = !admin;
@@ -3316,6 +3347,16 @@ $("#scrim").addEventListener("click", closeRanking);
 function renderNotifySetting() {
   const btn = $("#notify-toggle");
   const text = $("#notify-text");
+  const iosInstall = isIos() && !isStandalone();
+  $("#notify-ios").hidden = !iosInstall;
+  $("#notify-test").hidden = !pushActive;
+  $("#notify-test").disabled = pushBusy;
+  btn.disabled = pushBusy;
+  if (iosInstall) {
+    btn.hidden = true;
+    text.textContent = tr("Auf dem iPhone: VPet zuerst zum Home-Bildschirm hinzufügen (ab iOS 16.4).");
+    return;
+  }
   if (!canNotify) {
     btn.hidden = true;
     text.textContent = tr("Dein Browser unterstützt keine Benachrichtigungen.");
@@ -3323,15 +3364,19 @@ function renderNotifySetting() {
   }
   if (Notification.permission === "denied") {
     btn.hidden = true;
-    text.textContent = tr("Benachrichtigungen sind im Browser blockiert. Erlaube sie über das Schloss-Symbol neben der Adresse.");
+    text.textContent = isIos()
+      ? tr("Erlaube Mitteilungen unter iPhone-Einstellungen → Mitteilungen → V-Pet.")
+      : tr("Benachrichtigungen sind im Browser blockiert. Erlaube sie über das Schloss-Symbol neben der Adresse.");
     return;
   }
-  const on = settings.notify && Notification.permission === "granted";
+  const on = pushActive || (settings.notify && Notification.permission === "granted");
   btn.hidden = false;
   btn.textContent = on ? tr("Ausschalten") : tr("Aktivieren");
-  text.textContent = on
-    ? tr("An: Du bekommst eine Meldung, wenn dein Digimon ruft, krank wird oder sich entwickelt, solange die Seite in einem Tab offen ist.")
-    : tr("Meldet sich, wenn dein Digimon ruft, krank wird oder sich entwickelt, solange die Seite in einem Tab offen ist.");
+  text.textContent = pushActive
+    ? tr("An auf diesem Gerät – auch wenn die App geschlossen ist. Meldungen kommen bei Rufen, Krankheit, Schlüpfen, Digitation und Rückkehr vom Erkunden.")
+    : canPush() && pushKey
+      ? tr("Meldet sich auf diesem Gerät auch bei geschlossener App. Zum Einschalten auf „Aktivieren“ tippen.")
+      : tr("Meldet sich, wenn dein Digimon ruft, krank wird oder sich entwickelt, solange die Seite in einem Tab offen ist.");
 }
 
 $("#open-settings").addEventListener("click", openSettings);
@@ -3346,18 +3391,73 @@ $("#volume").addEventListener("input", e => {
 $("#volume").addEventListener("change", () => sfx("happy"));
 $("#sound-test").addEventListener("click", () => sfx("evolve"));
 
+function pushFeedback(text) {
+  $("#notify-status").textContent = text;
+  $("#notify-status").hidden = !text;
+}
+
 $("#notify-toggle").addEventListener("click", async () => {
-  if (settings.notify && Notification.permission === "granted") {
-    settings.notify = false;
-  } else {
-    const perm = await Notification.requestPermission();
-    settings.notify = perm === "granted";
-    if (settings.notify) {
-      new Notification(tr("Benachrichtigungen sind an"), { body: tr("So sieht es aus, wenn dein Digimon dich ruft.") });
+  if (pushBusy || !canNotify) return;
+  pushBusy = true;
+  try {
+    // Safari verlangt die Abfrage unmittelbar beim Antippen, vor jedem await.
+    const permission = !pushActive && !settings.notify ? Notification.requestPermission() : null;
+    pushFeedback("");
+    renderNotifySetting();
+    if (pushActive || settings.notify) {
+      if (pushSubscription) {
+        await request("/api/push/off", { endpoint: pushSubscription.endpoint });
+        await pushSubscription.unsubscribe();
+      }
+      pushActive = false;
+      pushSubscription = null;
+      settings.notify = false;
+    } else {
+      const perm = await permission;
+      if (perm !== "granted") return;
+      if (canPush()) {
+        const info = await request("/api/push");
+        pushKey = info.key;
+        if (!pushKey) throw new Error(tr("Push-Mitteilungen sind auf diesem Server nicht verfügbar."));
+        const reg = await navigator.serviceWorker.ready;
+        const key = Uint8Array.from(atob((pushKey + "=".repeat((4 - pushKey.length % 4) % 4)).replace(/-/g, "+").replace(/_/g, "/")), c => c.charCodeAt(0));
+        let sub = await reg.pushManager.getSubscription();
+        if (sub) {
+          await request("/api/push/off", { endpoint: sub.endpoint });
+          await sub.unsubscribe();
+          sub = null;
+        }
+        sub = await reg.pushManager.subscribe({ userVisibleOnly: true, applicationServerKey: key });
+        try { await request("/api/push", sub.toJSON()); }
+        catch (err) { await sub.unsubscribe(); throw err; }
+        pushSubscription = sub;
+        pushActive = true;
+        settings.notify = false;
+        pushFeedback(tr("Benachrichtigungen sind an"));
+      } else {
+        settings.notify = true;
+      }
     }
+  } catch (err) {
+    pushFeedback(err.message || tr("Mitteilungen konnten nicht eingeschaltet werden. Versuche es erneut."));
+  } finally {
+    pushBusy = false;
+    saveSettings();
+    renderNotifySetting();
+    refreshPush();
   }
-  saveSettings();
+});
+
+$("#notify-test").addEventListener("click", async () => {
+  if (pushBusy || !pushSubscription) return;
+  pushBusy = true;
+  pushFeedback("");
   renderNotifySetting();
+  try {
+    await request("/api/push/test", { endpoint: pushSubscription.endpoint });
+    pushFeedback(tr("Test-Mitteilung gesendet. Schau in deine Mitteilungen."));
+  } catch (err) { pushFeedback(err.message); }
+  finally { pushBusy = false; await refreshPush(); }
 });
 
 $("#invite-copy").addEventListener("click", async () => {
@@ -3372,7 +3472,13 @@ $("#invite-new").addEventListener("click", async () => {
 });
 
 $("#logout").addEventListener("click", async () => {
-  try { await api("/api/logout", {}); } catch { /* egal */ }
+  try { await api("/api/logout", {}); }
+  catch (err) { setMessage(err.message); return; }
+  pushActive = false;
+  pushUser = null;
+  pushSubscription = null;
+  settings.notify = false;
+  saveSettings();
   closeSettings();
   S.state = null;
   showAuth(false);

@@ -624,3 +624,16 @@ I18N.add({
   "Dieses Digi-Ei passt zu dir: {egg}": "This Digi-Egg suits you: {egg}",
   "Ei annehmen!": "Take the egg!",
 });
+
+// Web-Push
+I18N.add({
+  "Push-Mitteilungen sind auf diesem Server nicht verfügbar.": "Push notifications are not available on this server.",
+  "Auf dem iPhone: VPet zuerst zum Home-Bildschirm hinzufügen (ab iOS 16.4).": "On iPhone: add VPet to your Home Screen first (iOS 16.4 or later).",
+  "Erlaube Mitteilungen unter iPhone-Einstellungen → Mitteilungen → V-Pet.": "Allow notifications in iPhone Settings → Notifications → V-Pet.",
+  "An auf diesem Gerät – auch wenn die App geschlossen ist. Meldungen kommen bei Rufen, Krankheit, Schlüpfen, Digitation und Rückkehr vom Erkunden.": "On for this device, even when the app is closed. Notifications cover calls, sickness, hatching, digivolution and returns from exploring.",
+  "Meldet sich auf diesem Gerät auch bei geschlossener App. Zum Einschalten auf „Aktivieren“ tippen.": "Get notifications on this device even when the app is closed. Tap “Turn on” to enable them.",
+  "Mitteilungen konnten nicht eingeschaltet werden. Versuche es erneut.": "Could not enable notifications. Try again.",
+  "Test-Mitteilung gesendet. Schau in deine Mitteilungen.": "Test notification sent. Check your notifications.",
+  "Test-Mitteilung": "Test notification",
+  "Öffne VPet in Safari. Tippe auf <b>Teilen → Zum Home-Bildschirm</b>. Öffne danach VPet über das neue Symbol und aktiviere hier die Mitteilungen.": "Open VPet in Safari. Tap <b>Share → Add to Home Screen</b>. Then open VPet using its new icon and enable notifications here."
+});

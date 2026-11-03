@@ -9,6 +9,7 @@ backups/
 # Python
 __pycache__/
 *.pyc
+vapid*.pem
 
 # Editor / System
 .vscode/

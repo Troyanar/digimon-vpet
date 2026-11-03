@@ -31,6 +31,7 @@ from game import accounts, backup, battle, cheats, collection, data, explore, pe
 from game import admin, decor, events, friends, i18n, progress, settings, shop, social, starter, themes, wishlist
 from game import duel as duel_lib
 from game import store as store_lib
+from game import push
 from game.i18n import T
 from game.store import Store
 
@@ -433,6 +434,25 @@ def jogress_menu(user, pet, now):
     return out
 
 
+def push_snapshot(user):
+    """Zeit nachholen, ohne Funde oder ungelesene Erfolge abzuholen."""
+    if in_open_duel(user):
+        return None
+    owner, now = str(user["id"]), clock.now()
+    pet = store.active_pet(owner)
+    if pet:
+        cheats.set_day(pet, always_day(owner))
+        petlib.advance(pet, now)
+        store.save_pet(pet)
+    return {"pet": petlib.view(pet, now) if pet else None,
+            "trips": [str(p["id"]) + ":" + str(p["box_trip"]["end"])
+                      for p in store.all_pets(owner)
+                      if p.get("box_trip") and p["box_trip"]["end"] <= now]}
+
+
+push_service = push.Service(store, push_snapshot)
+
+
 class Handler(BaseHTTPRequestHandler):
     timeout = 30                         # hängende Verbindungen nicht ewig offen halten
 
@@ -695,6 +715,11 @@ class Handler(BaseHTTPRequestHandler):
                     return self.admin_get(user, path)
                 if path == "/api/state":
                     return self.send_json(current_state(user))
+                if path == "/api/push":
+                    return self.send_json({"key": push_service.public_key(),
+                        "endpoints": [d["sub"]["endpoint"] for d in push_service.devices().values()
+                                      if d["owner"] == user["id"]
+                                      and d["session"] == store_lib.token_hash(self.session_token())]})
                 if path == "/api/players":
                     # deine Freunde: online? Partner? kampfbereit? – WARUM einer nicht kann (z. B. wann
                     # sein Digimon vom Erkunden zurück ist), verraten wir nicht
@@ -837,6 +862,38 @@ class Handler(BaseHTTPRequestHandler):
                 if path != "/api/admin/reset":          # alter Weg aus den Einstellungen
                     return self.admin_post(user, path, body)
             owner = str(user["id"])
+
+            if path in ("/api/push", "/api/push/off", "/api/push/test"):
+                if path == "/api/push/off":
+                    push_service.remove(user, body.get("endpoint"))
+                    return self.send_json({"ok": True})
+                if not push_service.available:
+                    return self.send_json({"error": T("Push-Mitteilungen sind auf diesem Server nicht verfügbar.")}, 503)
+                if path == "/api/push":
+                    try:
+                        push_service.public_key()
+                        push_service.subscribe(user, self.session_token(), body)
+                    except ValueError as e:
+                        return self.send_json({"error": i18n.text_of(e)}, 400)
+                    return self.send_json({"ok": True})
+                device = next((d for d in push_service.devices().values()
+                               if d["owner"] == user["id"] and d["sub"]["endpoint"] == body.get("endpoint")
+                               and d["session"] == store_lib.token_hash(self.session_token())), None)
+                if not device:
+                    return self.send_json({"error": T("Aktiviere zuerst die Mitteilungen auf diesem Gerät.")}, 400)
+                if time.time() - device.get("last_test", 0) < 30:
+                    return self.send_json({"error": T("Warte 30 Sekunden vor der nächsten Test-Mitteilung.")}, 429)
+                devices = push_service.devices()
+                ident = hashlib.sha256(device["sub"]["endpoint"].encode()).hexdigest()
+                devices[ident]["last_test"] = time.time()
+                store.set_meta("push:devices", devices)
+                result = push_service.send(device, [{"title": T("Benachrichtigungen sind an"),
+                    "body": T("So sieht es aus, wenn dein Digimon dich ruft."), "tag": "test", "url": "/"}], self.lang())
+                if result is not True:
+                    if result is False:
+                        push_service.remove(user, device["sub"]["endpoint"])
+                    return self.send_json({"error": T("Die Mitteilung kam nicht an. Schalte die Benachrichtigungen aus und wieder ein.")}, 502)
+                return self.send_json({"ok": True})
 
             if path == "/api/password":
                 try:
@@ -1383,6 +1440,8 @@ def main():
             except Exception as e:          # ein fehlgeschlagenes Backup soll das Spiel nicht stoppen
                 print("Backup fehlgeschlagen:", e)
     threading.Thread(target=auto_backup, daemon=True).start()
+    push_stop = threading.Event()
+    threading.Thread(target=push_service.run, args=(push_stop,), daemon=True).start()
     print("Zum Beenden: Strg+C oder dieses Fenster schließen.")
     if not os.environ.get("VPET_NO_BROWSER"):
         webbrowser.open(url)
@@ -1391,6 +1450,7 @@ def main():
     except KeyboardInterrupt:
         pass
     finally:
+        push_stop.set()
         clock.save()
 
 

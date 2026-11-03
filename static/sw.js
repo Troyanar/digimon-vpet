@@ -1,7 +1,7 @@
 // Service Worker: macht das Spiel als App installierbar und lÃ¤dt die
 // Spieldateien auch bei kurzem Funkloch. Immer zuerst das Netz fragen, damit
 // Updates sofort ankommen; nur wenn das nicht klappt, die gespeicherte Kopie.
-const CACHE = "vpet-v8";
+const CACHE = "vpet-v9";
 const SHELL = ["/", "/index.html", "/style.css", "/i18n.js", "/i18n/en-game.js", "/i18n/en-rules.js",
   "/i18n/en-help.js", "/game.js", "/rules.js", "/hilfe.html", "/hilfe.js",
   "/data/digimon.json", "/manifest.webmanifest", "/icons/icon-192.png"];
@@ -35,6 +35,15 @@ self.addEventListener("fetch", e => {
 });
 
 // Klick auf eine Benachrichtigung (Handy): Spiel Ã¶ffnen bzw. nach vorne holen
+self.addEventListener("push", e => {
+  let msg = {};
+  try { msg = e.data ? e.data.json() : {}; } catch { /* auch leere Push-Nachrichten anzeigen */ }
+  e.waitUntil(self.registration.showNotification(msg.title || "Digimon V-Pet", {
+    body: msg.body || "", tag: msg.tag || "vpet", icon: "/icons/icon-192.png",
+    badge: "/icons/icon-192.png", data: { url: "/" },
+  }));
+});
+
 self.addEventListener("notificationclick", e => {
   e.notification.close();
   e.waitUntil(self.clients.matchAll({ type: "window", includeUncontrolled: true }).then(list => {

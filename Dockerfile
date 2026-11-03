@@ -1,10 +1,11 @@
-# Digimon V-Pet als Container – nur Python, keine Zusatzpakete fürs Spiel.
+# Digimon V-Pet als Container – Web-Push als einzige Paket-Ausnahme fürs Spiel.
 FROM python:3.12-slim
 # Markierung, damit deploy.bat beim Aufräumen nur alte V-Pet-Images löscht
 LABEL app=vpet
 
 # Zeitzonen-Daten (für Tag/Nacht im Spiel); der Rest kommt aus der Standardbibliothek
-RUN pip install --no-cache-dir tzdata
+COPY game/push-requirements.txt /tmp/requirements.txt
+RUN pip install --no-cache-dir tzdata -r /tmp/requirements.txt
 
 WORKDIR /app
 COPY server.py ./

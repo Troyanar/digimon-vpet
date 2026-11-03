@@ -1,0 +1,2 @@
+# Einzige Paket-Ausnahme: verschlüsselte Web-Push-Mitteilungen.
+pywebpush==2.5.0

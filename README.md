@@ -3,14 +3,16 @@
 A Digimon virtual pet in the browser – like the original 1997 V-Pet, with accounts, battles
 against friends, trading, Jogress, events and a shop. German and English UI.
 
-- **Tech:** Python standard library as the server (no packages), vanilla JavaScript in the
+- **Tech:** Python standard library as the server (plus `pywebpush` for notifications), vanilla JavaScript in the
   browser (no build step), SQLite for save data, Docker for hosting.
 - **Rules for players:** in the game under **?** (`static/hilfe.html`) – this README
   explains the project, not the game in detail.
 
-> **For agents (Claude & co.):** read the section [Rules for changes](#rules-for-changes)
-> before every change. In short: build locally → all tests green → German **and** English →
-> keep help + changelog up to date → **deploy only when explicitly told to**.
+> **For agents (Codex, Claude & co.):** read **[AGENTS.md](AGENTS.md)** first – the exact
+> step-by-step workflow (German): testing with `tools/dev/`, help, changelog, what "push" means,
+> pitfalls and the owner's decisions. Also read [Rules for changes](#rules-for-changes) below.
+> In short: build locally → all tests green → German **and** English → keep help + changelog
+> up to date → **deploy only when explicitly told to**.
 
 ---
 
@@ -50,7 +52,14 @@ against friends, trading, Jogress, events and a shop. German and English UI.
 ## Run locally
 
 Requirement: **Python 3.10 or newer** (Windows: tick "Add Python to PATH" during installation).
-Nothing else – no `pip install`.
+The game itself uses the standard library. For Web Push (including iOS notifications while
+the app is closed), install the one approved package exception:
+
+```powershell
+python -m pip install -r game/push-requirements.txt
+```
+
+Without it the game still runs, but server push is unavailable. Docker installs it automatically.
 
 | How | What happens |
 |---|---|
@@ -73,6 +82,8 @@ To test two players locally, create the second account in a private browser wind
 | `VPET_PUBLIC` | off | When hosting: the first account does *not* become admin automatically |
 | `VPET_SECURE` | off | Behind HTTPS: login cookie only over HTTPS |
 | `VPET_TRUST_PROXY` | off | Behind a reverse proxy: real IP from `X-Forwarded-For` (login lockout) |
+| `VPET_PUSH` | `1` | Set to `0` to disable server push |
+| `VPET_PUSH_CONTACT` | `https://github.com` | Contact URI for push providers; set to your public HTTPS origin or a `mailto:` address in local deployment configuration |
 
 Example (PowerShell) for a test server with its own save file and no browser:
 
@@ -86,8 +97,19 @@ $env:VPET_PORT='8091'; $env:VPET_NO_BROWSER='1'; $env:VPET_DB='C:\Temp\test.db';
 python -m unittest discover -s tests
 ```
 
-All tests must pass (currently over 230). `tests/test_i18n_complete.py` also checks
+All tests must pass (currently 243). `tests/test_i18n_complete.py` also checks
 that every text in the code has an English version.
+
+### Trying changes out (test server, API, screenshots)
+
+```powershell
+python tools/dev/make_test_db.py "$env:TEMP\vpet-test\check.db" --pet   # account "Tester" + Agumon
+$env:VPET_PORT='8091'; $env:VPET_NO_BROWSER='1'; $env:VPET_DB="$env:TEMP\vpet-test\check.db"; python server.py
+python tools/dev/api.py GET /api/state --lang en                         # (second terminal)
+python tools/dev/screenshot.py "$env:TEMP\vpet-test\shot.png" --lang en --js "press('bag')"
+```
+
+Details in [AGENTS.md](AGENTS.md), section 3.
 
 ---
 
@@ -127,6 +149,8 @@ static/                   browser (served as is)
   sounds/, icons/, sw.js, manifest.webmanifest   sounds, app icons, PWA
 data/                     source data (digimon.json with sprites and rules, raw Digidex data)
 tools/                    helper scripts (build data, admin account, icons, sounds)
+  dev/                    for testing: make_test_db.py (test account "Tester"), api.py (call the API
+                          as Tester), screenshot.py + proxy.py (headless Edge/Chrome screenshots)
 tests/                    unittest tests, one file per area
 Dockerfile, docker-compose.yml   hosting
 start.bat, start-schnelltest.bat  run locally
@@ -140,6 +164,15 @@ start.bat, start-schnelltest.bat  run locally
 A Digimon is not simulated continuously; on every request `pet.advance(pet, now)` catches it up
 to the present. Paused states (collection `in_box`, fridge `frozen`, return from exploring
 not yet confirmed `returned`) simply move their timestamps forward.
+
+**Push notifications:** `game/push.py` checks subscribed accounts every 20 seconds, even when
+their apps are closed. It advances and saves the active Digimon, but leaves exploration rewards
+and unread achievements for the next player request. Devices are tied to the login session;
+logout, password changes, bans and expired sessions stop delivery. Transient delivery errors
+are retried; expired subscriptions are removed. `vapid.pem` lives next to the save file and must
+be kept across deployments (Docker's `state/` volume does this). It is private and ignored by git.
+On iOS/iPadOS 16.4+, notifications require the Home Screen app and HTTPS. Settings include a
+device-specific toggle, installation instructions and a test notification. No recurring reminders.
 
 **Save data:** SQLite (`game/store.py`). Digimon are stored as JSON in `pets`, everything account-related
 as keys in `meta`, e.g.:
@@ -202,8 +235,9 @@ These rules apply to every change – agents included.
    - **No admin or cheat features** in the changelog – it is for players only.
    - **Version number:** new feature `X.Y` (3.3 → 3.4), small fix `X.Y.Z` (3.4 → 3.4.1),
      very large update a new major version (3.x → 4.0).
-7. **No extra packages:** server only with the Python standard library (the Docker image only adds
-   `tzdata`), browser without frameworks and without a build step.
+7. **Packages:** server uses the Python standard library, with one owner-approved exception:
+   `pywebpush` and its dependencies for encrypted push notifications (`game/push-requirements.txt`).
+   Docker also adds `tzdata`. The browser has no frameworks or build step.
 8. **Style:** code comments and docstrings in German, short, in the style of the surrounding file.
    Own flat "Digital World" design (navy/cyan/orange, Chakra Petch + Silkscreen) –
    no generic default UIs. Always use colours via the CSS variables (`--cyan`,
@@ -254,6 +288,8 @@ a reverse proxy (Nginx Proxy Manager, external network `npm_default`). Save data
 - **Uploading an update:** a separate deploy script (not in the repository) packs `server.py game static data tools`
   + Docker files + README, uploads them via SSH and rebuilds the container. **The save data is
   kept.**
+- **"push" = GitHub + server:** tests green → `git commit` + `git push origin main` → deploy script →
+  check live. The exact steps are in [AGENTS.md](AGENTS.md), section 6.
 - **Check after deploying:** `/changelog.json` on the server shows the new version at the top.
 - **Logs:** `docker logs --tail 50 vpet`.
 
