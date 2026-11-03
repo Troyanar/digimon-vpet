@@ -637,3 +637,17 @@ I18N.add({
   "Test-Mitteilung": "Test notification",
   "Öffne VPet in Safari. Tippe auf <b>Teilen → Zum Home-Bildschirm</b>. Öffne danach VPet über das neue Symbol und aktiviere hier die Mitteilungen.": "Open VPet in Safari. Tap <b>Share → Add to Home Screen</b>. Then open VPet using its new icon and enable notifications here."
 });
+
+// Echte Jogress
+I18N.add({
+  "aktives Digimon": "active Digimon",
+  "{name} möchte mit dir fusionieren. Beide Digimon werden zu {to}; jeder behält seine eigene Fusion mit Spitzname, Alter und Geschichte. ({s} s)": "{name} wants to fuse with you. Both Digimon become {to}; each player keeps their own fusion with its nickname, age and history. ({s} s)",
+  "Jetzt fusionieren": "Fuse now",
+  "Anfrage senden": "Send request",
+  "2 Digimon werden 1": "2 Digimon become 1",
+  "jeder bekommt die Fusion": "each player gets the fusion",
+  "Welche Fusion? Solo werden zwei Digimon eines. Mit Freunden bekommt jeder die Fusion.": "Which fusion? Solo, two Digimon become one. With friends, each player gets the fusion.",
+  "Welche Grundlage? Spitzname, Alter und Geschichte dieses Digimons bleiben. Die Werte ändern sich wie bei einer normalen Digitation.": "Which base? This Digimon keeps its nickname, age and history. Stats change as in a normal digivolution.",
+  "{a} + {b} → 1× {to}. Beide Ausgangsformen verschwinden aus deinem Bestand. Grundlage: {basis}. Digidex-Einträge bleiben erhalten. Jetzt endgültig fusionieren?": "{a} + {b} → 1× {to}. Both original forms leave your collection. Base: {basis}. Digidex entries are kept. Confirm this permanent fusion?",
+  "Mit {name}: Beide Digimon werden zu {to}. Jeder behält seine eigene Fusion mit Spitzname, Alter und Geschichte. Die Werte ändern sich wie bei einer normalen Digitation. Anfrage senden?": "With {name}: both Digimon become {to}. Each player keeps their own fusion with its nickname, age and history. Stats change as in a normal digivolution. Send request?"
+});

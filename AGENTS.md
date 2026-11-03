@@ -364,6 +364,10 @@ es ein einfaches deutsches Wort gibt.
 - Daily Steal: jeden Tag ein Item 40 % günstiger.
 - Freunde per Freundescode (beidseitig); Kämpfen/Tauschen/Jogress und Profil ansehen nur mit
   Freunden.
+- Jogress solo: zwei eigene Digimon werden eines. Vorher Grundlage wählen (Spitzname, Alter,
+  Geschichte bleiben), Vorschau bestätigen; der andere Partner wird verbraucht, Digidex bleibt.
+  Mit Freunden werden beide zur gleichen Fusion, jeder behält sein eigenes Digimon.
+  Werte wie bei normaler Digitation, nicht addieren. Beide müssen ausdrücklich zustimmen.
 - Changelog nur Spieler-Sachen; jede hochgeladene Änderung bekommt eine Versionsnummer.
 - Eigenes Design (Navy/Cyan/Orange, Chakra Petch + Silkscreen), keine Standard-/„KI-Look“-UIs.
 

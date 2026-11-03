@@ -271,20 +271,31 @@ def need_text(need):
     return T("ein {attrs}-Digimon", attrs=attrs)
 
 
-def jogress(pet, to_dex, partner, partner_owner, minute):
-    """Fusion zu `to_dex`: `pet` digitiert, der Partner bleibt wie er ist."""
-    _awake_check(pet)
-    if pet["sick"] or pet["injured"]:
+def jogress_ready(pet, boxed=False):
+    """Bereitschaft prüfen; ein ruhender Sammlungspartner muss nicht aufgeweckt werden."""
+    if boxed:
+        _usable(pet)
+    else:
+        _awake_check(pet)
+    if pet["sick"] or pet["injured"] or pet.get("battle") or pet.get("scout"):
         raise Refused(T("{name} ist nicht fit genug für eine Fusion.", name=display_name(pet)))
+
+
+def jogress(pet, to_dex, partner, partner_owner, minute, basis=None):
+    """Passende Fusion prüfen und die gewählte Grundlage weiterführen."""
+    jogress_ready(pet)
     evo = next((e for e, need in jogress_options(pet)
                 if e["to"] == to_dex and partner_fits(need, pet, partner)), None)
     if not evo:
         raise Refused(T("Diese Fusion passt gerade nicht."))
     old, partner_name = display_name(pet), display_name(partner)
-    _evolve(pet, evo, minute)
+    basis = pet if basis is None else basis
+    if basis is not pet and basis is not partner:
+        raise Refused(T("Diese Fusion passt gerade nicht."))
+    _evolve(basis, evo, minute)
     who = T("{partner} von {owner}", partner=partner_name, owner=partner_owner) if partner_owner else partner_name
-    _log(pet, minute, T("Jogress! {old} + {who} = {new}!", old=old, who=who, new=display_name(pet)))
-    return T("Jogress! {old} und {who} verschmelzen zu {new}!", old=old, who=who, new=display_name(pet))
+    _log(basis, minute, T("Jogress! {old} + {who} = {new}!", old=old, who=who, new=display_name(basis)))
+    return T("Jogress! {old} und {who} verschmelzen zu {new}!", old=old, who=who, new=display_name(basis))
 
 
 def _evolve(pet, evo, minute):

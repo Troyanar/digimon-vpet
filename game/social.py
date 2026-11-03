@@ -4,9 +4,11 @@ Tausch (kann warten, bis der Freund online ist):
     A bietet etwas an -> B nimmt das Geschenk an ODER macht ein Gegenangebot
     (oder lehnt ab) -> A bestätigt den Tausch (oder lehnt ab).
 Jogress mit dem Digimon eines Freundes (beide online, wie beim Kampf):
-    A fragt -> B stimmt zu -> A's Digimon digitiert, B's Digimon bleibt wie es ist.
+    A fragt -> B stimmt zu -> beide Digimon werden zur gleichen Fusion.
 """
-from . import collection, data
+import copy
+
+from . import collection, data, progress
 from . import pet as P
 from .i18n import T, stored
 
@@ -152,9 +154,42 @@ def trades_view(store, me):
 
 # ---------------------------------------------------------------- Jogress mit Freunden
 
+def jogress_box(store, me, to_dex, partner_id, basis_id, now):
+    """Zwei eigene Digimon werden eines; der Spieler wählt dessen Geschichte."""
+    owner = str(me["id"])
+    pet, partner = store.active_pet(owner), _boxed_pet(store, partner_id, owner)
+    if not pet or not partner:
+        raise P.Refused(T("Dieser Partner ist nicht in deiner Sammlung."))
+    if basis_id not in (pet["id"], partner["id"]):
+        raise P.Refused(T("Wähle eines der beiden Digimon als Grundlage."))
+    collection._trip_check(partner)
+    if _busy(store, partner_id):
+        raise P.Refused(T("Das steckt schon in einem anderen Tauschangebot."))
+    P.advance(pet, now)
+    P.advance(partner, now)
+    P.jogress_ready(partner, boxed=True)
+    basis = pet if basis_id == pet["id"] else partner
+    consumed = partner if basis is pet else pet
+    message = P.jogress(pet, to_dex, partner, None, now, basis=basis)
+    basis.pop("in_box", None)
+    basis.pop("box", None)
+    basis["asleep"] = P.should_sleep(basis, now) and not basis.get("no_sleep")
+    # Vor dem Entfernen auch ältere, noch nicht erfasste Digidex-Formen und Siege merken.
+    progress.sync(store, owner)
+    progress.stats(store, owner)
+    store.finish_jogress([basis], owner=owner, consumed=consumed["id"], active=basis["id"])
+    return message
+
 def jogress_ask(store, me, target, my_pet, to_dex, partner, now):
     if not target or target["id"] == me["id"]:
         raise P.Refused(T("Mit wem willst du fusionieren?"))
+    P.jogress_ready(my_pet)
+    try:
+        if not partner:
+            raise P.Refused("")
+        P.jogress_ready(partner)
+    except P.Refused:
+        raise P.Refused(T("Diese Fusion passt gerade nicht.")) from None
     if not any(e["to"] == to_dex and P.partner_fits(need, my_pet, partner) for e, need in P.jogress_options(my_pet)):
         raise P.Refused(T("Das Digimon von {name} passt nicht zu dieser Fusion.", name=target["name"]))
     for req in store.requests_for(me["id"], "jogress", ("pending",)) + \
@@ -164,6 +199,7 @@ def jogress_ask(store, me, target, my_pet, to_dex, partner, now):
         req["status"] = "expired"
         store.save_request(req)
     store.add_request("jogress", me["id"], target["id"], {
+        "fusion_rule": 2,
         "to": to_dex, "created": now, "names": {"a": me["name"], "b": target["name"]},
         "pets": {"a": my_pet["id"], "b": partner["id"]},
     })
@@ -181,18 +217,35 @@ def jogress_answer(store, me, accept, pets, now):
         req["status"] = "declined"
         store.save_request(req)
         return T("Jogress abgelehnt.")
+    if d.get("fusion_rule") != 2:
+        req["status"] = "failed"
+        store.save_request(req)
+        raise P.Refused(T("Bitte bestätige die neue Fusionsregel. Lade das Spiel bei Bedarf neu."))
     a, b = pets["a"], pets["b"]
     if not a or not b or a["id"] != d["pets"]["a"] or b["id"] != d["pets"]["b"]:
         req["status"] = "failed"
         store.save_request(req)
         raise P.Refused(T("Die Fusion klappt nicht mehr – ein Digimon wurde getauscht."))
-    message = P.jogress(a, d["to"], b, d["names"]["b"], a["last"])
-    P._log(b, b["last"], T("{name} hat {friend} bei einer Jogress geholfen!",
-                           name=P.display_name(b), friend=d["names"]["a"]))
+    # Erst beide prüfen, dann auf Kopien entwickeln. Ein Fehler verändert keines davon.
+    try:
+        P.jogress_ready(a)
+        P.jogress_ready(b)
+    except P.Refused:
+        raise P.Refused(T("Diese Fusion passt gerade nicht.")) from None
+    ac, bc = copy.deepcopy(a), copy.deepcopy(b)
+    old_a, old_b = P.display_name(a), P.display_name(b)
+    P.jogress(ac, d["to"], bc, d["names"]["b"], ac["last"])
+    P._evolve(bc, {"to": d["to"], "stage": data.DIGIMON[d["to"]]["stage"]}, bc["last"])
+    P._log(bc, bc["last"], T("Jogress! {old} + {who} = {new}!",
+                           old=old_b, who=old_a, new=P.display_name(bc)))
+    message = T("Jogress! Beide Digimon sind jetzt {name}. Jeder behält seine eigene Fusion.",
+                name=P.display_name(ac))
     req["status"] = "done"
     d["result"] = str(message)
     d["result_en"] = message.en           # wird gespeichert – englische Fassung mitnehmen
-    store.save_request(req)
+    store.finish_jogress([ac, bc], request=req)
+    a.update(ac)
+    b.update(bc)
     return T("Geschafft! {message}", message=message)
 
 

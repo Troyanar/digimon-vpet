@@ -427,7 +427,7 @@ def jogress_menu(user, pet, now):
         out.append({
             "to": evo["to"], "to_name": data.DIGIMON[evo["to"]]["name"],
             "to_stage": petlib.stage_name(evo["stage"]), "need": petlib.need_text(need),
-            "box": [{"id": p["id"], "name": petlib.display_name(p)} for p in box if petlib.partner_fits(need, pet, p)],
+            "box": [{"id": p["id"], "name": petlib.label(p)} for p in box if petlib.partner_fits(need, pet, p)],
             "friends": [{"name": u["name"], "partner": petlib.display_name(fp)}
                         for u, fp in online_friends if petlib.partner_fits(need, pet, fp)],
         })
@@ -1003,20 +1003,27 @@ class Handler(BaseHTTPRequestHandler):
             if path.startswith("/api/jogress/"):
                 step = path.rsplit("/", 1)[1]
                 real = time.time()
+                fused = False
                 try:
+                    if (step in ("box", "ask") or (step == "answer" and body.get("accept"))):
+                        if body.get("confirmed") is not True:
+                            raise petlib.Refused(T("Bitte bestätige die neue Fusionsregel. Lade das Spiel bei Bedarf neu."))
                     pet = store.active_pet(owner)
                     if pet:
                         petlib.advance(pet, now)
+                    if step in ("box", "ask") and (not pet or pet["id"] != as_int(body.get("active_id"), 0)):
+                        raise petlib.Refused(T("Die Fusion klappt nicht mehr – ein Digimon wurde getauscht."))
                     if step == "box":
-                        partner = social._boxed_pet(store, as_int(body.get("partner_id"), 0), user["id"])
-                        if not pet or not partner:
-                            raise petlib.Refused(T("Dieser Partner ist nicht in deiner Sammlung."))
-                        collection._trip_check(partner)          # gerade beim Erkunden?
-                        message = petlib.jogress(pet, as_int(body.get("to"), 0), partner, None, now)
-                        store.save_pet(pet)
+                        if in_open_duel(user):
+                            raise petlib.Refused(T("Erst den Kampf beenden (oder fliehen)."))
+                        message = social.jogress_box(store, user, as_int(body.get("to"), 0),
+                            as_int(body.get("partner_id"), 0), as_int(body.get("basis_id"), 0), now)
+                        fused = True
                     elif step == "ask":
                         target = store.user_by_name(as_text(body.get("name")))
                         friends.check(store, user, target)
+                        if in_open_duel(user) or in_open_duel(target):
+                            raise petlib.Refused(T("Diese Fusion passt gerade nicht."))
                         if not is_online(target["id"]):
                             raise petlib.Refused(T("Dein Freund ist gerade nicht online."))
                         partner = store.active_pet(str(target["id"]))
@@ -1032,23 +1039,28 @@ class Handler(BaseHTTPRequestHandler):
                                 if r["b"] == user["id"]]
                         if not reqs:
                             raise petlib.Refused(T("Es gibt keine offene Anfrage."))
+                        target = store.user_by_id(reqs[0]["a"])
+                        if body.get("accept"):
+                            friends.check(store, user, target)
+                            if in_open_duel(user) or in_open_duel(target):
+                                raise petlib.Refused(T("Diese Fusion passt gerade nicht."))
                         pets = {"a": store.active_pet(str(reqs[0]["a"])), "b": pet}
                         if pets["a"]:
                             petlib.advance(pets["a"], now)
                         message = social.jogress_answer(store, user, bool(body.get("accept")), pets, real)
-                        for p in pets.values():
-                            if p:
-                                store.save_pet(p)
+                        fused = bool(body.get("accept"))
                     else:
                         return self.send_error(404)
                 except (TypeError, ValueError):
                     return self.send_json({"error": T("Ungültige Anfrage")}, 400)
                 except petlib.Refused as e:
                     return self.send_json({"error": i18n.text_of(e)}, 400)
-                if step in ("box", "answer") and "Jogress" in message:
+                if fused:
                     store.log_activity(user["name"], message.replace("Geschafft! ", ""))
-                    # Erfolg „Zwei werden eins“: zählt für den, dessen Digimon digitiert ist
-                    progress.count(store, owner if step == "box" else str(reqs[0]["a"]), "jogress")
+                    owners = [owner] if step == "box" else [str(reqs[0]["a"]), owner]
+                    for fused_owner in owners:
+                        progress.count(store, fused_owner, "jogress")
+                        progress.sync(store, fused_owner)
                 return self.send_json({"message": message, **current_state(user)})
 
             if path.startswith("/api/duel/"):

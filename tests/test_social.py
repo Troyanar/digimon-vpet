@@ -1,7 +1,8 @@
 """Tests für Tauschen und Jogress.  Starten mit:  python -m unittest"""
+import copy
 import unittest
 
-from game import cheats, collection, data, social
+from game import cheats, collection, data, social, progress
 from game import pet as P
 from game.store import Store
 from tests.test_battle import rookie
@@ -108,13 +109,63 @@ class SocialTest(unittest.TestCase):
 
     def test_jogress_with_friend(self):
         blitz, cres = become("ver1", find_dex("BlitzGreymon")), become("ver2", find_dex("CresGarurumon"))
-        blitz["id"], cres["id"] = 101, 202
+        self.store.add_pet("1", blitz)
+        self.store.add_pet("2", cres)
+        blitz["name"], cres["name"] = "Blitz", "Cres"
+        born = (blitz["born"], cres["born"])
         to = P.jogress_options(blitz)[0][0]["to"]
         social.jogress_ask(self.store, self.mario, self.tai, blitz, to, cres, T0)
         self.assertTrue(social.jogress_view(self.store, self.tai, T0 + 1)["incoming"])
         msg = social.jogress_answer(self.store, self.tai, True, {"a": blitz, "b": cres}, T0 + 2)
         self.assertIn("Omnimon", msg)
-        self.assertEqual(P.display_name(cres), "CresGarurumon")
+        self.assertEqual(P.display_name(blitz), "Omnimon Alter-S")
+        self.assertEqual(P.display_name(cres), "Omnimon Alter-S")
+        self.assertEqual((blitz["name"], cres["name"]), ("Blitz", "Cres"))
+        self.assertEqual((blitz["born"], cres["born"]), born)
+        self.assertEqual(self.store.active_pet("2")["dex"], to)
+        self.assertEqual(self.store.active_pet("1")["dex"], to)
+        with self.assertRaises(P.Refused):
+            social.jogress_answer(self.store, self.tai, True, {"a": blitz, "b": cres}, T0 + 3)
+
+    def test_friend_becomes_unready_neither_changes(self):
+        blitz, cres = become("ver1", find_dex("BlitzGreymon")), become("ver2", find_dex("CresGarurumon"))
+        self.store.add_pet("1", blitz)
+        self.store.add_pet("2", cres)
+        to = P.jogress_options(blitz)[0][0]["to"]
+        social.jogress_ask(self.store, self.mario, self.tai, blitz, to, cres, T0)
+        cres["sick"] = True
+        before = copy.deepcopy((blitz, cres))
+        with self.assertRaises(P.Refused):
+            social.jogress_answer(self.store, self.tai, True, {"a": blitz, "b": cres}, T0 + 2)
+        self.assertEqual((blitz, cres), before)
+        self.assertEqual(self.store.active_pet("1")["dex"], find_dex("BlitzGreymon"))
+
+    def test_friend_save_failure_rolls_back_both_and_request(self):
+        from unittest.mock import patch
+        blitz, cres = become("ver1", find_dex("BlitzGreymon")), become("ver2", find_dex("CresGarurumon"))
+        self.store.add_pet("1", blitz)
+        self.store.add_pet("2", cres)
+        to = P.jogress_options(blitz)[0][0]["to"]
+        social.jogress_ask(self.store, self.mario, self.tai, blitz, to, cres, T0)
+        before = copy.deepcopy((blitz, cres))
+        with patch.object(self.store, "finish_jogress", side_effect=ValueError("save failed")):
+            with self.assertRaises(ValueError):
+                social.jogress_answer(self.store, self.tai, True, {"a": blitz, "b": cres}, T0 + 2)
+        self.assertEqual((blitz, cres), before)
+        self.assertEqual(social.jogress_view(self.store, self.tai, T0 + 3)["status"], "pending")
+
+    def test_old_friend_request_needs_new_consent(self):
+        blitz, cres = become("ver1", find_dex("BlitzGreymon")), become("ver2", find_dex("CresGarurumon"))
+        self.store.add_pet("1", blitz)
+        self.store.add_pet("2", cres)
+        to = P.jogress_options(blitz)[0][0]["to"]
+        social.jogress_ask(self.store, self.mario, self.tai, blitz, to, cres, T0)
+        req = self.store.requests_for(1, "jogress", ("pending",))[0]
+        req["data"].pop("fusion_rule")
+        self.store.save_request(req)
+        with self.assertRaises(P.Refused):
+            social.jogress_answer(self.store, self.tai, True, {"a": blitz, "b": cres}, T0 + 2)
+        self.assertEqual(P.display_name(blitz), "BlitzGreymon")
 
     def test_jogress_request_expires(self):
         blitz, cres = become("ver1", find_dex("BlitzGreymon")), become("ver2", find_dex("CresGarurumon"))
@@ -124,6 +175,92 @@ class SocialTest(unittest.TestCase):
         with self.assertRaises(P.Refused):
             social.jogress_answer(self.store, self.tai, True, {"a": blitz, "b": cres},
                                   T0 + social.JOGRESS_TIMEOUT + 1)
+
+
+class SoloFusionTest(unittest.TestCase):
+    def setUp(self):
+        self.store = Store(":memory:")
+        self.me = {"id": 1, "name": "Tester"}
+        self.active = become("ver1", find_dex("WarGreymon"))
+        self.partner = become("ver2", find_dex("MetalGarurumon"))
+        self.active.update(name="Feuer", wins=12, mistakes_total=3)
+        self.partner.update(name="Eis", wins=7, mistakes_total=5, in_box=True, box=0)
+        self.store.add_pet("1", self.active)
+        self.store.add_pet("1", self.partner, active=False)
+        self.now = self.active["last"]
+        self.to = find_dex("Omnimon")
+
+    def tearDown(self):
+        self.store.db.close()
+
+    def fuse(self, basis=None):
+        return social.jogress_box(self.store, self.me, self.to, self.partner["id"],
+                                 self.active["id"] if basis is None else basis, self.now)
+
+    def test_two_become_one_active_basis_and_digidex_survives(self):
+        self.fuse()
+        result = self.store.active_pet("1")
+        self.assertEqual(len(self.store.all_pets("1")), 1)
+        self.assertEqual(result["id"], self.active["id"])
+        self.assertEqual(result["dex"], self.to)
+        self.assertEqual(result["name"], "Feuer")
+        self.assertEqual(result["born"], self.active["born"])
+        self.assertEqual(result["wins"], 12)
+        self.assertEqual(result["mistakes_total"], 3)
+        self.assertEqual(result["skills"], {"power": 0, "speed": 0, "defense": 0})
+        self.assertTrue(any(e in result["log"] for e in self.active["log"]))
+        self.assertIn(self.partner["dex"], progress.owned(self.store, "1"))
+        self.assertEqual(progress.stats(self.store, "1")["wins"], 19)
+
+    def test_collection_basis_keeps_age_and_becomes_active(self):
+        self.partner["born"] -= 1440
+        self.store.save_pet(self.partner)
+        age = self.partner["last"] - self.partner["born"]
+        self.fuse(self.partner["id"])
+        result = self.store.active_pet("1")
+        self.assertEqual(result["id"], self.partner["id"])
+        self.assertEqual(result["last"] - result["born"], age)
+        self.assertEqual(result["name"], "Eis")
+        self.assertEqual(result["wins"], 7)
+        self.assertFalse(result.get("in_box"))
+        self.assertIsNone(self.store.pet_by_id(self.active["id"]))
+        self.assertEqual(len(self.store.all_pets("1")), 1)
+
+    def test_invalid_partner_basis_recipe_and_repeat_do_not_consume(self):
+        with self.assertRaises(P.Refused):
+            self.fuse(999)
+        self.to = find_dex("Agumon")
+        with self.assertRaises(P.Refused):
+            self.fuse()
+        self.assertEqual(len(self.store.all_pets("1")), 2)
+        self.to = find_dex("Omnimon")
+        self.fuse()
+        with self.assertRaises(P.Refused):
+            self.fuse()
+        self.assertEqual(len(self.store.all_pets("1")), 1)
+
+    def test_unavailable_or_traded_partner_cannot_be_consumed(self):
+        for change in ({"sick": True}, {"frozen": True}, {"box_trip": {"area": "wald", "end": self.now + 30}}):
+            partner = copy.deepcopy(self.partner)
+            partner.update(change)
+            self.store.save_pet(partner)
+            with self.assertRaises(P.Refused):
+                self.fuse()
+            self.assertEqual(self.store.active_pet("1")["dex"], self.active["dex"])
+            self.assertEqual(len(self.store.all_pets("1")), 2)
+        self.store.save_pet(self.partner)
+        social.offer(self.store, self.me, {"id": 2, "name": "Other"}, self.partner["id"], True)
+        with self.assertRaises(P.Refused):
+            self.fuse()
+        self.assertEqual(len(self.store.all_pets("1")), 2)
+
+    def test_transaction_failure_restores_consumed_partner(self):
+        invalid = copy.deepcopy(self.active)
+        invalid["invalid"] = object()
+        with self.assertRaises(TypeError):
+            self.store.finish_jogress([invalid], owner="1", consumed=self.partner["id"], active=invalid["id"])
+        self.assertIsNotNone(self.store.pet_by_id(self.partner["id"]))
+        self.assertEqual(self.store.active_pet("1")["dex"], self.active["dex"])
 
 
 if __name__ == "__main__":

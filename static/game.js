@@ -1597,7 +1597,7 @@ function syncJogress(state) {
       }
     }
     if (S.mode === "jogask") {
-      setMessage(tr("{name} möchte mit deinem Digimon fusionieren – zu {to}! Dein Digimon bleibt, wie es ist. ({s} s)",
+      setMessage(tr("{name} möchte mit dir fusionieren. Beide Digimon werden zu {to}; jeder behält seine eigene Fusion mit Spitzname, Alter und Geschichte. ({s} s)",
         { name: j.partner, to: j.to, s: j.expires_in }));
     }
   } else if (j.status === "pending" && S.mode === "jogwait") {
@@ -2005,9 +2005,25 @@ function keysFor(mode) {
   if (mode === "jogwait") {
     return [{ id: "back", icon: "back", label: tr("Nicht mehr warten"), sub: tr("die Anfrage läuft von selbst ab"), cls: "wide", hotkey: "Esc" }];
   }
+  if (mode === "jogbasis") {
+    const pet = S.state.pet;
+    const partner = S.jogOpts[S.jogPick].box.find(p => p.id === S.jogPreview.partner_id);
+    return [
+      { id: "jogbasis:" + pet.id, icon: "star", label: pet.nickname || pet.name, sub: tr("aktives Digimon"), hotkey: "1" },
+      { id: "jogbasis:" + partner.id, icon: "egg", label: partner.name, sub: tr("aus deiner Sammlung"), hotkey: "2" },
+      { id: "back", icon: "back", label: tr("Abbrechen"), hotkey: "Esc" },
+    ];
+  }
+  if (mode === "jogconfirm") {
+    return [
+      { id: "jog-confirm", icon: "star", label: S.jogPreview.step === "box" ? tr("Jetzt fusionieren") : tr("Anfrage senden"),
+        sub: S.jogPreview.step === "box" ? tr("2 Digimon werden 1") : tr("jeder bekommt die Fusion"), cls: "primary", hotkey: "1" },
+      { id: "back", icon: "back", label: tr("Abbrechen"), hotkey: "Esc" },
+    ];
+  }
   if (mode === "jogask") {
     return [
-      { id: "jog-yes", icon: "star", label: tr("Zustimmen"), sub: tr("dein Digimon bleibt, wie es ist"), cls: "primary", hotkey: "1" },
+      { id: "jog-yes", icon: "star", label: tr("Zustimmen"), sub: tr("jeder bekommt die Fusion"), cls: "primary", hotkey: "1" },
       { id: "jog-no", icon: "back", label: tr("Ablehnen"), hotkey: "2" },
     ];
   }
@@ -2337,7 +2353,7 @@ async function press(id) {
       S.jogOpts = (await api("/api/jogress")).options;
       setMode("jogress");
       sfx("menu");
-      return setMessage(tr("Welche Fusion? Dein Partner-Digimon bleibt dabei, wie es ist."));
+      return setMessage(tr("Welche Fusion? Solo werden zwei Digimon eines. Mit Freunden bekommt jeder die Fusion."));
     } catch (e) { return setMessage(e.message); }
   }
   if (id.startsWith("jog:")) {
@@ -2346,14 +2362,31 @@ async function press(id) {
     return setMessage(tr("Mit wem zu {name} fusionieren?", { name: S.jogOpts[S.jogPick].to_name }));
   }
   if (id.startsWith("jogbox:")) {
-    return jogressStep("box", { to: S.jogOpts[S.jogPick].to, partner_id: Number(id.slice(7)) });
+    S.jogPreview = { step: "box", to: S.jogOpts[S.jogPick].to, partner_id: Number(id.slice(7)), active_id: S.state.pet.id };
+    setMode("jogbasis");
+    return setMessage(tr("Welche Grundlage? Spitzname, Alter und Geschichte dieses Digimons bleiben. Die Werte ändern sich wie bei einer normalen Digitation."));
+  }
+  if (id.startsWith("jogbasis:")) {
+    S.jogPreview.basis_id = Number(id.slice(9));
+    const partner = S.jogOpts[S.jogPick].box.find(p => p.id === S.jogPreview.partner_id);
+    const pet = S.state.pet;
+    const basis = pet.id === S.jogPreview.basis_id ? (pet.nickname || pet.name) : partner.name;
+    setMode("jogconfirm");
+    return setMessage(tr("{a} + {b} → 1× {to}. Beide Ausgangsformen verschwinden aus deinem Bestand. Grundlage: {basis}. Digidex-Einträge bleiben erhalten. Jetzt endgültig fusionieren?",
+      { a: pet.name, b: partner.name, to: S.jogOpts[S.jogPick].to_name, basis }));
   }
   if (id.startsWith("jogask:")) {
-    const res = await jogressStep("ask", { to: S.jogOpts[S.jogPick].to, name: id.slice(7) });
-    if (res) setMode("jogwait");
+    S.jogPreview = { step: "ask", to: S.jogOpts[S.jogPick].to, name: id.slice(7), active_id: S.state.pet.id };
+    setMode("jogconfirm");
+    return setMessage(tr("Mit {name}: Beide Digimon werden zu {to}. Jeder behält seine eigene Fusion mit Spitzname, Alter und Geschichte. Die Werte ändern sich wie bei einer normalen Digitation. Anfrage senden?",
+      { name: S.jogPreview.name, to: S.jogOpts[S.jogPick].to_name }));
+  }
+  if (id === "jog-confirm") {
+    const res = await jogressStep(S.jogPreview.step, { ...S.jogPreview, confirmed: true });
+    if (res && S.jogPreview.step === "ask") setMode("jogwait");
     return;
   }
-  if (id === "jog-yes" || id === "jog-no") return jogressStep("answer", { accept: id === "jog-yes" });
+  if (id === "jog-yes" || id === "jog-no") return jogressStep("answer", { accept: id === "jog-yes", confirmed: true });
   if (id === "wild") { sfx("click"); return scoutBattle(); }
   if (id === "friends") { sfx("click"); return showFriends(); }
   if (id.startsWith("challenge:")) { sfx("click"); return duelStep("challenge", { name: id.slice(10) }); }

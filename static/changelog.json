@@ -1,5 +1,22 @@
 [
   {
+    "id": "2026-11-03-echte-jogress",
+    "version": "3.8",
+    "date": "2026-11-03",
+    "title": "Zwei werden eins – echte Fusion",
+    "items": [
+      "Solo werden dein aktives Digimon und ein Partner aus deiner Sammlung zu genau einer Fusion. Beide Ausgangsformen verschwinden. Vorher wählst du, wessen Spitzname, Alter und Geschichte erhalten bleiben. Deine Digidex-Einträge bleiben bestehen.",
+      "Mit Freunden erhalten jetzt beide Spieler die gewählte Fusion. Jeder führt sein eigenes Digimon weiter; vorher müssen beide zustimmen.",
+      "Eine Vorschau zeigt dir das Ergebnis vor dem Bestätigen. Die Werte ändern sich wie bei einer normalen Digitation; eine Ablehnung zählt nicht als erfolgreiche Jogress."
+    ],
+    "title_en": "Two become one – true fusion",
+    "items_en": [
+      "Solo, your active Digimon and a partner from your collection become exactly one fusion. Both original forms are used up. First choose whose nickname, age and history to keep. Your Digidex entries remain.",
+      "With friends, both players now get the chosen fusion. Each player continues with their own Digimon; both must agree first.",
+      "A preview shows the result before you confirm. Stats change as in a normal digivolution; declining no longer counts as a successful Jogress."
+    ]
+  },
+  {
     "id": "2026-11-03-push",
     "version": "3.7",
     "date": "2026-11-03",

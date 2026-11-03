@@ -746,3 +746,10 @@ EN.update({
     "Benachrichtigungen sind an": "Notifications are on",
     "So sieht es aus, wenn dein Digimon dich ruft.": "This is what it looks like when your Digimon calls you."
 })
+
+# Echte Jogress
+EN.update({
+    "Bitte bestätige die neue Fusionsregel. Lade das Spiel bei Bedarf neu.": "Please confirm the new fusion rule. Reload the game if needed.",
+    "Wähle eines der beiden Digimon als Grundlage.": "Choose one of the two Digimon as the base.",
+    "Jogress! Beide Digimon sind jetzt {name}. Jeder behält seine eigene Fusion.": "Jogress! Both Digimon are now {name}. Each player keeps their own fusion."
+})

@@ -319,3 +319,21 @@ class Store:
     def delete_pet(self, owner, pet_id):
         self.db.execute("DELETE FROM pets WHERE owner=? AND id=?", (owner, pet_id))
         self.db.commit()
+
+    def finish_jogress(self, pets, owner=None, consumed=None, active=None, request=None):
+        """Fusion und Entfernen des Partners gemeinsam speichern: alles oder nichts."""
+        with self.db:
+            if consumed is not None:
+                cur = self.db.execute("DELETE FROM pets WHERE owner=? AND id=?", (str(owner), consumed))
+                if cur.rowcount != 1:
+                    raise ValueError("Fusionspartner fehlt")
+            for pet in pets:
+                body = {k: v for k, v in pet.items() if k not in ("id", "active", "owner")}
+                cur = self.db.execute("UPDATE pets SET data=? WHERE id=?", (json.dumps(body), pet["id"]))
+                if cur.rowcount != 1:
+                    raise ValueError("Fusionspartner fehlt")
+            if active is not None:
+                self.db.execute("UPDATE pets SET active=(id=?) WHERE owner=?", (active, str(owner)))
+            if request is not None:
+                self.db.execute("UPDATE requests SET status=?, data=? WHERE id=?",
+                                (request["status"], json.dumps(request["data"]), request["id"]))
